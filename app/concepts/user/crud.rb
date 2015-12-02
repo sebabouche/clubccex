@@ -45,11 +45,31 @@ class User < ActiveRecord::Base
 
     end
 
-    def process(params)
-      validate(params[:user]) do |f|
-        f.save
+    include Dispatch
+    callback(:before_save) do
+      collection :recommenders do
+        on_change :do_not_update_recommender!
       end
     end
 
+    def process(params)
+      validate(params[:user]) do |f|
+        dispatch!(:before_save)
+        f.save
+      end
+    end
+    
+    private
+
+    def do_not_update_recommender!(recommender)
+      return if !recommender.persisted?
+
+      puts recommender.model.inspect
+
+      recommender.firstname = recommender.model.firstname
+      recommender.lastname = recommender.model.lastname
+      recommender.email = recommender.model.email
+      recommender.sync
+    end
   end
 end

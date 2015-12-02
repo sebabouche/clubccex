@@ -109,7 +109,7 @@ RSpec.describe User do
       expect(op.model.recommenders[0].attributes.slice("id", "email")).to eq("id" => test_idis.id, "email" => "test.idis@icloud.com")
     end 
     
-    it "persists valid user with existing recommender only with email" do
+    it "persists valid user with existing recommender and doesn't change recommender's firstname" do
       test_idis = User.create(firstname: "Test", lastname: "Idis", email: "test.idis@icloud.com")
       expect(User.count).to eq(1)
 
@@ -124,6 +124,26 @@ RSpec.describe User do
 
       expect(User.count).to eq(3)
       expect(op.model.recommenders[0].attributes.slice("id", "firstname", "email")).to eq(
+        "id" => test_idis.id, 
+        "firstname" => test_idis.firstname,
+        "email" => test_idis.email)
+    end
+
+    it "persists valid user with existing recommender and doesn't change recommender's email" do
+      test_idis = User.create(firstname: "Hack", lastname: "Idis", email: "hack.idis@icloud.com")
+      expect(User.count).to eq(1)
+
+      op = User::Create.(user: {
+      firstname: "Sébastien",
+      lastname: "Nicolaïdis",
+      email: "s.nicolaidis@me.com",
+      recommenders: [
+        {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
+        {"firstname" => "Hack", "lastname" => "Idis", "email" => "haddock.idis@icloud.com"}
+      ]})
+
+      expect(User.count).to eq(3)
+      expect(op.model.recommenders[1].attributes.slice("id", "firstname", "email")).to eq(
         "id" => test_idis.id, 
         "firstname" => test_idis.firstname,
         "email" => test_idis.email)
