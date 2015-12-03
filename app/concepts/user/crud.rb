@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
 
       validates :email, :firstname, :lastname, presence: true
       validates :email, email: true
-      validate :not_enough_recommenders
+      # validate :not_enough_recommenders
+      validate :distinct_recommenders
 
       private 
 
@@ -32,15 +33,22 @@ class User < ActiveRecord::Base
         errors.add(:user, "Vous devez spécifier deux recommandations")
       end
 
+      def distinct_recommenders
+        # return if recommenders[0].email != recommenders[1].email
+        return if recommenders.map(&:email).uniq.size == 2 
+        errors.add(:user, "Vous devez spécifier deux recommandations différentes")
+      end
+
       def prepopulate_recommenders!(options)
         (2 - recommenders.size).times { recommenders << User.new }
       end
 
       def populate_recommenders!(params, options)
-        User.where("(firstname = ? and lastname = ?) or email = ?", 
-                   params["firstname"], 
-                   params["lastname"],
-                   params["email"]).first or User.new
+        User.find_by_email(params["email"]) or User.new
+        #User.where("(firstname = ? and lastname = ?) or email = ?", 
+        #           params["firstname"], 
+        #           params["lastname"],
+        #           params["email"]).first or User.new
       end
 
     end

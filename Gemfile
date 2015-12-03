@@ -47,6 +47,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
+  gem 'cucumber-rails', require: false
   gem 'rspec-rails'
   gem 'rspec-cells'
   gem 'rspec-trailblazer', git: 'https://github.com/trailblazer/rspec-trailblazer.git'

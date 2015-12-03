@@ -9,7 +9,7 @@ development:
   <<: *default
   database: clubccex_development
 
-test:
+test: &test
   <<: *default
   database: clubccex_test
 
@@ -21,3 +21,6 @@ production:
 #   database: clubccex_production
 #   username: clubccex
 #   password: <%= ENV['CLUBCCEX_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *test
