@@ -14,12 +14,17 @@ gem 'therubyracer', platform: :ruby
 gem 'thin'
 gem 'responders'
 gem 'rails-timeago'
+
 gem 'simple_form'
 gem 'slim-rails'
+
 gem 'bower-rails'
-gem 'bootstrap-sass'
-gem 'bootstrap-kaminari-views'
-gem 'font-awesome-rails'
+
+gem 'bootstrap', '~> 4.0.0.alpha1'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
+
 gem 'trailblazer'
 gem 'trailblazer-rails'
 gem 'reform'
@@ -33,9 +38,11 @@ gem 'kaminari'
 gem 'kaminari-cells'
 gem 'paperdragon'
 gem 'virtus'
+
 gem 'email_validator'
 gem 'phony_rails'
 gem 'file_validators'
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'byebug'

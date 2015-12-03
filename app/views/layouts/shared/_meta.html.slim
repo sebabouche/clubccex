@@ -1,0 +1,27 @@
+/// GENERAL
+title
+  = title(yield(:title))
+
+meta name="description" content= description(yield(:description))
+
+/// GOOGLE
+meta name="itemprop:description" content= description(yield(:description))
+meta name="itemprop:name" content="#{ENV['APP_NAME_HUMAN']}"
+meta name="itemprop:image" content= image(yield(:image))
+
+/// FACEBOOK
+meta property="og:url" content= request.original_url
+meta property="og:site_name" content="#{ENV['APP_NAME_HUMAN']}"
+meta property="og:see_also" content= "#{request.protocol}#{request.host}"
+meta property="og:description" content= description(yield(:description))
+meta property="og:title" content= title(yield(:title))
+meta property="og:image" content= image(yield(:image))
+meta property="og:fb:admins" content="{ENV['FB_ADMINS']}"
+
+/// TWITTER
+meta name="twitter:image:src" content= image(yield(:image))
+meta name="twitter:domain" content= request.host
+meta name="twitter:card" content= description(yield(:description))
+meta name="twitter:site" content="#{ENV['TWITTER_ID']}"
+meta name="twitter:description" content=description(yield(:description))
+meta name="twitter:url" content= request.original_url

@@ -12,7 +12,7 @@ RSpec.describe User do
         {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"}
       ]}).model }
 
-    it "rendering" do
+    it "renders form" do
       form = User::Create.present({}).contract
       form.prepopulate!
 
@@ -35,7 +35,7 @@ RSpec.describe User do
                               {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"} ]})
 
       expect(res).to be_falsey
-      expect(op.contract.errors.to_s).to eq "{:firstname=>[\"can't be blank\"]}"
+      expect(op.contract.errors.to_s).to match "firstname"
     end
 
     it "is invalid without a lastname" do
@@ -45,7 +45,7 @@ RSpec.describe User do
                               {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"} ]})
 
       expect(res).to be_falsey
-      expect(op.contract.errors.to_s).to eq "{:lastname=>[\"can't be blank\"]}"
+      expect(op.contract.errors.to_s).to match "lastname"
     end
 
     it "is invalid without an email" do
@@ -55,7 +55,7 @@ RSpec.describe User do
                               {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"} ]})
 
       expect(res).to be_falsey
-      expect(op.contract.errors.to_s).to eq "{:email=>[\"can't be blank\", \"is invalid\"]}"
+      expect(op.contract.errors.to_s).to match "email"
     end
 
     it "is invalid without a valid email" do
@@ -65,14 +65,14 @@ RSpec.describe User do
                               {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"} ]})
 
       expect(res).to be_falsey
-      expect(op.contract.errors.to_s).to eq "{:email=>[\"is invalid\"]}"
+      expect(op.contract.errors.to_s).to match "email"
     end
 
     it "is invalid if not enough recommenders" do
       res, op = User::Create.run(user: {firstname: "Sébastien", lastname: "Nicolaïdis", email: "s.nicolaidis@me.comé"})
 
       expect(res).to be_falsey
-      expect(op.contract.errors.to_s).to eq "{:user=>[\"Not enough recommenders\"]}"
+      expect(op.contract.errors.to_s).to eq "{:user=>[\"Vous devez spécifier deux recommandations\"]}"
     end
 
     it "is invalid with an invalid recommender" do
@@ -83,7 +83,7 @@ RSpec.describe User do
 
 
       expect(res).to be_falsey
-      expect(op.contract.errors.to_s).to eq "{:\"recommenders.firstname\"=>[\"can't be blank\"]}"
+      expect(op.contract.errors.to_s).to match "recommenders.firstname"
 
       form = op.contract
       form.prepopulate!

@@ -1,0 +1,77 @@
+fr:
+
+  simple_form:
+    "yes": "Oui"
+    "no": "Non"
+    required:
+      text: "Ce champ est requis"
+      mark: "*"
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+
+    error_notification:
+      default_message: "Veuillez corriger les erreurs ci-dessous :"
+
+    #Samples
+    labels:
+      defaults:
+        password: "Mot de passe"
+        remember_me: "Se souvenir de moi"
+        email: "Email"
+        password: "Mot de passe"
+        password_confirmation: "Mot de passe (confirmation)"
+
+        name: "Nom"
+        firstname: "Prénom"
+        lastname: "Nom de famille"
+        phone: "Téléphone"
+        gender: "Genre"
+        birthdate: "Anniversaire"
+        
+        title: "Titre"
+        short_desc: "Description courte"
+        description: "Description"
+        featured: "Afficher sur la home"
+        published: "Publier"
+
+        type: "Catégorie"
+        rank: "Ordre d'apparition"
+
+        message: "Message"
+        
+        street_address: "N° et nom de la rue"
+        zip_code: "Code postal"
+        city: "Ville"
+        country: "Pays"
+        
+        quantity: "Quantité"
+        price: "Prix"
+        total: "Total"
+        
+      user:
+        new:
+          email: "Email"
+        edit:
+          email: "Email"
+
+    hints:
+      defaults:
+        #email: 'Votre email pour vous connecter.'
+        #username: 'Votre prénom ou un surnom'
+        #password: 'No special characters, please.'
+
+    include_blanks:
+      defaults:
+        age: "Sans commentaire"
+
+    prompts:
+      defaults:
+        age: "Sélectionnez votre âge"
+
+    placeholders:
+      defaults:
+        email: "Votre email"
+        username: "Votre nom d'utilisateur"
+        password: "••••"
+        password_confirmation: "••••"

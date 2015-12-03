@@ -1,0 +1,10 @@
+fr:
+  time:
+    formats:
+      date_short: "%d/%m/%y"
+      date_medium: "%e %b %Y"
+      date_long: "%A %e %B %Y"
+      datetime_short: "%d/%m/%y %Hh%M"
+      datetime_medium: "%e %b %Y %Hh%M"
+      datetime_long: "%A %e %B %Y à %Hh%M"
+      time: "%Hh%M"

@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    == render 'layouts/meta'
+    
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = render 'layouts/shim'
+
+  body
+  
+    == render "layouts/fb_sdk"
+
+    /<!-- Wrap all page content here -->
+    .wrap
+      = render "layouts/header"
+        
+      = render "layouts/navbar"
+          
+      = render "layouts/content"
+              
+      = render "layouts/footer"
+
+
+= render "layouts/modal"

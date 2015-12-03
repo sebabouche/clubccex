@@ -1,0 +1,9 @@
+fr:
+  activerecord:
+    models:
+      card:
+        one: "carton"
+        other: "cartons"
+      invitation:
+        one: "invitation"
+        other: "invitations"

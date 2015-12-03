@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    == render 'layouts/shared/meta'
+    
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = render 'layouts/shared/shim'
+
+  body.home
+    == render "layouts/shared/fb_sdk"
+
+    .site-wrapper
+      .site-wrapper-inner
+        .cover-container
+          .inner-cover
+            = yield

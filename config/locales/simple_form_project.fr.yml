@@ -1,0 +1,120 @@
+fr:
+  simple_form:
+    labels:
+      user:
+        name: "Nom d'utilisateur"
+        image: 'Photo de profil'
+        current_password: "Mot de passe actuel"
+        edit:
+          password: "Nouveau mot de passe"
+          password_confirmation: "Nouveau mot de passe (confirmation)"
+
+      provider:
+        image: 'Photo de profil'
+        current_password: "Mot de passe actuel"
+        edit:
+          password: "Nouveau mot de passe"
+          password_confirmation: "Nouveau mot de passe (confirmation)"
+
+      offer:
+        description: "Le mot du Happhappeur"
+        admin_title: "Titre public"
+        we_like: "On aime"
+        provider: "Happhappeur"
+        neighborhood: "Quartier"
+        starting_price: "À partir de"
+        starting_price_text: "À partir de (particuliers)"
+        starting_price_pro_text: "À partir de (professionnels)"
+        starting_price_cents: "À partir de (en centimes)"
+        min_sales: "C.A. minimum (particuliers)"
+        min_sales_pro: "C.A. minimum (professionnels)"
+        days: "Jours"
+        twenty_four_seven: "Cette offre est disponible 24/7"
+        start_time: "Heure de début"
+        end_time: "Heure de fin"
+        same_start_time: "Même heure de début tous les jours"
+        same_end_time: "Même heure de fin tous les jours"
+        same_as_provider_address: "Même addresse que le provider"
+        mentions: "Mentions spéciales"
+        min_capacity: "Capacité minimum"
+        max_capacity: "Capacité maximum"
+        show_capacity: "Afficher la capacité"
+        is_place: "Place"
+        is_food: "Food"
+        is_drinks: "Drinks"
+        is_fun: "Fun"
+        is_stuff: "Stuff"
+        
+      price:
+        price: "Prix (particuliers)"
+        price_pro: "Prix (professionnels)"
+        days: "Jours"
+        optional: "Prix en option"
+        quantify: "Prix en quantité"
+        unit: "Unité"
+        discount_prices:
+          discount_price: "Nouveau prix (particuliers)"
+          discount_price_pro: "Nouveau prix (professionnels)"
+          starting: "À partir de…"
+          
+      event:
+        start_date: "Date et heure de début"
+        end_date: "Date et heure de fin"
+        capacity: "Nombre de personnes"
+          
+      survey:
+        event_type: "Quel événement ?"
+        person_type: "Pour qui ?"
+        questionnaire: "Choisissez un questionnaire"
+        
+      answer:
+        comment: "Commentaire"
+
+      q_message:
+        content: "Nouveau message"
+
+      q_item:
+        selected: "Sélectionné"
+        
+      person_type:
+        first_person: "Première personne"
+        
+      invitation:
+        body: "Message"
+        date: "Faire figurer la date de l'événement"
+        address: "Adresse de l'événement"
+        no_guestlist: "Pas de guestlist"
+
+    hints:
+      offer:
+        start_time: "Si vous avez coché même heure de début, ne remplir que la 1ère case."
+        end_time: "Si vous avez coché même heure de fin, ne remplir que la 1ère case."
+        same_as_provider_address: "Pensez à vérifier que le provider a bien une adresse."
+        short_desc: "Cette description (moins de 220 caractères) apparaîtra en cas de partage sur Facebook."
+        starting_price_text: "Texte: \"1500 euros\" ou \"20 euros /pers.\""
+        twenty_four_seven: "Si décoché, vous pouvez appliquer des prix différents suivant le jour ou l'heure."
+
+      price:
+        days: "Définissez ici les jours pour lesquels ce prix s'applique."
+        optional: "Un prix non optionnel est forfaitaire (ajouté à chaque demande de devis)."
+        quantify: "Le prix sera multiplié par la quantité voulue par l'utilisateur."
+        unit: "Exemples : la soirée, la journée, l'heure, 50 coupes de champagne, le mètre carré…"
+        
+      answer:
+        comment: "Ecrivez quelques mots (séparés par des virgules) pour décrire ce que l'image choisie vous évoque."
+        
+      guestlist:
+        emails: "Copiez-collez ici n'importe quelle liste d'emails ou tapez-les à la main. Mais attention de ne pas \"spammer\" des contacts que vous nes connaissez pas !"
+      invitation:
+        no_guestlist: "Cochez cette case si vous ne voulez pas envoyer l'invitation par email et préférez la partager par Facebook, SMS…."
+
+
+    include_blanks:
+    prompts:
+    placeholders:
+      price:
+        price: "Inclus dans l'offre"
+        price_pro: "Inclus dans l'offre"
+        
+      invitation:
+        address: "Soyez mystérieux si vous ne connaissez pas encore l'adresse…"

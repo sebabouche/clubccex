@@ -1,0 +1,29 @@
+= simple_form_for @form do |f|
+  = f.error_notification
+
+  .row
+    .col-md-6.col-md-offset-3
+      = f.input :firstname, label: false, placeholder: "Prénom"
+      = f.input :lastname, label: false, placeholder: "Nom"
+      = f.input :email, label: false, placeholder: "Email"
+  br
+
+  p.text-center Deux anciens pouvant confirmer ton appartenance
+
+  .row
+    .col-md-8.col-md-offset-2
+      = f.simple_fields_for :recommenders do |u|
+        .row
+          .col-md-4
+            = u.input :firstname, label: false, placeholder: "Prénom"
+          .col-md-4
+            = u.input :lastname, label: false, placeholder: "Nom"
+          .col-md-4
+            = u.input :email, label: false, placeholder: "Email"
+
+  br
+
+  .row
+    .col-md-6.col-md-offset-3
+      = f.button :submit, "Envoyer", class: "btn-block btn-secondary-outline"
+

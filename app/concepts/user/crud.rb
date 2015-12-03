@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 
       def not_enough_recommenders
         return if recommenders.size >= 2
-        errors.add(:user, "Not enough recommenders")
+        errors.add(:user, "Vous devez spécifier deux recommandations")
       end
 
       def prepopulate_recommenders!(options)
@@ -63,8 +63,6 @@ class User < ActiveRecord::Base
 
     def do_not_update_recommender!(recommender)
       return if !recommender.persisted?
-
-      puts recommender.model.inspect
 
       recommender.firstname = recommender.model.firstname
       recommender.lastname = recommender.model.lastname

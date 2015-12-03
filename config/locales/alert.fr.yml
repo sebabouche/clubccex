@@ -1,0 +1,61 @@
+fr:
+  masc:
+    create:
+      success: "Le  a bien été créé."
+    update:
+      success: "Le  a bien été mis à jour."
+    destroy:
+      success: "Le  a bien été supprimé."
+  fem:
+    create:
+      success: "La  a bien été créée."
+    update:
+      success: "La  a bien été mise à jour."
+    destroy:
+      success: "La  a bien été supprimée."
+
+  address:
+    create:
+      success: "L'adresse a bien été créée."
+      
+  answer:
+    create:
+      success: "La réponse a bien été créée."
+    update:
+      success: "La réponse a bien été mise à jour."
+    destroy:
+      success: "La réponse a bien été supprimée."
+
+  card:
+    create:
+      success: "La card a bien été créée."
+    update:
+      success: "La card a bien été mise à jour."
+    destroy:
+      success: "La card a bien été supprimée."
+
+  choice:
+    create:
+      success: "Le choix a bien été créé."
+    update:
+      success: "Le choix a bien été mis à jour."
+    destroy:
+      success: "Le choix a bien été supprimé."
+
+  guestlist:
+    create:
+      success: "La guestlist a bien été créée."
+    update:
+      success: "La guestlist a bien été mise à jour."
+    destroy:
+      success: "La guestlist a bien été supprimée."
+
+  invitation:
+    create:
+      success: "L'invitation a bien été créée."
+    update:
+      success: "L'invitation a bien été mise à jour."
+      step4:
+        error: "Vous devez choisir une guestlist ou cocher \"Pas de guestlist\""
+    destroy:
+      success: "L'invitation a bien été supprimée."
