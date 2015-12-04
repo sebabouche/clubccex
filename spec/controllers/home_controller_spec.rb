@@ -4,31 +4,22 @@ RSpec.describe HomeController, type: :controller do
   render_views
 
   describe "GET #index" do
-    it "returns http success shows form" do
+    it "when not logged in redirects to anonymous#index" do
+      pending "Problem with tyrant.signed_in?"
       get :index
-      expect(response).to have_http_status(:success)
+      expect(response).to redirect_to inscription_path
     end
 
-    it "shows user form" do
-      get :index
-      expect(response.body).to have_selector("input.email", count: 3)
-      expect(response.body).to have_selector("input#user_firstname")
-      expect(response.body).to have_selector("input#user_recommenders_attributes_0_firstname")
-      expect(response.body).to have_selector("input#user_recommenders_attributes_1_firstname")
+    it "when logged in redirects to logged#welcome" do
+      pending "Problem with tyrant.signed_in?"
+      tyrant = Tyrant::Session.new(request.env['warden'])
+      Session::SignUp.(user: {email: "s.nicolaidis@me.com", password: "123123", confirm_password: "123123"})
+      visit '/sessions/sign_in_form'
+      fill_in "session[email]", with: "s.nicolaidis@me.com"
+      fill_in "session[password]", with: "123123"
+      click_button "Se connecter"
 
-    end
-  end
-
-
-  describe "GET #thankyou" do
-    it "returns http success and thanks" do
-      get :thankyou
-      expect(response).to have_http_status(:success)
-    end
-
-    it "says thankyou (in French)" do
-      get :thankyou
-      expect(response.body).to match "Merci !"
+      expect(response).to redirect_to bienvenue_path
     end
   end
 end

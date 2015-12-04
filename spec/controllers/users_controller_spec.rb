@@ -17,7 +17,7 @@ RSpec.describe UsersController, type: :controller do
   describe "POST #create" do
 
     context "when valid" do
-      it "redirects to thank_you_page" do
+      it "redirects to merci_path" do
         post :create, {user: {
                   firstname: "Sébastien",
                   lastname: "Nicolaïdis",
@@ -27,7 +27,7 @@ RSpec.describe UsersController, type: :controller do
                     {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"}
                   ]}}
 
-        expect(response).to redirect_to home_thankyou_path
+        expect(response).to redirect_to merci_path
       end
     end
       

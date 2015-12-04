@@ -1,0 +1,8 @@
+      = render "layouts/main/header"
+        
+      = render "layouts/main/navbar"
+          
+      = render "layouts/main/content"
+              
+      = render "layouts/main/footer"
+

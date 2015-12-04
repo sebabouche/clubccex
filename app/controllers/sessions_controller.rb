@@ -2,14 +2,7 @@ require_dependency "session/operations"
 
 class SessionsController < AnonymousController
   
-  before_filter only: [:sign_in_form, :sign_in] do
-    redirect_to root_path if tyrant.signed_in?
-  end
 
-  before_filter only: [:wake_up_form] do
-    Session::IsConfirmable.reject(params) { redirect_to(root_path) }
-  end
-                                            
   def sign_up_form
     form Session::SignUp
   end
@@ -24,6 +17,7 @@ class SessionsController < AnonymousController
     render 'sign_up_form'
   end
 
+  before_filter only: [:sign_in_form, :sign_in] { redirect_to root_path if tyrant.signed_in? }
   def sign_in_form
     form Session::SignIn
   end
@@ -44,6 +38,7 @@ class SessionsController < AnonymousController
     end
   end
 
+  before_filter only: [:wake_up_form] { Session::IsConfirmable.reject(params) { redirect_to(root_path) } }
   def wake_up_form
     form Session::WakeUp
   end
