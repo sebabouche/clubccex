@@ -1,10 +1,11 @@
 class HomeController < ApplicationController
-  layout 'home'
 
   def index
-    form User::Create
+    if tyrant.signed_in?
+      redirect_to bienvenue_path
+    else
+      redirect_to inscription_path
+    end
   end
 
-  def thankyou
-  end
 end

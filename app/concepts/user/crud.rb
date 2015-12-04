@@ -61,9 +61,9 @@ class User < ActiveRecord::Base
     end
 
     def process(params)
-      validate(params[:user]) do |f|
+      validate(params[:user]) do
         dispatch!(:before_save)
-        f.save
+        contract.save
       end
     end
     

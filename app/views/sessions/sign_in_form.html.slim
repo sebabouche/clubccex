@@ -1,0 +1,7 @@
+= simple_form_for(@form, url: sessions_sign_in_path, as: :session) do |f|
+  = f.error_notification
+
+  = f.input :email
+  = f.input :password
+
+  = f.button :submit, class: "btn-primary"

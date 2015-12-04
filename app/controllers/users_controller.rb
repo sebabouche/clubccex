@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  layout 'home'
-
   def new
     form User::Create
   end

@@ -1,0 +1,11 @@
+h1 Choissiez votre mot de passe, #{@form.model.firstname}
+
+= simple_form_for(@form, url: session_wake_up_path(id: params[:id]), method: :post) do |f|
+  = f.error_notification
+
+  = f.input :password
+  = f.input :confirm_password
+
+  = f.button :submit, "Enregistrer mon mot de passe", class: "btn-primary"
+
+  = f.input :confirmation_token, as: :hidden, input_html: {value: @operation.confirmation_token}
