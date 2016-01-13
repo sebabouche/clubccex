@@ -1,0 +1,4 @@
+- flash.each do |type, message|
+  .alert.alert-dismissible.fade.in class=(alert_class_for(type))
+    a href="#" data-dismiss="alert" class="close" &times;
+    .text-center = message

@@ -1,0 +1,36 @@
+/ p &nbsp;
+/ p &nbsp;
+/ 
+/ footer.footer
+/ 
+/   .container
+/     .text-center.visible-xs
+/       h1 = ENV['COMPANY_NAME']
+/ 
+/     .row
+/       .col-sm-4.hidden-xs
+/         = image_tag "logos/footer.svg", class:"img-responsive"
+/         br
+/      
+/       .col-sm-8
+/         .row
+/           .col-xs-6
+/             h4 En savoir plus
+/             ul.list-unstyled
+/               li = link_to "QUI SOMMES NOUS", "#"
+/               li = link_to "PRESSE", "#"
+/ 
+/           .col-xs-6
+/             h4 Suivez-nous
+/             ul.list-unstyled
+/               li = link_to ENV['FB_URL']
+/                 i.fa.fa-facebook-square<>
+/                 | FACEBOOK
+/               li = link_to ENV['TWITTER_URL']
+/                 i.fa.fa-twitter-square<>
+/                 | TWITTER
+/ 
+/             h4 Nos amis & partennaires
+/             ul.list-unstyled
+/     .text-center
+/       span = "© #{Time.now.year} - #{ENV['COMPANY_NAME']}"

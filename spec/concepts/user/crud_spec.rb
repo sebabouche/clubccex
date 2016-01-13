@@ -66,7 +66,6 @@ RSpec.describe User do
           "firstname" => test_idis.firstname,
           "email" => test_idis.email)
       end
-
     end
 
 

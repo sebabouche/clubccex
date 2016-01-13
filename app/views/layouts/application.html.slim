@@ -13,12 +13,20 @@ html
   
     == render "layouts/shared/fb_sdk"
 
-    /<!-- Wrap all page content here -->
-    #wrap
-      = render "layouts/main/header"
-        
-      = render "layouts/main/navbar"
-          
-      = render "layouts/main/content"
-              
-      = render "layouts/main/footer"
+    == render 'layouts/main/header'
+
+    .space-under-navbar
+
+    == yield :full_width
+
+    == render 'layouts/shared/messages'
+    
+    .container-fluid
+      == yield(:fluid)
+
+    .container
+      == yield
+      
+    == render 'layouts/main/footer'
+    
+    == yield(:no_container)

@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/apotonick/roar.git
+  revision: 71faa8e2f2c2e62cb1858baf1c293d722aa4dc46
+  specs:
+    roar (1.0.3)
+      representable (>= 2.4.0, < 3.1.0)
+
+GIT
   remote: https://github.com/trailblazer/rspec-trailblazer.git
   revision: 5bd886213108e66271b984600cfb2a8e4b18955d
   specs:
@@ -43,9 +50,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.8)
+    addressable (2.4.0)
     arel (6.0.3)
-    autoprefixer-rails (6.1.2)
+    autoprefixer-rails (6.2.1)
       execjs
       json
     axiom-types (0.1.1)
@@ -70,16 +77,16 @@ GEM
     cells (4.0.3)
       tilt (>= 1.4, < 3)
       uber (~> 0.0.9)
-    cells-slim (0.0.3)
+    cells-slim (0.0.4)
       cells (~> 4.0.0.beta6)
       slim (~> 3.0)
     childprocess (0.5.8)
       ffi (~> 1.0, >= 1.0.11)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
-    coffee-rails (4.1.0)
+    coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.0)
+      railties (>= 4.0.0, < 5.1.x)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -100,11 +107,14 @@ GEM
     daemons (1.2.3)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
+    declarative (0.0.5)
+      uber (>= 0.0.15)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
-    disposable (0.1.15)
-      representable (>= 2.2.3, < 2.4.0)
+    disposable (0.2.2)
+      declarative (~> 0.0.4)
+      representable (>= 2.4.0, <= 3.1.0)
       uber
     dotenv (2.0.2)
     dotenv-rails (2.0.2)
@@ -164,13 +174,13 @@ GEM
     minitest (5.8.3)
     multi_json (1.11.2)
     multi_test (0.1.2)
-    nokogiri (1.6.7)
+    nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     paperdragon (0.0.11)
       dragonfly (~> 1.0.12)
       uber
     pg (0.18.4)
-    phony (2.15.10)
+    phony (2.15.11)
     phony_rails (0.12.11)
       activesupport (>= 3.0)
       phony (~> 2.12)
@@ -200,7 +210,7 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
-    rails-i18n (4.0.7)
+    rails-i18n (4.0.8)
       i18n (~> 0.7)
       railties (~> 4.0)
     rails-timeago (2.13.0)
@@ -213,17 +223,18 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
-    rdoc (4.2.0)
+    rdoc (4.2.1)
+      json (~> 1.4)
     ref (2.0.0)
-    reform (2.0.5)
-      disposable (~> 0.1.11)
+    reform (2.1.0)
+      disposable (>= 0.2.2, < 0.3.0)
+      representable (>= 2.4.0, < 3.1.0)
       uber (~> 0.0.11)
-    representable (2.3.0)
-      uber (~> 0.0.7)
-    responders (2.1.0)
-      railties (>= 4.2.0, < 5)
-    roar (1.0.4)
-      representable (>= 2.0.1, < 2.4.0)
+    representable (3.0.0)
+      declarative (~> 0.0.5)
+      uber (~> 0.0.15)
+    responders (2.1.1)
+      railties (>= 4.2.0, < 5.1)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -249,7 +260,7 @@ GEM
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
     rubyzip (1.1.7)
-    sass (3.4.19)
+    sass (3.4.20)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -266,9 +277,9 @@ GEM
       websocket (~> 1.0)
     shoulda-matchers (3.0.1)
       activesupport (>= 4.0.0)
-    simple_form (3.2.0)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -278,13 +289,13 @@ GEM
       activesupport (>= 3.1, < 5.0)
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
-    sprockets (3.5.0)
+    sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (2.3.3)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      sprockets (>= 2.8, < 4.0)
+    sprockets-rails (3.0.0)
+      actionpack (>= 4.0)
+      activesupport (>= 4.0)
+      sprockets (>= 3.0.0)
     sqlite3 (1.3.11)
     temple (0.7.6)
     therubyracer (0.12.2)
@@ -297,18 +308,22 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
-    trailblazer (1.0.4)
-      reform (>= 1.2.0)
+    trailblazer (1.1.0)
+      declarative
+      reform (>= 2.0.0, < 3.0.0)
       uber (>= 0.0.15)
-    trailblazer-rails (0.1.6)
+    trailblazer-loader (0.0.6)
+    trailblazer-rails (0.2.3)
       trailblazer (>= 1.0.4)
+      trailblazer-loader (>= 0.0.4)
     turbolinks (2.5.3)
       coffee-rails
-    tyrant (0.0.2)
+    tyrant (0.0.3)
       bcrypt
       disposable (>= 0.1.11)
       reform (~> 2.0)
-      trailblazer
+      trailblazer (~> 1.0)
+      warden
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uber (0.0.15)
@@ -320,7 +335,7 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
-    warden (1.2.3)
+    warden (1.2.4)
       rack (>= 1.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
@@ -340,7 +355,7 @@ DEPENDENCIES
   bower-rails
   byebug
   capybara
-  cells
+  cells (= 4.0.3)
   cells-slim
   coffee-rails (~> 4.1.0)
   cucumber-rails
@@ -364,9 +379,10 @@ DEPENDENCIES
   rails-i18n (~> 4.0.0)
   rails-timeago
   rails_layout
-  reform
+  reform (= 2.1.0)
+  representable (= 3.0.0)
   responders
-  roar
+  roar!
   rspec-cells
   rspec-rails
   rspec-trailblazer!
@@ -379,10 +395,10 @@ DEPENDENCIES
   sqlite3
   therubyracer
   thin
-  trailblazer
-  trailblazer-rails
+  trailblazer (= 1.1.0)
+  trailblazer-rails (>= 0.2.3)
   turbolinks
-  tyrant
+  tyrant (= 0.0.3)
   uglifier (>= 1.3.0)
   virtus
   warden

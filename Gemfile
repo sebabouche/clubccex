@@ -22,15 +22,16 @@ gem 'bower-rails'
 
 gem 'bootstrap-sass'
 
-gem 'trailblazer'
-gem 'trailblazer-rails'
-gem 'reform'
-gem 'cells'
+gem "trailblazer", "1.1.0"
+gem "trailblazer-rails", ">= 0.2.3"
+gem "representable", "3.0.0"
+gem "reform", "2.1.0"
+gem "roar", github: "apotonick/roar"
+gem "cells", "4.0.3"
 gem 'cells-slim'
-gem 'tyrant'
+gem "tyrant", "0.0.3"
 gem 'warden'
 gem 'pundit'
-gem 'roar'
 gem 'kaminari'
 gem 'kaminari-cells'
 gem 'paperdragon'

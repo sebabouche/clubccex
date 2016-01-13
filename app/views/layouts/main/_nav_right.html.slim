@@ -1,0 +1,16 @@
+li class="dropdown"
+  a[href="#" class="dropdown-toggle nav-img" data-toggle="dropdown"]
+    - if tyrant.signed_in?
+      = "Hi, #{tyrant.current_user.email}"
+    - else
+      span Connect
+    span class="caret"
+
+  ul[class="dropdown-menu" role="menu"]
+
+    - if tyrant.signed_in?
+      /li = link_to "Account", user_path(tyrant.current_user)
+      li = link_to "Sign Out", sessions_sign_out_path
+    - else
+      li = link_to "Sign In", sessions_sign_in_form_path
+      li = link_to "Sign Up", sessions_sign_up_form_path

@@ -35,3 +35,6 @@ module Clubccex
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+# railties have to be loaded here.
+require 'trailblazer/rails/railtie'
