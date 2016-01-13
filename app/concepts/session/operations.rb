@@ -43,7 +43,7 @@ module Session
       end
 
       def populate_recommenders!(fragment:, **)
-        User.find_by_email(fragment["email"]) or User.new
+        User.find_by_email(fragment["email"]) or User.new(confirmed: 0, sleeping: 1)
       end
     end
 
@@ -52,34 +52,52 @@ module Session
       collection :recommenders do
         on_change :do_not_update_recommender!
       end
-
-      # si les deux recommenders sont confirmés, user est confirmé
-      # TODO update_user_confirmation!
     end
 
 
     def process(params)
       validate(params[:user]) do
         dispatch!(:before_save)
+        update_user_confirmation!(contract)
+
         contract.save
+        
         dispatch!(:after_save)
       end
     end
 
     callback(:after_save) do
-      # si user est confirmé, envoie sleeping_user sinon envoie waiting_list
-      # TODO notify_user!
+      if model.confirmed == 1
+        UserMailer.confirm_sleeping(model.id)
+      else
+        UserMailer.awaiting_confirmation(model.id)
+      end
 
       collection :recommenders do
-        # si recommender sleeping_waiting, envoie confirm_yourself
-        # si recommender confirmed_waiting, rien
-        # si recommender sleeping_user, envoie "Reminder, créez votre compte"
-        # si recommender confirmed_user, envoie confirm_waiting
-        # TODO on_create :notify_sleeping_waiting!
+        on_add :notify_recommender!
+        def notify_recommender!(recommender, **)
+          if recommender.confirmed == 0 and recommender.sleeping == 1
+            UserMailer.sign_up_unconfirmed_sleeping(recommender.id)
+          elsif recommender.confirmed == 0 and recommender.sleeping == 1
+            UserMailer.sign_up_reminder(user.id)
+          elsif recommender.confirmed == 1
+            UserMailer.confirm_user(user.id)
+          end
+        end
       end
     end
     
     private
+
+    def update_user_confirmation!(contract)
+      if contract.recommenders[0].model.confirmed == 1 and contract.recommenders[1].model.confirmed == 1
+        contract.model.confirmed = 1
+        contract.model.sleeping = 1
+      else
+        contract.model.confirmed = 0
+        contract.model.sleeping = 0
+      end
+    end
 
     def do_not_update_recommender!(recommender, options)
       return if !recommender.persisted?
@@ -89,5 +107,6 @@ module Session
       recommender.email = recommender.model.email
       recommender.sync
     end
+
   end
 end 

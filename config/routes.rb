@@ -2,16 +2,14 @@ Rails.application.routes.draw do
 
   get 'recommendations/edit'
 
-  root to: 'home#index'
+  root to: 'sessions#sign_up_form'
 
   get 'home/index'
 
-  get 'inscription', to: 'anonymous#index'
-  get 'merci', to: 'anonymous#thankyou'
+  get 'inscription', to: 'sign_up_form'
+  get 'merci', to: 'sessions#thankyou', as: :thank_you
 
   get 'bienvenue', to: 'logged#index'
-
-  resources :users
 
   get  "sessions/sign_up_form"
   post "sessions/sign_up"

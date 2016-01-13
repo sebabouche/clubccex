@@ -10,10 +10,9 @@ class SessionsController < AnonymousController
   def sign_up
     run Session::SignUp do |op|
       flash[:notice] = "Please log in now!"
-      return redirect_to sessions_sign_in_form_path
+      return redirect_to thank_you_path
     end
 
-    # render action: :sign_up_form
     render 'sign_up_form'
   end
 
