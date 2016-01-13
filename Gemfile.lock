@@ -97,6 +97,7 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
     daemons (1.2.3)
+    database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     declarative (0.0.5)
       uber (>= 0.0.15)
@@ -237,6 +238,7 @@ GEM
       disposable (>= 0.2.2, < 0.3.0)
       representable (>= 2.4.0, < 3.1.0)
       uber (~> 0.0.11)
+    reform-rails (0.1.0)
     representable (3.0.0)
       declarative (~> 0.0.5)
       uber (~> 0.0.15)
@@ -326,6 +328,7 @@ DEPENDENCIES
   cells (= 4.0.3)
   cells-haml (= 0.0.8)
   coffee-rails (~> 4.1.0)
+  database_cleaner
   disposable
   email_validator
   file_validators (~> 1.2)
@@ -347,6 +350,7 @@ DEPENDENCIES
   rails_12factor
   rails_layout
   reform (= 2.1.0)
+  reform-rails
   representable (= 3.0.0)
   responders
   roar!

@@ -43,8 +43,8 @@ class User < ActiveRecord::Base
         (2 - recommenders.size).times { recommenders << User.new }
       end
 
-      def populate_recommenders!(params, options)
-        User.find_by_email(params["email"]) or User.new
+      def populate_recommenders!(fragment:, **)
+        User.find_by_email(fragment["email"]) or User.new
         #User.where("(firstname = ? and lastname = ?) or email = ?", 
         #           params["firstname"], 
         #           params["lastname"],
@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
     
     private
 
-    def do_not_update_recommender!(recommender)
+    def do_not_update_recommender!(recommender, options)
       return if !recommender.persisted?
 
       recommender.firstname = recommender.model.firstname

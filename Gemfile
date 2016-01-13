@@ -40,6 +40,7 @@ group :development do
 end
 
 group :test do
+  gem "database_cleaner"
   gem "memory_test_fix"
   gem "sqlite3"
 end
@@ -52,6 +53,7 @@ gem "trailblazer",       "1.1.0"
 gem "trailblazer-rails", ">= 0.2.3"
 gem "representable",     "3.0.0"
 gem "reform",            "2.1.0"
+gem "reform-rails"
 gem "disposable"
 
 gem "virtus"
