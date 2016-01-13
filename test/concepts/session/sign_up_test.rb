@@ -1,9 +1,9 @@
 require 'test_helper'
 
-class UserOperationTest < MiniTest::Spec
-  describe "Create" do
+class SessionSignUpTest < MiniTest::Spec
+  describe "SignUp" do
 
-    let(:valid_user) { User::Create.(user: {
+    let(:valid_user) { Session::SignUp.(user: {
       firstname: "Sébastien",
       lastname: "Nicolaïdis",
       email: "s.nicolaidis@me.com",
@@ -13,7 +13,7 @@ class UserOperationTest < MiniTest::Spec
       ]}).model }
 
     it "renders form" do
-      form = User::Create.present({}).contract
+      form = Session::SignUp.present({}).contract
       form.prepopulate!
 
       form.recommenders.size.must_equal (2)
@@ -33,7 +33,7 @@ class UserOperationTest < MiniTest::Spec
       it "with an existing recommender" do
         test_idis = User.create(firstname: "Test", lastname: "Idis", email: "test.idis@icloud.com")
 
-        op = User::Create.(user: {
+        op = Session::SignUp.(user: {
         firstname: "Sébastien",
         lastname: "Nicolaïdis",
         email: "s.nicolaidis@me.com",
@@ -50,7 +50,7 @@ class UserOperationTest < MiniTest::Spec
         
         users_before = User.count
 
-        op = User::Create.(user: {
+        op = Session::SignUp.(user: {
         firstname: "Sébastien",
         lastname: "Nicolaïdis",
         email: "s.nicolaidis@me.com",
@@ -67,7 +67,7 @@ class UserOperationTest < MiniTest::Spec
 
     describe "is invalid" do
       it "without a firstname" do
-        res, op = User::Create.run(user: {firstname: "", lastname: "Nicolaïdis", email: "s.nicolaidis@me.com",
+        res, op = Session::SignUp.run(user: {firstname: "", lastname: "Nicolaïdis", email: "s.nicolaidis@me.com",
                               recommenders: [
                                 {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
                                 {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"} ]})
@@ -77,7 +77,7 @@ class UserOperationTest < MiniTest::Spec
       end
 
       it "without a lastname" do
-        res, op = User::Create.run(user: {firstname: "Sébastien", lastname: "", email: "s.nicolaidis@me.com",
+        res, op = Session::SignUp.run(user: {firstname: "Sébastien", lastname: "", email: "s.nicolaidis@me.com",
                               recommenders: [
                                 {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
                                 {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"} ]})
@@ -87,7 +87,7 @@ class UserOperationTest < MiniTest::Spec
       end
 
       it "without an email" do
-        res, op = User::Create.run(user: {firstname: "Sébastien", lastname: "Nicolaïdis", email: "",
+        res, op = Session::SignUp.run(user: {firstname: "Sébastien", lastname: "Nicolaïdis", email: "",
                               recommenders: [
                                 {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
                                 {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"} ]})
@@ -97,7 +97,7 @@ class UserOperationTest < MiniTest::Spec
       end
 
       it "without a valid email" do
-        res, op = User::Create.run(user: {firstname: "Sébastien", lastname: "Nicolaïdis", email: "blah",
+        res, op = Session::SignUp.run(user: {firstname: "Sébastien", lastname: "Nicolaïdis", email: "blah",
                               recommenders: [
                                 {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
                                 {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"} ]})
@@ -107,14 +107,14 @@ class UserOperationTest < MiniTest::Spec
       end
 
       it "with not enough recommenders" do
-        res, op = User::Create.run(user: {firstname: "Sébastien", lastname: "Nicolaïdis", email: "s.nicolaidis@me.comé"})
+        res, op = Session::SignUp.run(user: {firstname: "Sébastien", lastname: "Nicolaïdis", email: "s.nicolaidis@me.comé"})
 
         res.must_equal false
         op.contract.errors.to_s.must_match "user"
       end
 
       it "with an invalid recommender" do
-        res, op = User::Create.run(user: {firstname: "Sébastien", lastname: "Nicolaïdis", email: "s.nicolaidis@me.com",
+        res, op = Session::SignUp.run(user: {firstname: "Sébastien", lastname: "Nicolaïdis", email: "s.nicolaidis@me.com",
                               recommenders: [
                                 {"firstname" => "", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
                                 {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"} ]})
@@ -133,7 +133,7 @@ class UserOperationTest < MiniTest::Spec
 
 
     it "is invalid if the recommenders are the same" do
-      res, op = User::Create.run(user: {
+      res, op = Session::SignUp.run(user: {
         firstname: "Sébastien",
         lastname: "Nicolaïdis",
         email: "s.nicolaidis@me.com",

@@ -13,17 +13,17 @@ Rails.backtrace_cleaner.remove_silencers!
 require 'database_cleaner'
 DatabaseCleaner.strategy = :transaction
 
-class Minitest::Spec
-  before :each do
-    DatabaseCleaner.start
-  end
+#class MiniTest::Spec
+#  before :each do
+#    DatabaseCleaner.start
+#  end
+#
+#  after :each do
+#    DatabaseCleaner.clean
+#  end
+#end
 
-  after :each do
-    DatabaseCleaner.clean
-  end
-end
-
-Minitest::Spec.class_eval do
+MiniTest::Spec.class_eval do
   after :each do
     DatabaseCleaner.clean
   end
