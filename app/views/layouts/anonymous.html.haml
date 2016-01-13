@@ -1,7 +1,7 @@
-doctype html
-html
-  head
-    == render 'layouts/shared/meta'
+!!! 5
+%html
+  %head
+    = render 'layouts/shared/meta'
     
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
 
@@ -9,8 +9,7 @@ html
     = csrf_meta_tags
     = render 'layouts/shared/shim'
 
-  body.outside
-    == render "layouts/shared/fb_sdk"
+  %body.outside
 
     .site-wrapper
       .site-wrapper-inner
