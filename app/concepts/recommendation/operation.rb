@@ -9,14 +9,16 @@ class Recommendation < ActiveRecord::Base
       validates :confirmed, presence: true
     end
 
-    include Dispatch
-    callback :default, Callback::Default
-
     def process(params)
       validate(params[:recommendation]) do
         contract.save
-        dispatch!
+        confirm_user!
       end
+    end
+
+    private
+
+    def confirm_user!
     end
 
   end
