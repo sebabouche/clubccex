@@ -48,8 +48,6 @@ class SessionSignUpTest < MiniTest::Spec
       it "with existing recommender and doesn't change recommender's firstname" do
         test_idis = User.create(firstname: "Test", lastname: "Idis", email: "test.idis@icloud.com")
         
-        users_before = User.count
-
         op = Session::SignUp.(user: {
         firstname: "Sébastien",
         lastname: "Nicolaïdis",
@@ -59,7 +57,7 @@ class SessionSignUpTest < MiniTest::Spec
           {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"}
         ]})
 
-        User.count.must_equal users_before + 2
+        User.count.must_equal 3
         op.model.recommenders[0].attributes.slice("id", "firstname", "email").must_equal "id" => test_idis.id, "firstname" => test_idis.firstname, "email" => test_idis.email
       end
     end

@@ -11,7 +11,7 @@ Minitest::Reporters.use!
 Rails.backtrace_cleaner.remove_silencers!
 
 require 'database_cleaner'
-DatabaseCleaner.strategy = :transaction
+DatabaseCleaner.strategy = :truncation
 
 #class MiniTest::Spec
 #  before :each do

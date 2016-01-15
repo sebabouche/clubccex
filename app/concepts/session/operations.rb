@@ -4,9 +4,12 @@ module Session
     model User, :create
 
     contract do
+      feature Disposable::Twin::Persisted
+
       property :email
       property :firstname
       property :lastname
+      property :confirmed, writeable: false
 
       collection :recommenders,
       prepopulator:      :prepopulate_recommenders!,
@@ -58,7 +61,6 @@ module Session
     def process(params)
       validate(params[:user]) do
         dispatch!(:before_save)
-        update_user_confirmation!(contract)
 
         contract.save
         
@@ -67,37 +69,15 @@ module Session
     end
 
     callback(:after_save) do
-      if model.confirmed == 1
-        UserMailer.confirm_sleeping(model.id)
-      else
-        UserMailer.awaiting_confirmation(model.id)
-      end
+      on_create :notify_user!
 
       collection :recommenders do
         on_add :notify_recommender!
-        def notify_recommender!(recommender, **)
-          if recommender.confirmed == 0 and recommender.sleeping == 1
-            UserMailer.sign_up_unconfirmed_sleeping(recommender.id)
-          elsif recommender.confirmed == 0 and recommender.sleeping == 1
-            UserMailer.sign_up_reminder(user.id)
-          elsif recommender.confirmed == 1
-            UserMailer.confirm_user(user.id)
-          end
-        end
       end
+
     end
     
     private
-
-    def update_user_confirmation!(contract)
-      if contract.recommenders[0].model.confirmed == 1 and contract.recommenders[1].model.confirmed == 1
-        contract.model.confirmed = 1
-        contract.model.sleeping = 1
-      else
-        contract.model.confirmed = 0
-        contract.model.sleeping = 0
-      end
-    end
 
     def do_not_update_recommender!(recommender, options)
       return if !recommender.persisted?
@@ -108,5 +88,20 @@ module Session
       recommender.sync
     end
 
+    def notify_user!(user, operation:, **)
+      # UserMailer.welcome_unconfirmed(user.id)
+      return
+    end
+
+    def notify_recommender!(recommender, operation:, **)
+      # if recomm.confirmed == 0 and recomm.sleeping == 1
+      #   UserMailer.sign_up(recomm.id)
+      # elsif recomm.confirmed == 1 and recomm.sleeping == 1
+      #   UserMailer.sign_up_reminder(recomm.id)
+      # elsif recomm.confirmed == 1 and recomm.sleeping == 0
+      #   UserMailer.confirm_user(recomm.id)
+      # end
+      return
+    end
   end
 end 

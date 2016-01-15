@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RecommendationOperationTest < MiniTest::Spec
   describe "Recommendation::Confirm" do
-    let(:valid_user) { User::Create.(user: {
+    let(:valid_user) { Session::SignUp.(user: {
       firstname: "Sébastien",
       lastname: "Nicolaïdis",
       email: "s.nicolaidis@me.com",
@@ -12,6 +12,7 @@ class RecommendationOperationTest < MiniTest::Spec
       ]}).model }
 
     it "renders form" do
+      valid_user
       recommendation = Recommendation.first
       form = Recommendation::Confirm.present(recommendation).contract
       form.prepopulate!
