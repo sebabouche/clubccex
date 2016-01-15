@@ -2,16 +2,15 @@ class UserMailer < ApplicationMailer
 
   ### as user
   def welcome_unconfirmed(id)
-    user = User.find(id)
+    @user = User.find(id)
     mail(
-      to: user.email,
+      to: @user.email,
       subject: "[CCEx] Merci de t'être enregistré(e).")
   end
 
   ### as recommnder
   def sign_up(recommender_id, user_id)
     find_users!(recommender_id, user_id)
-    user = User.find(id)
     mail(
       to: @recommender.email,
       subject: "[CCEx] Rejoins les anciens courseux et confirme que #{user_name(@user)} en fait partie.")
@@ -33,7 +32,7 @@ class UserMailer < ApplicationMailer
 
   private
 
-  def find_users(recommender_id, user_id)
+  def find_users!(recommender_id, user_id)
     @recommender = User.find(recommender_id)
     @user = User.find(user_id)
   end

@@ -89,19 +89,18 @@ module Session
     end
 
     def notify_user!(user, operation:, **)
-      # UserMailer.welcome_unconfirmed(user.id)
-      return
+      UserMailer.welcome_unconfirmed(user.id).deliver_now
     end
 
-    def notify_recommender!(recommender, operation:, **)
-      # if recomm.confirmed == 0 and recomm.sleeping == 1
-      #   UserMailer.sign_up(recomm.id)
-      # elsif recomm.confirmed == 1 and recomm.sleeping == 1
-      #   UserMailer.sign_up_reminder(recomm.id)
-      # elsif recomm.confirmed == 1 and recomm.sleeping == 0
-      #   UserMailer.confirm_user(recomm.id)
-      # end
-      return
+    def notify_recommender!(recommender, **)
+      recommender = recommender.model
+      if recommender.confirmed == 0 and recommender.sleeping == 1
+       UserMailer.sign_up(recommender.id, model.id).deliver_now
+      elsif recommender.confirmed == 1 and recommender.sleeping == 1
+       UserMailer.sign_up_reminder(recommender.id, model.id).deliver_now
+      elsif recommender.confirmed == 1 and recommender.sleeping == 0
+       UserMailer.confirm_user(recommender.id, model.id).deliver_now
+      end
     end
   end
 end 

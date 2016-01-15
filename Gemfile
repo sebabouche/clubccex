@@ -20,6 +20,7 @@ gem "simple_form"
 gem "therubyracer", platform: "ruby"
 gem "thin"
 gem "responders"
+gem "awesome_print"
 
 group :development do
   gem "binding_of_caller", platforms: [:mri_21]
