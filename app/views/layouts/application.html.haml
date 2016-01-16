@@ -9,8 +9,8 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    = render 'layouts/offcanvas'
-    = render 'layouts/messages'
+    //= render 'layouts/offcanvas'
+    = render 'layouts/shared/messages'
     = yield
     .container
       = yield :container

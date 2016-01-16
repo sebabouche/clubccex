@@ -15,6 +15,13 @@ class UserMailer < ApplicationMailer
       subject: "[CCEx] Rejoins le club business des anciens courseux.")
   end
 
+  def wake_up(id)
+    @user = User.find(id)
+    mail(
+      to: @user.email,
+      subject: "[CCEx] Génial ! Vous êtes accepté(e) au Club CCEx.")
+  end
+
   ### as recommnder
   def sign_up_recommender(recommender_id, user_id)
     find_users!(recommender_id, user_id)

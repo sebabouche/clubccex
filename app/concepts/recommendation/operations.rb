@@ -5,6 +5,8 @@ class Recommendation < ActiveRecord::Base
 
     contract do
       property :confirmed
+      property :user
+      property :recommender
 
       validates :confirmed, presence: true
     end
@@ -19,7 +21,9 @@ class Recommendation < ActiveRecord::Base
     private
 
     def confirm_user!
+      user = User.find(model.user.id)
+      return if user.recommendations.find_all { |r| r.confirmed? }.size < 2
+      User::Confirm.(id: user.id)
     end
-
   end
 end
