@@ -95,7 +95,7 @@ module Session
     def notify_recommender!(recommender, **)
       recommender = recommender.model
       if recommender.confirmed == 0 and recommender.sleeping == 1
-       UserMailer.sign_up(recommender.id, model.id).deliver_now
+       UserMailer.sign_up_recommender(recommender.id, model.id).deliver_now
       elsif recommender.confirmed == 1 and recommender.sleeping == 1
        UserMailer.sign_up_reminder(recommender.id, model.id).deliver_now
       elsif recommender.confirmed == 1 and recommender.sleeping == 0

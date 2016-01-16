@@ -1,4 +1,4 @@
-require_dependency "session/operations"
+# require_dependency "session/operations"
 
 class SessionsController < AnonymousController
   
