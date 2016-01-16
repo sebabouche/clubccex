@@ -94,11 +94,11 @@ module Session
 
     def notify_recommender!(recommender, **)
       recommender = recommender.model
-      if recommender.confirmed == 0 and recommender.sleeping == 1
+      if recommender.confirmed == 0 and recommender.sleeping == 1 #User::Unconfirmed::Sleeping
        UserMailer.sign_up_recommender(recommender.id, model.id).deliver_now
-      elsif recommender.confirmed == 1 and recommender.sleeping == 1
-       UserMailer.sign_up_reminder(recommender.id, model.id).deliver_now
-      elsif recommender.confirmed == 1 and recommender.sleeping == 0
+      elsif recommender.confirmed == 1 and recommender.sleeping == 1 #User::Confirmed::Sleeping
+       UserMailer.wake_up_reminder(recommender.id, model.id).deliver_now
+      elsif recommender.confirmed == 1 and recommender.sleeping == 0 #User::Confirmed
        UserMailer.confirm_user(recommender.id, model.id).deliver_now
       end
     end

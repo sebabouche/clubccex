@@ -31,11 +31,6 @@ class SessionSignUpTest < MiniTest::Spec
 
       end
 
-      it "sends 3 emails with unknown recommenders" do
-        valid_user
-        ActionMailer::Base.deliveries.count.must_equal 3
-      end
-
       it "with an existing recommender" do
         test_idis = User.create(firstname: "Test", lastname: "Idis", email: "test.idis@icloud.com")
 
@@ -133,21 +128,97 @@ class SessionSignUpTest < MiniTest::Spec
         form.recommenders[0].firstname.must_equal ""
         form.recommenders[1].firstname.must_equal "Hack"
       end
+
+      it "if the recommenders are the same" do
+        res, op = Session::SignUp.run(user: {
+          firstname: "Sébastien",
+          lastname: "Nicolaïdis",
+          email: "s.nicolaidis@me.com",
+          recommenders: [
+            {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
+            {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"}
+          ]})
+
+        res.must_equal false
+        op.contract.errors.to_s.must_equal "{:user=>[\"Vous devez spécifier deux recommandations différentes\"]}"
+      end
     end
 
+    describe "Mailers" do
+      it "sends 3 emails with two unconfirmed" do
+        valid_user
+        ActionMailer::Base.deliveries.count.must_equal 3
+      end
 
-    it "is invalid if the recommenders are the same" do
-      res, op = Session::SignUp.run(user: {
-        firstname: "Sébastien",
-        lastname: "Nicolaïdis",
-        email: "s.nicolaidis@me.com",
-        recommenders: [
-          {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
-          {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"}
-        ]})
+      it "sends 3 emails with two confirmed" do
+        confirmed1 = User::Create::Confirmed.(user: {
+          firstname: "Sébastien",
+          lastname: "Unconfirmed",
+          email: "s.nicolaidis@me.com"}).model
 
-      res.must_equal false
-      op.contract.errors.to_s.must_equal "{:user=>[\"Vous devez spécifier deux recommandations différentes\"]}"
+        confirmed2 = User::Create::Confirmed.(user: {
+          firstname: "Arnaud",
+          lastname: "Confirmed",
+          email: "abarbelet@gmail.com"}).model
+
+        op = Session::SignUp.(user: {
+          firstname: "Matthieu",
+          lastname: "Vetter",
+          email: "mattvett@gmail.com",
+          recommenders: [
+            {"firstname" => confirmed1.firstname, "lastname" => confirmed1.lastname, "email" => confirmed1.email},
+            {"firstname" => confirmed2.firstname, "lastname" => confirmed2.lastname, "email" => confirmed2.email}
+          ]})
+
+        ActionMailer::Base.deliveries.count.must_equal 3
+      end
+
+      it "sends 3 emails with one confirmed and one confirmed_sleeping" do
+        confirmed1 = User::Create::Confirmed::Sleeping.(user: {
+          firstname: "Sébastien",
+          lastname: "Unconfirmed",
+          email: "s.nicolaidis@me.com"}).model
+
+        confirmed2 = User::Create::Confirmed.(user: {
+          firstname: "Arnaud",
+          lastname: "Confirmed",
+          email: "abarbelet@gmail.com"}).model
+
+        op = Session::SignUp.(user: {
+          firstname: "Matthieu",
+          lastname: "Vetter",
+          email: "mattvett@gmail.com",
+          recommenders: [
+            {"firstname" => confirmed1.firstname, "lastname" => confirmed1.lastname, "email" => confirmed1.email},
+            {"firstname" => confirmed2.firstname, "lastname" => confirmed2.lastname, "email" => confirmed2.email}
+          ]})
+
+        ActionMailer::Base.deliveries.count.must_equal 3 
+      end
+
+
+      it "sends 2 emails with one unknown and one unconfirmed" do
+        unconfirmed = User::Create::Unconfirmed.(user: {
+          firstname: "Sébastien",
+          lastname: "Unconfirmed",
+          email: "s.nicolaidis@me.com"}).model
+
+        confirmed = User::Create::Confirmed.(user: {
+          firstname: "Arnaud",
+          lastname: "Confirmed",
+          email: "abarbelet@gmail.com"}).model
+
+        op = Session::SignUp.(user: {
+          firstname: "Matthieu",
+          lastname: "Vetter",
+          email: "mattvett@gmail.com",
+          recommenders: [
+            {"firstname" => unconfirmed.firstname, "lastname" => unconfirmed.lastname, "email" => unconfirmed.email},
+            {"firstname" => confirmed.firstname, "lastname" => confirmed.lastname, "email" => confirmed.email}
+          ]})
+
+        ActionMailer::Base.deliveries.count.must_equal 2
+      end
     end
   end
 end
