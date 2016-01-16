@@ -1,4 +1,4 @@
-ENV['RAILS_ENV'] = 'test'
+ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
@@ -26,6 +26,7 @@ DatabaseCleaner.strategy = :truncation
 MiniTest::Spec.class_eval do
   after :each do
     DatabaseCleaner.clean
+    ActionMailer::Base.deliveries = []
   end
 end
 

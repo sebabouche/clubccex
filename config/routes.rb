@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
-  get 'inscription', to: 'sign_up_form'
+  get 'inscription', to: 'sessions#sign_up_form'
   get 'merci', to: 'sessions#thankyou', as: :thank_you
 
   get 'bienvenue', to: 'logged#index'

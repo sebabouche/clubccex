@@ -29,6 +29,10 @@ class SessionSignUpTest < MiniTest::Spec
         valid_user.lastname.must_equal 'Nicolaïdis'
         valid_user.email.must_equal 's.nicolaidis@me.com'
 
+      end
+
+      it "sends 3 emails with unknown recommenders" do
+        valid_user
         ActionMailer::Base.deliveries.count.must_equal 3
       end
 
