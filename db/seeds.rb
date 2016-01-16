@@ -17,7 +17,7 @@ Session::SignUp.(user: {
   lastname: "Up",
   email: "signing@up.com",
   recommenders: [
-    {"firstname" => "Arnaud", "lastname" => "Barbelet", "email" => "abarbelet@gmail.com"},
-    {"firstname" => "Matthieu", "lastname" => "Vetter", "email" => "mathieu@vetter.com"},
+    {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"},
+    {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
   ]})
 

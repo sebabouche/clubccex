@@ -70,7 +70,7 @@ module Session
     end
 
     callback(:after_save) do
-      on_create :notify_user!
+      on_change :notify_user!
 
       collection :recommenders do
         on_add :notify_recommender!
