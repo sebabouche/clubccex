@@ -5,6 +5,7 @@ module Session
 
     contract do
       feature Disposable::Twin::Persisted
+      require "reform/form/validation/unique_validator.rb"
 
       property :email
       property :firstname
@@ -22,11 +23,11 @@ module Session
 
         validates :firstname, :lastname, :email, presence: true
         validates :email, email: true
-        # validates :email, unique: true
       end
 
       validates :email, :firstname, :lastname, presence: true
       validates :email, email: true
+      validates :email, unique: true
       validate :distinct_recommenders
 
       private 
@@ -54,6 +55,7 @@ module Session
     callback(:before_save) do
       collection :recommenders do
         on_change :do_not_update_recommender!
+        on_create :create_unconfirmed_sleeping_token!
       end
     end
 
@@ -101,6 +103,11 @@ module Session
       elsif recommender.confirmed == 1 and recommender.sleeping == 0 #User::Confirmed
        UserMailer.confirm_user(recommender.id, model.id).deliver_now
       end
+    end
+
+    class Sleeping < SignUp
+      include Model
+      model User, :find
     end
   end
 end 

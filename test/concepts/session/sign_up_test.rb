@@ -105,6 +105,18 @@ class SessionSignUpTest < MiniTest::Spec
         op.contract.errors.to_s.must_match "email"
       end
 
+      it "if email is already taken" do
+        previous = User::Create.(user: {firstname: "Previous", lastname: "User", email: "previous@user.com"}).model
+
+        res, op = Session::SignUp.run(user: {firstname: "Sébastien", lastname: "Nicolaïdis", email: previous.email,
+                              recommenders: [
+                                {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
+                                {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"} ]})
+
+        res.must_equal false
+        op.contract.errors.to_s.must_match "email"
+      end
+
       it "with not enough recommenders" do
         res, op = Session::SignUp.run(user: {firstname: "Sébastien", lastname: "Nicolaïdis", email: "s.nicolaidis@me.comé"})
 

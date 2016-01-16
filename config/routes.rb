@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get  "sessions/sign_up_form"
   post "sessions/sign_up"
+  get  "sessions/sign_up_sleeping_form/:id", controller: :sessions, action: :sign_up_sleeping_form
   get  "sessions/sign_out"
   get  "sessions/sign_in_form"
   post "sessions/sign_in"

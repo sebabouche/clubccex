@@ -16,6 +16,12 @@ class SessionsController < AnonymousController
     render 'sign_up_form'
   end
 
+  def sign_up_sleeping_form
+    form Session::SignUp::Sleeping
+
+    render 'sign_up_form'
+  end
+
   before_filter only: [:sign_in_form, :sign_in] { redirect_to root_path if tyrant.signed_in? }
   def sign_in_form
     form Session::SignIn
