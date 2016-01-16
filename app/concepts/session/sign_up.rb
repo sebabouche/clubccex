@@ -55,7 +55,6 @@ module Session
     callback(:before_save) do
       collection :recommenders do
         on_change :do_not_update_recommender!
-        on_create :create_unconfirmed_sleeping_token!
       end
     end
 
@@ -80,6 +79,11 @@ module Session
     end
     
     private
+
+    def setup_model!(params)
+      model.confirmed = 0
+      model.sleeping = 0
+    end
 
     def do_not_update_recommender!(recommender, options)
       return if !recommender.persisted?

@@ -12,3 +12,12 @@ User::Create::Unconfirmed::Sleeping.(user: {
   lastname: "Sleeping",
   email: "unconfirmed@sleeping.com"})
 
+Session::SignUp.(user: {
+  firstname: "Signing",
+  lastname: "Up",
+  email: "signing@up.com",
+  recommenders: [
+    {"firstname" => "Arnaud", "lastname" => "Barbelet", "email" => "abarbelet@gmail.com"},
+    {"firstname" => "Matthieu", "lastname" => "Vetter", "email" => "mathieu@vetter.com"},
+  ]})
+

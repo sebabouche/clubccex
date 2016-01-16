@@ -9,7 +9,6 @@ class SessionsController < AnonymousController
 
   def sign_up
     run Session::SignUp do |op|
-      flash[:notice] = "Please log in now!"
       return redirect_to thank_you_path
     end
 
@@ -18,8 +17,14 @@ class SessionsController < AnonymousController
 
   def sign_up_sleeping_form
     form Session::SignUp::Sleeping
+  end
 
-    render 'sign_up_form'
+  def sign_up_sleeping
+    run Session::SignUp::Sleeping do |op|
+      return redirect_to thank_you_path
+    end
+
+    render 'sign_up_sleeping_form'
   end
 
   before_filter only: [:sign_in_form, :sign_in] { redirect_to root_path if tyrant.signed_in? }

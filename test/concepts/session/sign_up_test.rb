@@ -28,6 +28,8 @@ class SessionSignUpTest < MiniTest::Spec
         valid_user.firstname.must_equal 'Sébastien'
         valid_user.lastname.must_equal 'Nicolaïdis'
         valid_user.email.must_equal 's.nicolaidis@me.com'
+        valid_user.confirmed.must_equal 0
+        valid_user.sleeping.must_equal 0
 
       end
 

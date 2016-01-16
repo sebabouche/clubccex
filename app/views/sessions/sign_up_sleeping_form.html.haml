@@ -1,4 +1,4 @@
-= simple_form_for(@form, url: sessions_sign_up_path)  do |f|
+= simple_form_for(@form, url: session_sign_up_sleeping_path(id: params[:id])) do |f|
   = render 'sessions/sign_up_fields', f: f
 
 .mastfoot
