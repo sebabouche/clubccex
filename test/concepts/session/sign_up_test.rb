@@ -28,6 +28,8 @@ class SessionSignUpTest < MiniTest::Spec
         valid_user.firstname.must_equal 'Sébastien'
         valid_user.lastname.must_equal 'Nicolaïdis'
         valid_user.email.must_equal 's.nicolaidis@me.com'
+
+        ActionMailer::Base.deliveries.count.must_equal 3
       end
 
       it "with an existing recommender" do

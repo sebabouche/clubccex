@@ -90,6 +90,7 @@ module Session
 
     def notify_user!(user, operation:, **)
       UserMailer.welcome_unconfirmed(user.id).deliver_now
+      puts "notify user"
     end
 
     def notify_recommender!(recommender, **)
@@ -101,6 +102,7 @@ module Session
       elsif recommender.confirmed == 1 and recommender.sleeping == 0
        UserMailer.confirm_user(recommender.id, model.id).deliver_now
       end
+      puts "notify recommender"
     end
   end
 end 
