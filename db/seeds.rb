@@ -7,10 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User::Create::Unconfirmed::Sleeping.(user: {
-  firstname: "Unconfirmed",
-  lastname: "Sleeping",
-  email: "unconfirmed@sleeping.com"})
 
 Session::SignUp.(user: {
   firstname: "Signing",
@@ -20,4 +16,25 @@ Session::SignUp.(user: {
     {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"},
     {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
   ]})
+
+User::Create::Unconfirmed.(user: {
+  firstname: "Unconfirmed",
+  lastname: "Unconfirmed",
+  email: "unconfirmed@unconfirmed.com"})
+
+User::Create::Unconfirmed::Sleeping.(user: {
+  firstname: "Unconfirmed",
+  lastname: "Sleeping",
+  email: "unconfirmed@sleeping.com"})
+
+User::Create::Confirmed.(user: {
+  firstname: "Confirmed",
+  lastname: "Confirmed",
+  email: "confirmed@confirmed.com"})
+
+User::Create::Confirmed::Sleeping.(user: {
+  firstname: "Confirmed",
+  lastname: "Sleeping",
+  email: "confirmed@sleeping.com"})
+
 
