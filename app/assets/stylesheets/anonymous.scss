@@ -69,6 +69,11 @@ a:hover {
 }
 
 @media (min-width: 768px) {
+  .masthead {
+    position: fixed;
+    top: 20px;
+  }
+
   .mastfoot {
     position: fixed;
     bottom: 0;

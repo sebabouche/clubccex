@@ -16,6 +16,12 @@ class SessionsController < AnonymousController
     render 'sign_up_form'
   end
 
+  before_filter only: [:sign_up_sleeping_form] do
+    Session::IsSignUpable.reject(params) do 
+      flash[:notice] = "Vous êtes déjà enregistré(e). Contactez le club si vous rencontrez des problèmes de connexion (contact@clubccex.com)."
+      redirect_to root_path
+    end
+  end
   def sign_up_sleeping_form
     form Session::SignUp::Sleeping
   end

@@ -1,49 +1,49 @@
-header.masthead#section0
+%header.masthead#section0
 
   //// Carousel ////
   .carousel.slide#myCarousel
     /-- Indicators --
-    ol.carousel-indicators
-      li.active#myCarousel data-slide-to="0"
-      li#myCarousel data-slide-to="1"
-      li#myCarousel data-slide-to="2"
-      li#myCarousel data-slide-to="3"
+    %ol.carousel-indicators
+      %li.active#myCarousel data-slide-to="0"
+      %li#myCarousel data-slide-to="1"
+      %li#myCarousel data-slide-to="2"
+      %li#myCarousel data-slide-to="3"
 
     .carousel-fill
       .carousel-fill-content
         .col-md-6.col-md-offset-3.col-sm-10.col-sm-offset-1
           = image_tag "logos/footer.svg", class:"img-responsive"
 
-    .carousel-inner#wait_for_images role="listbox"
+    .carousel-inner#wait_for_images(role="listbox")
 
       .item.active
         .fill style="background:url('#{image_url "carousel/finance.jpg"}') center center; background-size:cover;"
         .container
           .carousel-caption
-            h2 Finance
-            p
+            %h2 Finance
+            %p
       .item
         .fill style="background:url('#{image_url "carousel/management.jpg"}') center center; background-size:cover;"
         .container
           .carousel-caption
-            h2 Management
-            p
+            %h2 Management
+            %p
       .item
         .fill style="background:url('#{image_url "carousel/communication.jpg"}') center center; background-size:cover;"
         .container
           .carousel-caption
-            h2 Communication
-            p
+            %h2 Communication
+            %p
       .item
         .fill style="background:url('#{image_url "carousel/tech.jpg"}') center center; background-size:cover;"
         .container
           .carousel-caption
-            h2 Technologies
-            p
+            %h2 Technologies
+            %p
 
     /-- Controls --
-    a.left.carousel-control href="#myCarousel" data-slide="prev"
-      span.glyphicon.glyphicon-chevron-left
-    a.right.carousel-control href="#myCarousel" data-slide="next"
-      span.glyphicon.glyphicon-chevron-right
+    %a.left.carousel-control(href="#myCarousel" data-slide="prev")
+      %span.glyphicon.glyphicon-chevron-left
+    %a.right.carousel-control(href="#myCarousel" data-slide="next")
+      %span.glyphicon.glyphicon-chevron-right
 

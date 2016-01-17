@@ -1,21 +1,17 @@
 Rails.application.routes.draw do
 
-  get 'recommendations/edit'
-
-  root to: 'sessions#sign_up_form'
-
-  get 'home/index'
+  root to: 'logged#index'
 
   get 'inscription', to: 'sessions#sign_up_form'
   get 'merci', to: 'sessions#thankyou', as: :thank_you
-
-  get 'bienvenue', to: 'logged#index'
 
   get   "sessions/sign_up_form"
   post  "sessions/sign_up"
   get   "sessions/sign_up_sleeping_form/:id", controller: :sessions, action: :sign_up_sleeping_form
   patch "sessions/sign_up_sleeping/:id", controller: :sessions, action: :sign_up_sleeping, as: :session_sign_up_sleeping
+
   get   "sessions/sign_out"
+  
   get   "sessions/sign_in_form"
   post  "sessions/sign_in"
 
