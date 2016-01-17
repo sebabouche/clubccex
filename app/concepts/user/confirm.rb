@@ -32,6 +32,12 @@ class User < ActiveRecord::Base
       contract.sleeping = 1
       contract.sync
     end
+
+    class Admin < Confirm
+      include Resolver
+      model User, :find
+      policy User::Policy, :admin?
+    end
   end
 end
 

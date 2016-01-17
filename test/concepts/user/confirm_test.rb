@@ -11,16 +11,44 @@ class UserConfirmTest < MiniTest::Spec
     ]
   }).model }
 
-  it "confirm" do
+  describe "User::Confirm" do
+    it "confirm" do
 
-    res, op = User::Confirm.run(id: user.id)
-    user = op.model
+      res, op = User::Confirm.run(id: user.id)
+      user = op.model
 
-    res.must_equal true
+      res.must_equal true
 
-    user.confirmed.must_equal 1
-    user.sleeping.must_equal 1
-    user.auth_meta_data.to_s.must_match "confirmation_token"
-    ActionMailer::Base.deliveries.count.must_equal 4
+      user.confirmed.must_equal 1
+      user.sleeping.must_equal 1
+      user.auth_meta_data.to_s.must_match "confirmation_token"
+      ActionMailer::Base.deliveries.count.must_equal 4
+    end
+  end
+
+  describe "User::Confirm::Admin" do
+    it "is valid when admin" do
+      admin = User::Create::Confirmed::Admin.(user: {
+        firstname: "Admin",
+        lastname: "Istrator",
+        email: "admin@clubccex.com" }).model
+
+      user = User::Create::Unconfirmed.(user: {
+        firstname: "Unconfirmed",
+        lastname: "Unconfirmed",
+        email: "unconfirmed@unconfirmed.com"}).model
+
+      res, op = User::Confirm::Admin.run(
+        id: user.id,
+        current_user: admin)
+
+      res.must_equal true
+      user = op.model
+
+      user.confirmed.must_equal 1
+      user.sleeping.must_equal 1
+      user.auth_meta_data.to_s.must_match "confirmation_token"
+      ActionMailer::Base.deliveries.count.must_equal 1
+    end
   end
 end
