@@ -1,6 +1,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-@import "base";
 @import "anonymous";
-//@import "logged";
+
+@import "jasny-bootstrap/dist/css/jasny-bootstrap";
+@import "logged";
+
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
+
+html,
+body {
+  height: 100%;
+
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Open Sans', sans-serif;
+}
+

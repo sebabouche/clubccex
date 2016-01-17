@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
+
+//= require bootstrap
+
+//= require jasny-bootstrap/dist/js/jasny-bootstrap
+
 //= require turbolinks
 //= require_tree .
+

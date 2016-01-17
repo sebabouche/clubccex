@@ -1,10 +1,12 @@
-= simple_form_for(@form, url: sessions_sign_in_path, as: :session) do |f|
-  = f.error_notification
+.row
+  .col-md-6.col-md-offset-3
+    = simple_form_for(@form, url: sessions_sign_in_path, as: :session) do |f|
+      = f.error_notification
 
-  = f.input :email
-  = f.input :password
+      = f.input :email, label: false, placeholder: "Email"
+      = f.input :password, label: false, placeholder: "Mot de passe"
 
-  = f.button :submit, "Se connecter", class: "btn-primary btn-block"
+      = f.button :submit, "Se connecter", class: "btn-block btn-secondary-outline"
 
 .mastfoot
   .inner
