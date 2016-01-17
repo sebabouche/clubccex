@@ -37,4 +37,7 @@ User::Create::Confirmed::Sleeping.(user: {
   lastname: "Sleeping",
   email: "confirmed@sleeping.com"})
 
-
+User::Create::Confirmed::Admin.(user: {
+  firstname: "Admin",
+  lastname: "Istrator",
+  email: "admin@clubccex.com"})

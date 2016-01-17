@@ -234,5 +234,21 @@ class SessionSignUpTest < MiniTest::Spec
         ActionMailer::Base.deliveries.count.must_equal 2
       end
     end
+
+    describe "Admin field" do
+      it "is invalid if an admin field" do
+        res, op = Session::SignUp.run(user: {
+          firstname: "Sébastien",
+          lastname: "Nicolaïdis",
+          email: "s.nicolaidis@me.com",
+          admin: true,
+          recommenders: [
+            {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
+            {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"}
+          ]})
+
+        res.must_equal false
+      end
+    end
   end
 end

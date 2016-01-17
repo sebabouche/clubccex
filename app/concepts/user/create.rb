@@ -73,6 +73,12 @@ class User < ActiveRecord::Base
           contract.save
         end
       end
+
+      class Admin < Confirmed
+        contract do
+          property :admin, default: true
+        end
+      end
     end
   end
 end

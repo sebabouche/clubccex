@@ -31,6 +31,13 @@ class UserCreateTest < MiniTest::Spec
       firstname: "Test",
       lastname: "Idis" }).model }
 
+  let (:admin) { User::Create::Confirmed::Admin.(
+    user: {
+      email: "admin@clubbccex.com",
+      firstname: "Admin",
+      lastname: "Istrator"}).model }
+
+
 
   describe "User::Create" do
     it "persists valid" do
@@ -74,6 +81,16 @@ class UserCreateTest < MiniTest::Spec
       confirmed_sleeping.confirmed.must_equal 1
       confirmed_sleeping.sleeping.must_equal 1
       assert Tyrant::Authenticatable.new(confirmed_sleeping).confirmable?
+    end
+  end
+
+  describe "User::Create::Confirmed::Admin" do
+    it do
+      admin.persisted?.must_equal true
+      admin.confirmed.must_equal 1
+      admin.sleeping.must_equal 0
+      admin.admin.must_equal true
+      assert Tyrant::Authenticatable.new(admin).digest == "password"
     end
   end
 end
