@@ -4,11 +4,13 @@ class User < ActiveRecord::Base
     model User, :find
 
     contract do
-      property :confirmed, default: true
-      property :sleeping, default: true
+      property :confirmed
+      property :sleeping
     end
 
     def process(params)
+      set_confirmable!
+      set_confirmed_sleeping!
       contract.save
       notify_confirmed!
     end
@@ -17,6 +19,18 @@ class User < ActiveRecord::Base
 
     def notify_confirmed!
       UserMailer.wake_up(model.id).deliver_now
+    end
+
+    def set_confirmable!
+      auth = Tyrant::Authenticatable.new(contract.model)
+      auth.confirmable!
+      auth.sync
+    end
+
+    def set_confirmed_sleeping!
+      contract.confirmed = 1
+      contract.sleeping = 1
+      contract.sync
     end
   end
 end

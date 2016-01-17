@@ -59,7 +59,7 @@ gem "disposable"
 
 gem "virtus"
 
-gem "tyrant", "0.0.3"
+gem "tyrant", github: "apotonick/tyrant"
 
 gem "cells", "4.0.3"
 gem "cells-haml", "0.0.8"
