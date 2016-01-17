@@ -46,6 +46,7 @@ class UserCreateTest < MiniTest::Spec
       unconfirmed.persisted?.must_equal true
       unconfirmed.confirmed.must_equal 0
       unconfirmed.sleeping.must_equal 0
+      unconfirmed.auth_meta_data.must_equal nil
     end
   end
 
@@ -54,6 +55,7 @@ class UserCreateTest < MiniTest::Spec
       unconfirmed_sleeping.persisted?.must_equal true
       unconfirmed_sleeping.confirmed.must_equal 0
       unconfirmed_sleeping.sleeping.must_equal 1
+      unconfirmed.auth_meta_data.must_equal nil
     end
   end
 
@@ -62,6 +64,7 @@ class UserCreateTest < MiniTest::Spec
       confirmed.persisted?.must_equal true
       confirmed.confirmed.must_equal 1
       confirmed.sleeping.must_equal 0
+      assert Tyrant::Authenticatable.new(confirmed).digest == "password"
     end
   end
 
@@ -70,6 +73,7 @@ class UserCreateTest < MiniTest::Spec
       confirmed_sleeping.persisted?.must_equal true
       confirmed_sleeping.confirmed.must_equal 1
       confirmed_sleeping.sleeping.must_equal 1
+      assert Tyrant::Authenticatable.new(confirmed_sleeping).confirmable?
     end
   end
 end

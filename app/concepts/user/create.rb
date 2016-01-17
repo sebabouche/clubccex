@@ -34,10 +34,43 @@ class User < ActiveRecord::Base
       contract do
         property :confirmed, default: "1"
       end
+
+      def process(params)
+        validate(params[:user]) do
+          confirm!
+          contract.save
+        end
+      end
+
+      private
+
+      def confirm!
+        auth = Tyrant::Authenticatable.new(contract.model)
+        auth.digest!("password")
+        auth.confirmed!
+        auth.sync
+        contract.save
+      end
         
       class Sleeping < Confirmed
         contract do
           property :sleeping, default: "1"
+        end
+
+        def process(params)
+          validate(params[:user]) do
+            confirmable!
+            contract.save
+          end
+        end
+
+        private
+
+        def confirmable!
+          auth = Tyrant::Authenticatable.new(contract.model)
+          auth.confirmable!
+          auth.sync
+          contract.save
         end
       end
     end
