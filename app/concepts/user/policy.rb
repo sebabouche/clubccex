@@ -10,8 +10,6 @@ class User::Policy
   end
 
   def admin?
-    puts model.inspect
-    puts user.inspect
     signed_in? and user.admin?
   end
 end

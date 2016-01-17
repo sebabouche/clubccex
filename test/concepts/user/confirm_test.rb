@@ -27,19 +27,22 @@ class UserConfirmTest < MiniTest::Spec
   end
 
   describe "User::Confirm::Admin" do
+    let (:admin) { User::Create::Confirmed::Admin.(user: {
+      firstname: "Admin",
+      lastname: "Istrator",
+      email: "admin@clubccex.com" }).model }
+    let (:unconfirmed) { User::Create::Unconfirmed.(user: {
+      firstname: "Unconfirmed",
+      lastname: "Unconfirmed",
+      email: "unconfirmed@unconfirmed.com"}).model }
+    let (:confirmed) { User::Create::Confirmed.(user: {
+      firstname: "Confirmed",
+      lastname: "Confirmed",
+      email: "confirmed@confirmed.com" }).model }
+
     it "is valid when admin" do
-      admin = User::Create::Confirmed::Admin.(user: {
-        firstname: "Admin",
-        lastname: "Istrator",
-        email: "admin@clubccex.com" }).model
-
-      user = User::Create::Unconfirmed.(user: {
-        firstname: "Unconfirmed",
-        lastname: "Unconfirmed",
-        email: "unconfirmed@unconfirmed.com"}).model
-
       res, op = User::Confirm::Admin.run(
-        id: user.id,
+        id: unconfirmed.id,
         current_user: admin)
 
       res.must_equal true
@@ -50,5 +53,21 @@ class UserConfirmTest < MiniTest::Spec
       user.auth_meta_data.to_s.must_match "confirmation_token"
       ActionMailer::Base.deliveries.count.must_equal 1
     end
+
+    it "is invalid when not admin" do
+      assert_raises Trailblazer::NotAuthorizedError do
+        User::Confirm::Admin.run(
+          id: unconfirmed.id,
+          current_user: confirmed)
+      end
+    end
+
+    it "is invalid when not signed in" do
+      assert_raises Trailblazer::NotAuthorizedError do
+        User::Confirm::Admin.run(
+          id: unconfirmed.id)
+      end
+    end
+
   end
 end
