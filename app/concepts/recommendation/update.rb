@@ -1,5 +1,5 @@
 class Recommendation < ActiveRecord::Base
-  class Confirm < Trailblazer::Operation
+  class Update < Trailblazer::Operation
     include Model
     model Recommendation, :find
 

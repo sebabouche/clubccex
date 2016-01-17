@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class RecommendationConfirmTest < MiniTest::Spec
-  describe "Recommendation::Confirm" do
+class RecommendationUpdateTest < MiniTest::Spec
+  describe "Recommendation::Update" do
     let(:valid_user) { Session::SignUp.(user: {
       firstname: "Sébastien",
       lastname: "Nicolaïdis",
@@ -14,7 +14,7 @@ class RecommendationConfirmTest < MiniTest::Spec
     it "renders form" do
       valid_user
       recommendation = Recommendation.first
-      form = Recommendation::Confirm.present(recommendation).contract
+      form = Recommendation::Update.present(recommendation).contract
       form.prepopulate!
 
       form.confirmed.must_equal nil
@@ -27,7 +27,7 @@ class RecommendationConfirmTest < MiniTest::Spec
       reco_2 = Recommendation.last
 
       #first recommendation
-      res1, op1 = Recommendation::Confirm.run(id: reco_1.id, recommendation: { confirmed: true })
+      res1, op1 = Recommendation::Update.run(id: reco_1.id, recommendation: { confirmed: true })
       reco1 = op1.model
 
       res1.must_equal true
@@ -37,7 +37,7 @@ class RecommendationConfirmTest < MiniTest::Spec
       user.confirmed.must_equal 0
       user.sleeping.must_equal 0
 
-      res2, op2 = Recommendation::Confirm.run(id: reco_2.id, recommendation: { confirmed: true })
+      res2, op2 = Recommendation::Update.run(id: reco_2.id, recommendation: { confirmed: true })
       reco2 = op2.model
 
       res2.must_equal true
