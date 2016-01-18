@@ -1,6 +1,7 @@
 class Recommendation < ActiveRecord::Base
   class Update < Trailblazer::Operation
-    include Model
+    include Resolver
+    policy Recommendation::Policy, :update?
     model Recommendation, :find
 
     contract do
