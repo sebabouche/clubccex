@@ -18,7 +18,7 @@ class RecommendationUpdateTest < MiniTest::Spec
     it "renders form" do
       user
       recommendation = Recommendation.first
-      form = Recommendation::Update.present({id: recommendation, current_user: admin}).contract
+      form = Recommendation::Update.present({id: recommendation.id, current_user: admin}).contract
       form.prepopulate!
 
       form.confirmed.must_equal nil
@@ -31,7 +31,7 @@ class RecommendationUpdateTest < MiniTest::Spec
       reco_2 = Recommendation.last
 
       #first recommendation
-      res1, op1 = Recommendation::Update.run(id: reco_1, recommendation: { confirmed: true }, current_user: admin)
+      res1, op1 = Recommendation::Update.run(id: reco_1.id, recommendation: { confirmed: true }, current_user: admin)
       reco1 = op1.model
 
       res1.must_equal true
@@ -41,7 +41,7 @@ class RecommendationUpdateTest < MiniTest::Spec
       user.confirmed.must_equal 0
       user.sleeping.must_equal 0
 
-      res2, op2 = Recommendation::Update.run(id: reco_2, recommendation: { confirmed: true }, current_user: admin)
+      res2, op2 = Recommendation::Update.run(id: reco_2.id, recommendation: { confirmed: true }, current_user: admin)
       reco2 = op2.model
 
       res2.must_equal true
