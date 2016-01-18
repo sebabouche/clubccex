@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   post "sessions/wake_up/:id", controller: :sessions, action: :wake_up, as: :session_wake_up
 
   resources :recommendations
+  resources :users, only: [:index, :show]
 
 end

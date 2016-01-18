@@ -139,6 +139,8 @@ GEM
       activemodel (>= 3.0)
       cocaine (~> 0.5.4)
       mime-types (>= 1.0)
+    font-awesome-sass (4.5.0)
+      sass (>= 3.2)
     gibbon (2.2.1)
       faraday (>= 0.9.1)
       multi_json (>= 1.11.0)
@@ -362,6 +364,7 @@ DEPENDENCIES
   dotenv
   email_validator
   file_validators (~> 1.2)
+  font-awesome-sass
   gibbon
   haml!
   haml-rails

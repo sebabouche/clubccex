@@ -23,10 +23,11 @@ gem "therubyracer", platform: "ruby"
 gem "thin"
 gem "responders"
 gem "awesome_print"
+gem "font-awesome-sass"
 
-gem 'dotenv'
-gem 'gibbon'
-gem 'mandrill'
+gem "dotenv"
+gem "gibbon"
+gem "mandrill"
 
 group :development do
   gem "binding_of_caller", platforms: [:mri_21]

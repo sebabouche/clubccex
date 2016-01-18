@@ -1,9 +1,24 @@
 %div.navmenu.navmenu-default.navmenu-fixed-left.offcanvas#navMenu(role="navigation")
   %a.navmenu-brand(href="#") Club CCEx
   %ul.nav.navmenu-nav
-    %li.active= link_to "Home", root_path
-    %li= link_to "Home", "#"
-    %li= link_to "Home", "#"
+    %li.active= link_to "Dashboard", root_path
+    %li= link_to "Jobs", "#"
+    %li= link_to "Biz dev", "#"
+    %li= link_to "Partenariats", "#"
+    %li= link_to "Recherche d'info", "#"
+    %li= link_to "Courseuses & Courseux", "#"
+    -if tyrant.current_user.admin?
+      %li= link_to "Confirmer des users [admin]", "#"
+
+  %ul.nav.navmenu-nav.navmenu-bottom
+    %li
+      = link_to "#" do
+        %span.fa.fa-user
+        %span Mon profil
+    %li
+      = link_to sessions_sign_out_path do
+        %span.fa.fa-sign-out
+        %span Me déconnecter
 .navbar.navbar-default.navbar-fixed-top
   %button.navbar-toggle(type="button" data-toggle="offcanvas" data-target="#navMenu" data-canvas="body")
     %span.icon-bar

@@ -5,6 +5,11 @@
     margin-left: 15px;
   }
 
+ .nav.navmenu-nav.navmenu-bottom {
+   position: absolute;
+   bottom: 0;
+ }
+
   @media (min-width: 0) {
     .navbar-toggle {
       display: block; /* force showing the toggle */
