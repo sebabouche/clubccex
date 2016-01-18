@@ -42,6 +42,7 @@ end
 Trailblazer::Test::Integration.class_eval do
   after :each do
     DatabaseCleaner.clean
+    ActionMailer::Base.deliveries = []
   end
 
   include PossibleJSDriver

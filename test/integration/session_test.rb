@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SignUpTest < Trailblazer::Test::Integration
+class SessionTest < Trailblazer::Test::Integration
   it do
     require_js
     visit '/'
@@ -50,5 +50,15 @@ class SignUpTest < Trailblazer::Test::Integration
     click_button 'Envoyer'
 
     page.must_have_content "Merci"
+
+    # sign up sleeping
+    visit "/sessions/sign_up_sleeping_form/2/"
+
+    # renders form
+    page.must_have_css "#user_firstname[value='Matthieu']"
+    page.must_have_css "#user_lastname[value='Vetter'"
+    page.must_have_css "#user_email[value='mattvett@gmail.com']"
+    page.must_have_css "#user_recommenders_attributes_0_firstname"
+    page.must_have_css "#user_recommenders_attributes_1_email"
   end
 end
