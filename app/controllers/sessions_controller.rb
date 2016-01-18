@@ -13,6 +13,7 @@ class SessionsController < AnonymousController
       return redirect_to thank_you_path
     end
 
+    @form.prepopulate!
     render 'sign_up_form'
   end
 

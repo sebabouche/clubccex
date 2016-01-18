@@ -13,15 +13,18 @@ Rails.backtrace_cleaner.remove_silencers!
 require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 
-#class MiniTest::Spec
-#  before :each do
-#    DatabaseCleaner.start
-#  end
-#
-#  after :each do
-#    DatabaseCleaner.clean
-#  end
-#end
+Capybara.default_driver = :selenium
+
+module PossibleJSDriver
+  def require_js
+    Capybara.current_driver = :selenium
+  end
+
+  def teardown
+    super
+    Capybara.use_default_driver
+  end
+end
 
 MiniTest::Spec.class_eval do
   after :each do
@@ -37,5 +40,10 @@ end
 
 
 Trailblazer::Test::Integration.class_eval do
+  after :each do
+    DatabaseCleaner.clean
+  end
+
+  include PossibleJSDriver
   # place here custom integration methods
 end
