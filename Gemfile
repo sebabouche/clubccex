@@ -24,6 +24,10 @@ gem "thin"
 gem "responders"
 gem "awesome_print"
 
+gem 'dotenv'
+gem 'gibbon'
+gem 'mandrill'
+
 group :development do
   gem "binding_of_caller", platforms: [:mri_21]
   gem "quiet_assets"
