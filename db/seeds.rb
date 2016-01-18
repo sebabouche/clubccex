@@ -8,36 +8,38 @@
 
 
 
-Session::SignUp.(user: {
-  firstname: "Signing",
-  lastname: "Up",
-  email: "signing@up.com",
-  recommenders: [
-    {"firstname" => "Hack", "lastname" => "Idis", "email" => "hack.idis@icloud.com"},
-    {"firstname" => "Test", "lastname" => "Idis", "email" => "test.idis@icloud.com"},
-  ]})
-
-User::Create::Unconfirmed.(user: {
-  firstname: "Unconfirmed",
-  lastname: "Unconfirmed",
-  email: "unconfirmed@unconfirmed.com"})
-
-User::Create::Unconfirmed::Sleeping.(user: {
-  firstname: "Unconfirmed",
-  lastname: "Sleeping",
-  email: "unconfirmed@sleeping.com"})
-
-User::Create::Confirmed.(user: {
-  firstname: "Confirmed",
-  lastname: "Confirmed",
-  email: "confirmed@confirmed.com"})
-
-User::Create::Confirmed::Sleeping.(user: {
-  firstname: "Confirmed",
-  lastname: "Sleeping",
-  email: "confirmed@sleeping.com"})
+User::Create::Confirmed::Admin.(user: {
+  firstname: "Sébastien",
+  lastname: "Nicolaïdis",
+  email: "s.nicolaidis@me.com"})
 
 User::Create::Confirmed::Admin.(user: {
-  firstname: "Admin",
-  lastname: "Istrator",
-  email: "admin@clubccex.com"})
+  firstname: "Arnaud",
+  lastname: "Barbelet",
+  email: "a.barbelet@gmail.com"})
+
+User::Create::Confirmed::Admin.(user: {
+  firstname: "Matthieu",
+  lastname: "Vetter",
+  email: "matthieu.vetter@gmail.com"})
+
+User::Create::Confirmed.(user: {
+  firstname: "C2",
+  lastname: "C2",
+  email: "c2@example.com"})
+
+User::Create::Confirmed.(user: {
+  firstname: "C3",
+  lastname: "C3",
+  email: "c3@example.com"})
+
+Session::SignUp.(user: {
+  firstname: "C1",
+  lastname: "C1",
+  email: "c1@example.com",
+  recommenders: [
+    {"firstname" => "C2", "lastname" => "C2", "email" => "c2@example.com"},
+    {"firstname" => "C3", "lastname" => "C3", "email" => "c3@example.com"},
+  ]})
+
+
