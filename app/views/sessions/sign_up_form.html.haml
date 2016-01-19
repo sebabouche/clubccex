@@ -1,8 +1,1 @@
-= simple_form_for(@form, url: sessions_sign_up_path)  do |f|
-  = render 'sessions/sign_up_fields', f: f
-
-.mastfoot
-  .inner
-    .text-center
-      = link_to "Connexion", sessions_sign_in_form_path
-
+= concept("session/cell/sign_up", @operation)

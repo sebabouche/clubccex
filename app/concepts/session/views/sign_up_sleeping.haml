@@ -1,0 +1,13 @@
+%h1.text-center Bienvenue, #{contract.firstname} #{contract.lastname} !
+.row
+  .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.col-xs-10.col-xs-offset-1
+    %p Si vos prénom, nom et email sont erronés, n'hésitez pas à les modifier avant de soumettre le formulaire.
+= simple_form_for(contract, url: session_sign_up_sleeping_path(id: params[:id])) do |f|
+  = sign_up_fields(f)
+
+.mastfoot
+  .inner
+    .text-center
+      = link_to "Connexion", sessions_sign_in_form_path
+
+

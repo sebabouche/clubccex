@@ -1,16 +1,1 @@
-.row
-  .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.col-xs-10.col-xs-offset-1
-    = simple_form_for(@form, url: sessions_sign_in_path, as: :session) do |f|
-      = f.error_notification
-
-      = f.input :email, label: false, placeholder: "Email"
-      = f.input :password, label: false, placeholder: "Mot de passe"
-
-      = f.button :submit, "Se connecter", class: "btn-block btn-secondary-outline"
-
-.mastfoot
-  .inner
-    .text-center
-      = link_to "Inscription", sessions_sign_up_form_path
-
-
+= concept("session/cell/sign_in", @operation)

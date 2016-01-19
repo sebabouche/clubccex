@@ -1,12 +1,1 @@
-%h1.text-center Bienvenue, #{@model.firstname} #{@model.lastname} !
-.row
-  .col-md-5.col-md-offset-3
-    %p Si vos prénom, nom et email sont erronés, n'hésitez pas à les modifier avant de soumettre le formulaire.
-= simple_form_for(@form, url: session_sign_up_sleeping_path(id: params[:id])) do |f|
-  = render 'sessions/sign_up_fields', f: f
-
-.mastfoot
-  .inner
-    .text-center
-      = link_to "Connexion", sessions_sign_in_form_path
-
+= concept("session/cell/sign_up_sleeping", @operation)

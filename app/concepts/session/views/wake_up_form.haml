@@ -1,0 +1,13 @@
+%h1 Propre, #{contract.firstname}
+%p.lead Ton compte a été confirmé. Choisis maintenant ton mot de passe pour terminer son inscription.
+
+= simple_form_for(contract, url: session_wake_up_path(id: params[:id]), method: :post) do |f|
+= f.error_notification
+
+  = f.input :password
+  = f.input :confirm_password
+
+  = f.button :submit, "Enregistrer mon mot de passe", class: "btn-primary"
+
+  = f.input :confirmation_token, as: :hidden, input_html: {value: @operation.confirmation_token}
+

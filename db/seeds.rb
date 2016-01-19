@@ -42,4 +42,7 @@ Session::SignUp.(user: {
     {"firstname" => "C3", "lastname" => "C3", "email" => "c3@example.com"},
   ]})
 
-
+User::Create::Confirmed::Sleeping.(user: {
+  firstname: "Confirmed",
+  lastname: "Sleeping",
+  email: "confirmed@sleeping.com"})
