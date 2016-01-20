@@ -1,15 +1,15 @@
 %div.navmenu.navmenu-fixed-left.offcanvas#navMenu(role="navigation" class=css_classes)
   %a.navmenu-brand{href: root_path}= title
   %ul.nav.navmenu-nav
-    %li.active= link_to "Dashboard", root_path
-    %li= link_to "Jobs", "#"
-    %li= link_to "Biz dev", "#"
-    %li= link_to "Partenariats", "#"
-    %li= link_to "Recherche d'info", "#"
-    %li= link_to "Courseuses & Courseux", users_path
+    %li= menu_item("Accueil", root_path)
+    %li= menu_item("Jobs", "#")
+    %li= menu_item("Biz dev", "#")
+    %li= menu_item("Partenariats", "#")
+    %li= menu_item("Recherche d'info", "#")
+    %li= menu_item("Trombi", users_path)
     -if admin?
       %hr
-      %li= link_to "Courseux non-confirmés", "#"
+      %li= menu_item("Courseux non-confirmés", "#")
 
   %ul.nav.navmenu-nav.navmenu-bottom
     %li

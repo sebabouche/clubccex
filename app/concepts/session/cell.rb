@@ -34,4 +34,12 @@ class Session::Cell < ::Cell::Concept
       render :sign_in
     end
   end
+
+  class WakeUp < self
+    inherit_views Session::Cell
+
+    def show
+      render :wake_up
+    end
+  end
 end

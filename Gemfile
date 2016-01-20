@@ -24,6 +24,7 @@ gem "thin"
 gem "responders"
 gem "awesome_print"
 gem "font-awesome-sass"
+gem "active_link_to"
 
 gem "dotenv"
 gem "gibbon"
