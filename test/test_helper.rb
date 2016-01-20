@@ -59,4 +59,5 @@ Trailblazer::Test::Integration.class_eval do
     fill_in 'user[recommenders_attributes][1][email]', with: "romain@clubccex.com"
     click_button 'Envoyer'
   end
+
 end

@@ -26,6 +26,12 @@ class User::Cell < ::Cell::Concept
     def css_classes
       "col-md-4 col-sm-6"
     end
+
+    class Admin < Card
+      def show
+        render :admin_card
+      end
+    end
   end
 
   class Grid < ::Cell::Concept
@@ -45,6 +51,15 @@ class User::Cell < ::Cell::Concept
       end
     end
 
+    class Unconfirmed < Grid
+      def show
+        "<div class='row'>
+        #{concept('user/cell/card/admin', collection: User.unconfirmed)}
+        </div>"
+      end
+    end
+
   end
+
 
 end

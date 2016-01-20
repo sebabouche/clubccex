@@ -12,4 +12,12 @@ class User::Policy
   def admin?
     signed_in? and user.admin?
   end
+
+  def update?
+    signed_in? and (admin? or this_is_me?)
+  end
+
+  def this_is_me?
+    user == model
+  end
 end

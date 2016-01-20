@@ -21,7 +21,7 @@ class Navigation::Cell < ::Cell::Concept
 
   def css_classes
     if admin?
-      "navmenu-inverse"
+      "navmenu-inverse admin"
     else
       "navmenu-default"
     end
