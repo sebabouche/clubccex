@@ -1,10 +1,8 @@
 class Navigation::Cell < ::Cell::Concept
   include ActionView::Helpers::UrlHelper
+  include ActionView::Helpers::TagHelper
   include ActiveLinkTo
 
-  property :current_user
-  property :signed_in?
-    
   def show
     render
   end
@@ -15,8 +13,19 @@ class Navigation::Cell < ::Cell::Concept
     options[:current_user].admin?
   end
 
-  def menu_item(text, link)
-    active_link_to text, link
+  def current_user
+    options[:current_user].id
+  end
+
+  def menu_item(text, link, lib = nil, icon = nil)
+    active_link_to link do
+      unless lib.nil? or icon.nil?
+        content_tag(:span, "", class: "#{lib} #{lib}-#{icon}") +
+        content_tag(:span, " #{text}")
+      else
+        text
+      end
+    end
   end
 
   def css_classes

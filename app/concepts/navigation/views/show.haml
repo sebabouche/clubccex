@@ -1,25 +1,19 @@
 %div.navmenu.navmenu-fixed-left.offcanvas#navMenu(role="navigation" class=css_classes)
   %a.navmenu-brand{href: root_path}= title
   %ul.nav.navmenu-nav
-    %li= menu_item("Accueil", root_path)
-    %li= menu_item("Jobs", "#")
-    %li= menu_item("Biz dev", "#")
-    %li= menu_item("Partenariats", "#")
-    %li= menu_item("Recherche d'info", "#")
-    %li= menu_item("Trombi", users_path)
+    %li= menu_item("Accueil", root_path, "fa", "home")
+    %li= menu_item("Jobs", "#", "fa", "graduation-cap")
+    %li= menu_item("Biz dev", "#", "fa", "rocket")
+    %li= menu_item("Partenariats", "#", "fa", "hand-peace-o")
+    %li= menu_item("Recherche d'info", "#", "fa", "search")
+    %li= menu_item("Trombi", users_path, "fa", "book")
     -if admin?
       %hr
       %li= menu_item("Courseux non-confirmés", unconfirmed_users_path)
 
   %ul.nav.navmenu-nav.navmenu-bottom
-    %li
-      = link_to "#" do
-        %span.fa.fa-user
-        %span Mon profil
-    %li
-      = link_to sessions_sign_out_path do
-        %span.fa.fa-sign-out
-        %span Me déconnecter
+    %li= menu_item("Mon profil", user_path(current_user), "fa", "user")
+    %li= menu_item("Me deconnecter", sessions_sign_out_path, "fa", "sign-out")
 .navbar.navbar-default.navbar-fixed-top
   %button.navbar-toggle(type="button" data-toggle="offcanvas" data-target="#navMenu" data-canvas="body")
     %span.icon-bar

@@ -13,7 +13,41 @@ class User < ActiveRecord::Base
       contract do
         property :firstname
         property :lastname
+        property :maidenname
+        property :nickname
         property :email
+        property :company
+        property :occupation
+        property :phone
+        property :city
+
+        collection :events, 
+        prepopulator: :prepopulate_events!,
+        populator: :populate_events!,
+        skip_if: :all_blank do
+            property :number
+
+            validates :number, presence: true
+        end
+          
+        validates :firstname, :lastname, :email, presence: true
+        validates :email, email: true
+
+        private
+
+        def prepopulate_events!(options)
+          (3 - events.size).times { events << Event.new }
+        end
+
+        def populate_events!(fragment:, **)
+          Event.find_by(number: fragment["number"]) or Event.new
+        end
+      end
+
+      def process(params)
+        validates(params[:user]) do
+          raise contract.inspect
+        end
       end
     end
 

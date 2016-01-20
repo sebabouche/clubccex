@@ -1,8 +1,16 @@
 class User::Cell < ::Cell::Concept
+  property :email
   property :firstname
   property :lastname
+  property :maidenname
+  property :nickname
+  property :company
+  property :occupation
+  property :phone
+  property :city
 
-  property :confirmed_at
+  include ActionView::Helpers::DateHelper
+  property :created_at
 
   def show
     render
@@ -12,6 +20,10 @@ class User::Cell < ::Cell::Concept
 
   def fullname
     firstname + " " + lastname
+  end
+  
+  def created_at
+    "Membre du Club depuis " + time_ago_in_words(super)
   end
 
   class Card < self
