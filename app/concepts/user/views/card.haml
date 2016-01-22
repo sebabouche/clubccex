@@ -1,6 +1,8 @@
+
 %div(class=css_classes)
   .panel.panel-default
     .panel-body
+      = concept("user/cell/decorator", model).(:thumb)
       %h2= fullname
       %p= nickname
       %p= created_at

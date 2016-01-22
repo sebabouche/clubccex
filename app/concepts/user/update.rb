@@ -8,9 +8,14 @@ class User < ActiveRecord::Base
       return self::ThisIsMe if policy.this_is_me?
       return self::Admin if policy.admin?
     end
+    contract do
+      feature Disposable::Twin::Persisted
+      require "reform/form/validation/unique_validator.rb"
+    end
 
     class ThisIsMe < self
       contract do
+        property :gender
         property :firstname
         property :lastname
         property :maidenname
@@ -20,6 +25,14 @@ class User < ActiveRecord::Base
         property :occupation
         property :phone
         property :city
+
+        property :file, virtual: true
+        validates :file, 
+          file_size: { less_than_or_equal_to: 3.megabytes },
+          file_content_type: { allow: ['image/jpeg', 'image/png'] }
+        extend Paperdragon::Model::Writer
+        processable_writer :image
+        property :image_meta_data, deserializer: { writeable: false }
 
         collection :events,
         prepopulator:      :prepopulate_events!,
@@ -44,9 +57,25 @@ class User < ActiveRecord::Base
         end
       end
 
+      include Dispatch
+      callback(:upload_image) do
+        on_change :upload_image!, property: :file
+        
+      end
+
       def process(params)
-        validates(params[:user]) do
-          raise contract.inspect
+        validate(params[:user]) do
+          dispatch!(:upload_image)
+          contract.save
+        end
+      end
+
+      private
+
+      def upload_image!(user, operation:, **)
+        operation.contract.image!(operation.contract.file) do |v|
+          v.process!(:original)
+          v.process!(:thumb) { |job| job.thumb!("120x120#") }
         end
       end
     end
@@ -61,4 +90,10 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  ImageProcessor = Struct.new(:image_meta_data) do
+    extend Paperdragon::Model::Writer
+    processable_writer :image
+  end  
+  
 end
