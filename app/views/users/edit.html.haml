@@ -1,4 +1,4 @@
-= simple_form_for @model do |f|
+= simple_form_for @form do |f|
   - if @operation.policy.this_is_me?
     = f.input :firstname
     = f.input :lastname

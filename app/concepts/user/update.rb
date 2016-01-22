@@ -21,10 +21,10 @@ class User < ActiveRecord::Base
         property :phone
         property :city
 
-        collection :events, 
-        prepopulator: :prepopulate_events!,
-        populator: :populate_events!,
-        skip_if: :all_blank do
+        collection :events,
+        prepopulator:      :prepopulate_events!,
+        populate_if_empty: :populate_events!,
+        skip_if:           :all_blank do
           property :number
 
           validates :number, presence: true
@@ -37,7 +37,6 @@ class User < ActiveRecord::Base
 
         def prepopulate_events!(options)
           (3 - events.size).times { events.append(Event.new) }
-          raise events.size.inspect
         end
 
         def populate_events!(fragment:, **)
