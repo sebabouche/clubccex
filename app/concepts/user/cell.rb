@@ -72,6 +72,4 @@ class User::Cell < ::Cell::Concept
     end
 
   end
-
-
 end

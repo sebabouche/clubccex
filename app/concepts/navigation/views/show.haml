@@ -13,6 +13,7 @@
 
   %ul.nav.navmenu-nav.navmenu-bottom
     %li= menu_item("Mon profil", user_path(current_user), "fa", "user")
+    %li= link_to "Email: #{email}", "#"
     %li= menu_item("Me deconnecter", sessions_sign_out_path, "fa", "sign-out")
 .navbar.navbar-default.navbar-fixed-top
   %button.navbar-toggle(type="button" data-toggle="offcanvas" data-target="#navMenu" data-canvas="body")

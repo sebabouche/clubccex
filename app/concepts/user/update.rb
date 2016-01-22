@@ -25,9 +25,9 @@ class User < ActiveRecord::Base
         prepopulator: :prepopulate_events!,
         populator: :populate_events!,
         skip_if: :all_blank do
-            property :number
+          property :number
 
-            validates :number, presence: true
+          validates :number, presence: true
         end
           
         validates :firstname, :lastname, :email, presence: true
@@ -36,7 +36,8 @@ class User < ActiveRecord::Base
         private
 
         def prepopulate_events!(options)
-          (3 - events.size).times { events << Event.new }
+          (3 - events.size).times { events.append(Event.new) }
+          raise events.size.inspect
         end
 
         def populate_events!(fragment:, **)
@@ -62,5 +63,3 @@ class User < ActiveRecord::Base
     end
   end
 end
-    
-
