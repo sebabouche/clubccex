@@ -18,6 +18,10 @@ class User::Cell < ::Cell::Concept
 
   private
 
+  def namelink
+    link_to fullname, user_path(model)
+  end
+
   def fullname
     firstname + " " + lastname
   end
