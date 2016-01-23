@@ -22,9 +22,19 @@ class User::Cell
 
     class Unconfirmed < Grid
       def show
-        "<div class='row'>
-        #{concept('user/cell/card/admin', collection: User.unconfirmed)}
-        </div>"
+        users = User.unconfirmed
+        if users.present?
+          "<div class='row'>
+          #{concept('user/cell/card', collection: User.unconfirmed)}
+          </div>"
+        else
+          " <br />
+            <br />
+            <div class='text-center'>
+              <h1>Chouette !</h1>
+              <h2>Aucun utilisateur à confirmer ;-)</h1>
+            </div>"
+        end
       end
     end
   end

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
     model User, :create
 
     contract do
+      require "reform/form/validation/unique_validator.rb"
+
       property :email
       property :firstname
       property :lastname
@@ -12,6 +14,7 @@ class User < ActiveRecord::Base
 
       validates :email, :firstname, :lastname, presence: true
       validates :email, email: true
+      validates :email, unique: true
     end
 
     def process(params)

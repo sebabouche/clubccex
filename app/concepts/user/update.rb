@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
 
     builds -> (model, policy, params) do
       return self::ThisIsMe if policy.this_is_me?
-      return self::Admin if policy.admin?
+      #return self::Admin if policy.admin?
     end
+
     contract do
       feature Disposable::Twin::Persisted
       require "reform/form/validation/unique_validator.rb"

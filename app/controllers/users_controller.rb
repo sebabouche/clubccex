@@ -21,4 +21,11 @@ class UsersController < LoggedController
 
     render :edit
   end
+
+  def confirm
+    run User::Confirm do |op|
+      flash[:notice] = "#{op.model.firstname} est confirmé!"
+      return redirect_to users_path
+    end
+  end
 end

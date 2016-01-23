@@ -95,4 +95,9 @@ class User::Cell < ::Cell::Concept
   def created_at
     "Membre du Club depuis " + time_ago_in_words(super)
   end
+
+  def unconfirmed?
+    @model.confirmed == 0
+  end
+
 end
