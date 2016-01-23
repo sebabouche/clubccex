@@ -16,7 +16,7 @@ class UsersController < LoggedController
   def update
     run User::Update do |op|
       flash[:notice] = "Le compte a bien été mis à jour"
-      return redirect_to users_path
+      return redirect_to user_path(op.model)
     end
 
     render :edit

@@ -3,7 +3,26 @@ class User::Cell::Decorator < Cell::Concept
   processable_reader :image
   property :image_meta_data
 
+  include Sprockets::Rails::Helper
+  self.assets_prefix = Rails.application.config.assets.prefix
+  self.assets_environment = Rails.application.assets
+  self.digest_assets = Rails.application.config.assets[:digest]
+
   def thumb
-    image_tag image[:thumb].url if image.exists?
+    # TODO missing image
+    if image.exists?
+      image_tag image[:thumb].url, class: "img-circle"
+    else
+      "<div class='img-missing missing-thumb'></div>"
+    end
+  end
+
+  def medium
+    # TODO missing image
+    if image.exists?
+      image_tag image[:medium].url, class: "img-circle"
+    else
+      "<div class='img-missing missing-medium'></div>"
+    end
   end
 end

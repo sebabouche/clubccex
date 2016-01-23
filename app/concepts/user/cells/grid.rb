@@ -2,14 +2,18 @@ class User::Cell
   class Grid < ::Cell::Concept
     def show
       "<div class='row'>
-      #{concept('user/cell/card', collection: users)}
+      #{concept('user/cell/card', collection: users, user: options[:user])}
       </div>"
     end
 
     private
 
+    def admin?
+      options[:user].admin?
+    end
+
     def users
-      if options[:admin]
+      if admin?
         User.all
       else
         User.confirmed

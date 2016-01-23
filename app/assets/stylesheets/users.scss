@@ -1,0 +1,49 @@
+.profile {
+  text-align: center;
+
+  a:hover {
+    text-decoration: none;
+  }
+  .medium-picture {
+    position: relative;
+    margin: 20px;
+  }
+  .thumb-picture {
+    position: relative;
+    margin-top: 20px;
+  }
+
+  margin-bottom: 20px;
+}
+
+.img-missing {
+  border-radius: 1000px;
+  background: $cce-red;
+  background: -webkit-linear-gradient(right top, $light-red, grey);
+  background: -o-linear-gradient(bottom left, $light-red, $cce-red);
+  background: -moz-linear-gradient(bottom left, $light-red, $cce-red);
+  background: linear-gradient(to bottom left, $light-red, grey);
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  margin: 0 auto;
+
+  &.missing-thumb {
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    font-size: 60px;
+  }
+
+  &.missing-medium {
+    width: 300px;
+    height: 300px;
+    line-height: 300px;
+    font-size: 120px;
+  }
+
+  &:before {
+    content: "?";
+  }
+
+}

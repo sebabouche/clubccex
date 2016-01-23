@@ -1,7 +1,4 @@
 %div(class=css_classes)
-  .panel.panel-default
-    .panel-body
-      = concept("user/cell/decorator", model).(:thumb)
-      %h2= namelink
-      %p= nickname
-      %p= created_at
+  .thumb-picture= link_to concept("user/cell/decorator", model).(:thumb), path
+  %h3= namelink
+  %p= sum_up

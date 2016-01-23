@@ -76,6 +76,7 @@ class User < ActiveRecord::Base
         operation.contract.image!(operation.contract.file) do |v|
           v.process!(:original)
           v.process!(:thumb) { |job| job.thumb!("120x120#") }
+          v.process!(:medium) { |job| job.thumb!("300x300#") }
         end
       end
     end

@@ -1,48 +1,49 @@
-= simple_form_for contract do |f|
+.profile
+  = simple_form_for contract do |f|
+    - if policy.this_is_me?
+      .thumb-picture= concept("user/cell/decorator", user).(:thumb)
+      .row
+        .col-sm-4.col-sm-offset-4
+          %p= f.input :file, as: :file, label: false
+          = f_input f, :email, true
+      .row
+        .col-sm-4.col-sm-offset-2
+          = f_input f, :firstname, true
+        .col-sm-4
+          = f_input f, :lastname, true
+      .row
+        .col-sm-3.col-sm-offset-3
+          = f_input f, :nickname
+        .col-sm-3
+          = f_input f, :maidenname
 
-  - if policy.this_is_me?
-    .text-center= concept("user/cell/decorator", user).(:thumb)
+      .row
+        .col-sm-4.col-sm-offset-4
+          = f_input f, :company
+      .row
+        .col-sm-4.col-sm-offset-4
+          = f_input f, :occupation
+
+      .row
+        .col-sm-3.col-sm-offset-3
+          = f_input f, :phone
+        .col-sm-3
+          = f_input f, :city
+
+      %h4.text-center Quelles courses as-tu organisées ?
+      .row
+        = f.simple_fields_for :events do |e|
+          - if e.options[:child_index] == 0
+            .col-sm-2.col-sm-offset-3
+              = f_input e, :number
+          - else
+            .col-sm-2
+              = f_input e, :number
+
+    - if policy.admin?
+      = f.input :confirmed, as: :boolean
     .row
       .col-sm-4.col-sm-offset-4
-        = f.input :file, as: :file
-        = f_input f, :email, true
-    .row
-      .col-sm-4.col-sm-offset-2
-        = f_input f, :firstname, true
-      .col-sm-4
-        = f_input f, :lastname, true
-    .row
-      .col-sm-3.col-sm-offset-3
-        = f_input f, :nickname
-      .col-sm-3
-        = f_input f, :maidenname
-
-    .row
-      .col-sm-4.col-sm-offset-4
-        = f_input f, :company
-    .row
-      .col-sm-4.col-sm-offset-4
-        = f_input f, :occupation
-
-    .row
-      .col-sm-3.col-sm-offset-3
-        = f_input f, :phone
-      .col-sm-3
-        = f_input f, :city
-
-    %h4.text-center Quelles courses as-tu organisées ?
-    .row
-      = f.simple_fields_for :events do |e|
-        - if e.options[:child_index] == 0
-          .col-sm-2.col-sm-offset-3
-            = f_input e, :number
-        - else
-          .col-sm-2
-            = f_input e, :number
-
-  - if policy.admin?
-    = f.input :confirmed, as: :boolean
-  .row
-    .col-sm-4.col-sm-offset-4
-      = f.button :button, "Modifier", class: "btn btn-primary btn-block"
+        %p= f.button :button, "Modifier", class: "btn btn-primary btn-block"
+        %p.text-center= link_to "Annuler", users_path, class: "btn btn-danger btn-sm"
 
