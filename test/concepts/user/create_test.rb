@@ -9,25 +9,25 @@ class UserCreateTest < MiniTest::Spec
 
   let (:unconfirmed) { User::Create::Unconfirmed.(
     user: {
-      email: "test.idis@icloud.com",
+      email: "unconfirmed@icloud.com",
       firstname: "Test",
       lastname: "Idis" }).model }
 
     let (:unconfirmed_sleeping) { User::Create::Unconfirmed::Sleeping.(
     user: {
-      email: "test.idis@icloud.com",
+      email: "unconfirmed_sleeping@icloud.com",
       firstname: "Test",
       lastname: "Idis" }).model }
 
   let (:confirmed) { User::Create::Confirmed.(
     user: {
-      email: "test.idis@icloud.com",
+      email: "confirmed@icloud.com",
       firstname: "Test",
       lastname: "Idis" }).model }
 
   let (:confirmed_sleeping) { User::Create::Confirmed::Sleeping.(
     user: {
-      email: "test.idis@icloud.com",
+      email: "confirmed_sleeping@icloud.com",
       firstname: "Test",
       lastname: "Idis" }).model }
 

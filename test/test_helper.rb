@@ -38,7 +38,7 @@ Trailblazer::Test::Integration.class_eval do
     click_link 'Inscription'
     fill_in 'user[firstname]', with: "Sébastien"
     fill_in 'user[lastname]', with: "Nicolaïdis"
-    fill_in 'user[email]', with: "sebastien@clubccex.comt"
+    fill_in 'user[email]', with: "sebastien@clubccex.com"
     fill_in 'user[recommenders_attributes][0][firstname]', with: "Arnaud"
     fill_in 'user[recommenders_attributes][0][lastname]', with: "Barbelet"
     fill_in 'user[recommenders_attributes][0][email]', with: "arnaud@clubccex.com"
@@ -60,4 +60,16 @@ Trailblazer::Test::Integration.class_eval do
     click_button 'Envoyer'
   end
 
+  def sign_in_as_admin!
+    res, op = User::Create::Confirmed::Admin.run(user: {
+      firstname: "Admin",
+      lastname: "User",
+      email: "admin@example.com"
+    })
+    res.must_equal true
+    visit "/"
+    fill_in 'session[email]', with: "admin@example.com"
+    fill_in 'session[password]', with: "password"
+    click_button "Se connecter"
+  end
 end

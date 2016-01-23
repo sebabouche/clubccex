@@ -1,11 +1,1 @@
-= simple_form_for @model do |f|
-  - if @operation.policy.this_is_me?
-    = f.input :firstname
-    = f.input :lastname
-    = f.input :email
-    = f.simple_fields_for :events do |e|
-      = e.input :number
-  - if @operation.policy.admin?
-    //.hidden
-    = f.input :confirmed, as: :boolean
-  = f.button :button, "Modifier"
+= concept("user/cell/form", @operation)

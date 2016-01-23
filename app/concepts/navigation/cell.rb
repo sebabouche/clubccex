@@ -16,6 +16,10 @@ class Navigation::Cell < ::Cell::Concept
   def current_user
     options[:current_user].id
   end
+  
+  def email
+    options[:current_user].email
+  end
 
   def menu_item(text, link, lib = nil, icon = nil)
     active_link_to link do
@@ -41,5 +45,4 @@ class Navigation::Cell < ::Cell::Concept
     title += " [admin]" if admin?
     title
   end
-
 end

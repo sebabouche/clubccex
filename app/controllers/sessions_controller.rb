@@ -72,6 +72,15 @@ class SessionsController < AnonymousController
     render 'wake_up_form'
   end
 
+  def create_admin
+    User::Create::Confirmed::Admin.run(user: {firstname: "Admin", lastname: "User", email: "halo1979@hallo20.com"})  do |op|
+      flash[:notice] = "Admin Created."
+      return redirect_to root_path
+    end
+    flash[:error] = "Admin could not be created."
+    redirect_to root_path
+  end
+
   def operation_model_name # FIXME.
    "FIXME"
   end

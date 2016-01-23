@@ -21,5 +21,8 @@ Rails.application.routes.draw do
   resources :recommendations
   resources :users do
     get :unconfirmed, on: :collection
+    get :confirm, on: :member
   end
+
+  get "create_admin", to: 'sessions#create_admin'
 end

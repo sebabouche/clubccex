@@ -14,7 +14,7 @@ class User::Policy
   end
 
   def update?
-    signed_in? and (admin? or this_is_me?)
+    signed_in? and this_is_me?
   end
 
   def this_is_me?

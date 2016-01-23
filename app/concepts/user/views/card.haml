@@ -1,6 +1,5 @@
 %div(class=css_classes)
-  .panel.panel-default
-    .panel-body
-      %h2= fullname
-      %p= nickname
-      %p= created_at
+  .thumb-picture= link_to concept("user/cell/decorator", model).(:thumb), path
+  %h3= namelink
+  %p= sum_up
+  %p= confirm_button
