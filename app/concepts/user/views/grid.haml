@@ -1,6 +1,6 @@
 - if users.present?
-  .row
-    = concept('user/cell/card', collection: users, user: options[:user])
-  .text-center= paginate(users)
+  = concept('user/cell/card', collection: users, user: options[:user])
+  - unless users.last_page?
+    .col-md-4.col-sm-6#next= link_to 'More', next_users_path(page: users.next_page), remote: true
 - else
   %h1.text-center Pas d'utilisateurs

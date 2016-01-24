@@ -4,6 +4,12 @@ class UsersController < LoggedController
     collection User::Search
   end
 
+  def next
+    collection User::Search
+
+    render js: concept("user/cell/grid", @collection, page: params[:page], user: tyrant.current_user).(:append)
+  end
+
   def unconfirmed
   end
 
