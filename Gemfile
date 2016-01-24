@@ -25,6 +25,7 @@ gem "responders"
 gem "awesome_print"
 gem "font-awesome-sass"
 gem "active_link_to"
+gem "jquery-infinite-pages"
 
 gem "ransack"
 gem "faker"

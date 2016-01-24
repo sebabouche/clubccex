@@ -1,7 +1,6 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
-    "jasny-bootstrap": "latest",
-    "jquery-infinite-scroll": "latest"
+    "jasny-bootstrap": "latest"
   }
 }
