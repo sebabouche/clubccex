@@ -26,5 +26,8 @@ Rails.application.routes.draw do
     get :confirm, on: :member
   end
 
+  resources :posts
+  resources :categories, only: [:index, :edit, :create, :update, :destroy]
+
   get "create_admin", to: 'sessions#create_admin'
 end

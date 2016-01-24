@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class InfiniteScrollTest < Trailblazer::Test::Integration
   feature "infinite-scrolling" do
     scenario "it scrolls", js: true do
