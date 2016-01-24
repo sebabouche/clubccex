@@ -46,6 +46,7 @@ group :development, :test do
   gem "minitest-rails-capybara"
   gem "minitest-line"
   gem "selenium-webdriver"
+  gem "factory_girl_rails"
 end
 
 group :development do

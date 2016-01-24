@@ -4,7 +4,8 @@ class SignUpTest < Trailblazer::Test::Integration
   it do
     sign_up!
 
-    visit "/sessions/sign_up_sleeping_form/2/"
+    user_id = User.find_by(email: "arnaud@clubccex.com").id
+    visit "/sessions/sign_up_sleeping_form/#{user_id}/"
 
     # renders form
     page.must_have_css "#user_firstname[value='Arnaud']"

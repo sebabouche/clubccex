@@ -27,6 +27,8 @@ end
 
 
 Trailblazer::Test::Integration.class_eval do
+  include FactoryGirl::Syntax::Methods
+
   after :each do
     DatabaseCleaner.clean
     ActionMailer::Base.deliveries = []
@@ -61,15 +63,20 @@ Trailblazer::Test::Integration.class_eval do
   end
 
   def sign_in_as_admin!
-    res, op = User::Create::Confirmed::Admin.run(user: {
-      firstname: "Admin",
-      lastname: "User",
-      email: "admin@example.com"
-    })
-    res.must_equal true
+    visit "/create_admin"
     visit "/"
-    fill_in 'session[email]', with: "admin@example.com"
+    fill_in 'session[email]', with: "halo1979@hallo20.com"
     fill_in 'session[password]', with: "password"
     click_button "Se connecter"
+  end
+
+  def create_user!
+    User.create!(
+      firstname: Faker::Name.first_name,
+      lastname: Faker::Name.last_name,
+      email: Faker::Internet.email,
+      confirmed: 1,
+      sleeping: 0
+    )
   end
 end

@@ -17,9 +17,9 @@ class User::Cell
 
     def users
       if admin?
-        @model ||= @model.page(page).per(12)
+        @model
       else
-        @model ||= @model.confirmed.page(page).per(12)
+        @model.confirmed
       end
     end
 

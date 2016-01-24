@@ -4,11 +4,7 @@ class ConfirmTest < Trailblazer::Test::Integration
   feature "confirm unconfirmed" do
     it "confirms valid", js: true do
       sign_up!
-      visit "/create_admin"
-      visit "/"
-      fill_in 'session[email]', with: "halo1979@hallo20.com"
-      fill_in 'session[password]', with: "password"
-      click_button "Se connecter"
+      sign_in_as_admin!
       click_button "navburger"
 
       # From unconfirmed

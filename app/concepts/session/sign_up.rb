@@ -73,7 +73,7 @@ module Session
       on_change :notify_user!
 
       collection :recommenders do
-        # on_add :notify_recommender!
+        on_add :notify_recommender!
       end
 
     end

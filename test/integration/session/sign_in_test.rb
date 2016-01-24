@@ -24,5 +24,3 @@ class SignInTest < Trailblazer::Test::Integration
     end
   end
 end
-
-

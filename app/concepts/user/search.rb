@@ -3,8 +3,18 @@ class User < ActiveRecord::Base
     include Kaminari::ActiveRecordExtension
 
     def model!(params)
-      q = User.ransack(params[:q])
+      q = users.ransack(params[:q])
       results = q.result().page(params[:page]).per(params[:per])
+    end
+
+    def users
+      User.all
+    end
+
+    class Unconfirmed < self
+      def users
+        User.unconfirmed
+      end
     end
   end
 end

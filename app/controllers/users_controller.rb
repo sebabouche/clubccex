@@ -11,6 +11,10 @@ class UsersController < LoggedController
   end
 
   def unconfirmed
+    @q  = User.ransack(params[:q])
+    collection User::Search::Unconfirmed
+
+    render :index
   end
 
   def show

@@ -135,6 +135,11 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.9.1)
     execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     faker (1.6.1)
       i18n (~> 0.5)
     faraday (0.9.2)
@@ -381,6 +386,7 @@ DEPENDENCIES
   disposable
   dotenv
   email_validator
+  factory_girl_rails
   faker
   file_validators (~> 1.2)
   font-awesome-sass
