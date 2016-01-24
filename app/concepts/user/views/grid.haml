@@ -1,0 +1,6 @@
+- if users.present?
+  .row
+    = concept('user/cell/card', collection: users, user: options[:user])
+  .text-center= paginate(users)
+- else
+  %h1.text-center Pas d'utilisateurs

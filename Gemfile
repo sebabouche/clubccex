@@ -26,6 +26,9 @@ gem "awesome_print"
 gem "font-awesome-sass"
 gem "active_link_to"
 
+gem "ransack"
+gem "faker"
+
 gem "dotenv"
 gem "gibbon"
 gem "mandrill"

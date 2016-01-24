@@ -1,5 +1,7 @@
 class UsersController < LoggedController
   def index
+    @q  = User.ransack(params[:q])
+    collection User::Search
   end
 
   def unconfirmed

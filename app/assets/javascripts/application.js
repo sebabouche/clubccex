@@ -16,6 +16,7 @@
 //= require bootstrap
 
 //= require jasny-bootstrap/dist/js/jasny-bootstrap
+//= require jquery-infinite-scroll
 
 //= require turbolinks
 //= require_tree .

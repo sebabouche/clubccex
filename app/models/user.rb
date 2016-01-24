@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
 
   scope :unconfirmed, -> { where('confirmed != 1') }
   scope :confirmed, -> { where(confirmed: 1) }
+
+  default_scope { order('lastname, firstname') }
 end

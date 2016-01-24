@@ -38,3 +38,10 @@ User::Create::Confirmed::Sleeping.(user: {
   email: "confirmed@sleeping.com"})
 
 1.upto(48) { |x| Event.create(number: x) }
+
+30.times do
+  User::Create::Confirmed.(user: {
+    firstname: Faker::Name.first_name,
+    lastname: Faker::Name.last_name,
+    email: Faker::Internet.email })
+end

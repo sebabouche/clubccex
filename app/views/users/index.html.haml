@@ -1,1 +1,8 @@
-= concept "user/cell/grid", nil, user: tyrant.current_user
+%p
+  .text-center
+    = search_form_for @q, url: users_path, builder: SimpleForm::FormBuilder, html: { class: "form-inline" }  do |f|
+      = f.input :firstname_or_lastname_or_nickname_or_occupation_or_company_cont, label: false, placeholder: "Nom, prénom, surnom…"
+      = f.input :events_number_eq, label: false, placeholder: "N° de Course"
+      = f.button :submit, "Rechercher", class: "btn-primary"
+
+= concept "user/cell/grid", @collection, user: tyrant.current_user
