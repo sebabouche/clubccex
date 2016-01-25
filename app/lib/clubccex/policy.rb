@@ -1,24 +1,30 @@
-module Clubccex::Policy
-  attr_reader :model, :user
+module Clubccex
+  class Policy
 
-  def initialize(user, model)
-    @user, @model = user, model
-  end
+    attr_reader :model, :user
 
-  def signed_in?
-    user.present?
-  end
+    def initialize(user, model)
+      @user, @model = user, model
+    end
 
-  def admin?
-    signed_in? and user.admin?
-  end
+    def signed_in?
+      user.present?
+    end
 
-  def update?
-    signed_in? and this_is_me?
-  end
+    def admin?
+      signed_in? and user.admin?
+    end
 
-  def this_is_me?
-    user == model
+    def update?
+      signed_in? and this_is_me?
+    end
+
+    def this_is_me?
+      user == model
+    end
+
+    def admin_or_this_is_me?
+      admin? or this_is_me?
+    end
   end
 end
-

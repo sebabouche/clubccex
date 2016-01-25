@@ -35,8 +35,8 @@ class User < ActiveRecord::Base
 
     class Admin < Confirm
       include Resolver
+      policy Clubccex::Policy, :admin?
       model User, :find
-      policy User::Policy, :admin?
     end
   end
 end

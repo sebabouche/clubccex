@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
   class Create < Trailblazer::Operation
     include Resolver
-    policy Category::Policy, :create?
+    policy Clubccex::Policy, :admin?
     model Category, :create
 
     contract do

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   class Update < Trailblazer::Operation
     include Resolver
-    policy User::Policy, :update?
+    policy Clubccex::Policy, :update?
     model User, :update
 
     builds -> (model, policy, params) do
