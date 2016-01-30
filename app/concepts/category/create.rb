@@ -5,13 +5,12 @@ class Category < ActiveRecord::Base
     model Category, :create
 
     contract do
-      require "reform/form/validation/unique_validator.rb"
-
-      property :priority
       property :name
+      property :priority
+      property :icon
+      property :library
 
-      validates :priority, :name, presence: true
-      validates :name, unique: true
+      validates :name, :priority, presence: true
     end
 
     def process(params)
@@ -19,8 +18,5 @@ class Category < ActiveRecord::Base
         contract.save
       end
     end
-  end
-
-  class Update < Create
   end
 end

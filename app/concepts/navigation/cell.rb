@@ -45,4 +45,18 @@ class Navigation::Cell < ::Cell::Concept
     title += " [admin]" if admin?
     title
   end
+
+  def categories
+    categories = ""
+    Category.all.each do |category|
+      category_link = content_tag :li do
+        active_link_to category_path(category) do
+          content_tag(:span, "", class: "#{category.library} #{category.library}-#{category.icon}") +
+          content_tag(:span, " " + category.name)
+        end
+      end
+      categories += category_link
+    end
+    categories
+  end
 end

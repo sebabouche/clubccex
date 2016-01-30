@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts
-  resources :categories, only: [:index, :edit, :create, :update, :destroy]
+  resources :categories
 
   get "create_admin", to: 'sessions#create_admin'
 end

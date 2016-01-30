@@ -2,10 +2,7 @@
   %a.navmenu-brand{href: root_path}= title
   %ul.nav.navmenu-nav
     %li= menu_item("Accueil", root_path, "fa", "home")
-    %li= menu_item("Jobs", "#", "fa", "graduation-cap")
-    %li= menu_item("Biz dev", "#", "fa", "rocket")
-    %li= menu_item("Partenariats", "#", "fa", "hand-peace-o")
-    %li= menu_item("Recherche d'info", "#", "fa", "search")
+    = categories
     %li= menu_item("Trombi", users_path, "fa", "book")
     -if admin?
       %hr

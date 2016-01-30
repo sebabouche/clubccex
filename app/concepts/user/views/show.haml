@@ -1,7 +1,7 @@
 .profile
   .medium-picture= concept("user/cell/decorator", model).(:medium)
-  %h2= megafullname
-  %p= event_list
-  %p= work
-  %p= phone_email
-  %p= created_at
+  %h2= concept('user/cell/decorator', model).(:megafullname)
+  %p= concept('user/cell/decorator', model).(:event_list)
+  %p= concept('user/cell/decorator', model).(:work)
+  %p= concept('user/cell/decorator', model).(:phone_email)
+  %p= concept('user/cell/decorator', model).(:created_at)

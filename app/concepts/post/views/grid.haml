@@ -1,0 +1,5 @@
+.row.grid
+  - if posts.present?
+    = concept('post/cell/card', collection: posts, user: user)
+  - else
+    %h1.text-center Mince, pas d'annonce :/

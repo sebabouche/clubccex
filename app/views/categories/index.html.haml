@@ -6,13 +6,15 @@
         
         = f.input :priority
         = f.input :name
+        = f.input :icon
+        = f.input :library
 
         = f.button :submit, "Créer", class: "btn btn-primary btn-block"
 
   .col-sm-9
     .row
       - @categories.each do |category|
-        .col-sm-3
+        .col-sm-6
           %h2
             %span.label.label-info= category.priority
             %span= category.name

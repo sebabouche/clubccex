@@ -3,6 +3,8 @@ class CreateCategories < ActiveRecord::Migration
     create_table :categories do |t|
       t.integer :priority
       t.string :name
+      t.string :icon
+      t.string :library
 
       t.timestamps null: false
     end

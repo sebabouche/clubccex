@@ -1,0 +1,8 @@
+= simple_form_for @form do |f|
+  = f.error_notification
+
+  = f.input :title
+  = f.input :body
+  = f.association :category
+
+  = f.button :submit

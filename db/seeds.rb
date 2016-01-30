@@ -1,7 +1,7 @@
-User::Create::Confirmed::Admin.(user: {
+user = User::Create::Confirmed::Admin.(user: {
   firstname: "Sébastien",
   lastname: "Nicolaïdis",
-  email: "s.nicolaidis@me.com"})
+  email: "s.nicolaidis@me.com"}).model
 
 User::Create::Confirmed::Admin.(user: {
   firstname: "Arnaud",
@@ -31,6 +31,31 @@ Session::SignUp.(user: {
     {"firstname" => "C2", "lastname" => "C2", "email" => "c2@example.com"},
     {"firstname" => "C3", "lastname" => "C3", "email" => "c3@example.com"},
   ]})
+
+Category::Create.(current_user: user, category: {
+  name: "Jobs",
+  priority: 1,
+  icon: "graduation-cap",
+  library: "fa" })
+
+Category::Create.(current_user: user, category: {
+  name: "Biz dev",
+  priority: 2,
+  icon: "rocket",
+  library: "fa" })
+
+Category::Create.(current_user: user, category: {
+  name: "Partenariats",
+  priority: 3,
+  icon: "hand-peace-o",
+  library: "fa" })
+
+Category::Create.(current_user: user, category: {
+  name: "Recherche d'info",
+  priority: 4,
+  icon: "search",
+  library: "fa" })
+
 
 User::Create::Confirmed::Sleeping.(user: {
   firstname: "Confirmed",
