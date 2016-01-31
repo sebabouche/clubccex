@@ -1,4 +1,10 @@
 class PostsController < LoggedController
+  def show
+    @post = Post.find(params[:id])
+
+    form Comment::Create
+  end
+
   def new
     form Post::Create
   end
@@ -10,5 +16,21 @@ class PostsController < LoggedController
     end
 
     render :new
+  end
+
+  def create_comment
+    run Comment::Create do |op|
+      flash[:notice] = "Commentaire envoyé!"
+      return redirect_to post_path(op.model.post)
+    end
+
+    @post= Post.find(params[:id])
+    render :show
+  end
+
+  def next_comments
+    @post = Post.find(params[:id])
+
+    render js: concept("comment/cell/grid", @post, page: params[:page]).(:append)
   end
 end

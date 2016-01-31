@@ -1,0 +1,8 @@
+= simple_form_for model, url: create_comment_post_path(post) do |f|
+  = f.error_notification
+
+  = f.input :body, label: false, placeholder: "Nouvelle réponse…"
+
+  = f.button :submit, "Envoyer", class: "btn-danger btn-block"
+
+  %hr

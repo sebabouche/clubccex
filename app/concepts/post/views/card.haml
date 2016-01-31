@@ -1,4 +1,9 @@
-.col-xs-6.col-sm-4.card
-  %h1= link_title
-  %p= concept('user/cell/decorator', user).(:namelink)
-  %p= body
+.col-sm-6.col-md-4.col-lg-4.card
+  .post
+    %h2= link_title
+    %p
+      = concept('user/cell/decorator', user).(:linkname)
+      %span= has_posted_at
+    %p= truncate(body, length: 140, separator: ' ', omission: '…')
+    %p= concept('comment/cell/summary', model)
+

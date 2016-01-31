@@ -1,0 +1,6 @@
+.comments
+  = concept("comment/cell", collection: comments, last: comments.last)
+
+  - unless comments.last_page?
+    #next
+      .text-center= link_to "Plus de commenatires", next_comments_post_path(id: model.id , page: comments.next_page), class: "button expand light", remote: true

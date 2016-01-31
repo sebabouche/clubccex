@@ -56,7 +56,6 @@ Category::Create.(current_user: user, category: {
   icon: "search",
   library: "fa" })
 
-
 User::Create::Confirmed::Sleeping.(user: {
   firstname: "Confirmed",
   lastname: "Sleeping",
@@ -64,9 +63,32 @@ User::Create::Confirmed::Sleeping.(user: {
 
 1.upto(48) { |x| Event.create(number: x) }
 
-30.times do
+20.times do
   User::Create::Confirmed.(user: {
     firstname: Faker::Name.first_name,
     lastname: Faker::Name.last_name,
     email: Faker::Internet.email })
+end
+
+20.times do
+  user = User.all.shuffle.first
+  Post::Create.(
+    current_user: user,
+    post: {
+      title: Faker::Lorem.sentence,
+      body: Faker::Lorem.paragraph,
+      category_id: rand(Category.count - 1)+1,
+      user_id: user.id
+    })
+end
+
+50.times do
+  user = User.all.shuffle.first
+  post = Post.all.shuffle.first
+  Comment::Create.(
+    current_user: user,
+    comment: {
+      body: Faker::Lorem.sentence,
+      post: post
+    })
 end

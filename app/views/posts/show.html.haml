@@ -1,0 +1,6 @@
+.row
+  .col-sm-6.col-sm-offset-3
+    = concept('post/cell/show', @post, user: tyrant.current_user)
+
+    = concept('comment/cell/form', @form, post: @post, user: tyrant.current_user)
+    = concept('comment/cell/grid', @post)

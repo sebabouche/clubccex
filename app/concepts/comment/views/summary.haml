@@ -1,0 +1,11 @@
+- if comments.present?
+  %p
+    - comments.each do |comment|
+      = concept('comment/cell/line', comment)
+    %small (
+    %small= comments.count 
+    %small rép. au total)
+- else
+  %p 
+    %span Pas encore de réponse.
+    %span= link_to "Répondez à ce post !", post_path(model)

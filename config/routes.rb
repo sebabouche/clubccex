@@ -26,7 +26,12 @@ Rails.application.routes.draw do
     get :confirm, on: :member
   end
 
-  resources :posts
+  resources :posts do
+    member do
+      post :create_comment
+      get :next_comments
+    end
+  end
   resources :categories
 
   get "create_admin", to: 'sessions#create_admin'
