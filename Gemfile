@@ -28,7 +28,6 @@ gem "active_link_to"
 gem "jquery-infinite-pages"
 
 gem "ransack"
-gem "faker"
 
 gem "dotenv"
 gem "gibbon"
@@ -42,11 +41,15 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem "minitest-reporters"
-  gem "minitest-rails-capybara"
-  gem "minitest-line"
-  gem "selenium-webdriver"
-  gem "factory_girl_rails"
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'rspec-trailblazer', github: 'trailblazer/rspec-trailblazer'
+  # gem 'rspec-cells', github: 'apotonick/rspec-cells'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers', require: false
+  gem 'factory_girl_rails'
 end
 
 group :development do

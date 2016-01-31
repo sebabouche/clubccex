@@ -4,6 +4,8 @@ module Session
     model User, :find
 
     contract do
+      property :firstname
+      property :lastname
       property :password, virtual: true
       property :confirm_password, virtual: true
       validates :password, :confirm_password, presence: true
