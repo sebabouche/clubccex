@@ -42,6 +42,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'faker'
+  gem 'guard-rspec', require: false
   gem 'rspec-rails'
   gem 'rspec-trailblazer', github: 'trailblazer/rspec-trailblazer'
   # gem 'rspec-cells', github: 'apotonick/rspec-cells'
