@@ -1,9 +1,9 @@
-%h1 Bonjour, #{@recommender.firstname}.
+%h1 Bonjour, #{@recommendation.recommender.firstname}.
 
-%p #{@user.firstname + " " + @user.lastname} t'as choisi pour le/la recommander comme ancien courseux.
-%p Si elle ou il fait bien partie des anciens courseux, confirme-le en cliquant sur le lien suivant.
+%p #{@recommendation.user.firstname + " " + @recommendation.user.lastname} t'as choisi pour le/la recommander comme ancien courseux.
+%p Tu peux la/le confirmer sur la page de recommandation en cliquant ce lien:
 
-// TODO ajouter le lien
+%p= link_to "Recommander #{@recommendation.user.firstname}", edit_recommendation_url(@recommendation)
 
 %p À très bientôt !
 

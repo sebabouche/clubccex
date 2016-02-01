@@ -38,10 +38,10 @@ class UserMailer < ApplicationMailer
   end
 
   def confirm_user(recommender_id, user_id)
-    find_users!(recommender_id, user_id)
+    @recommendation = Recommendation.find_by_user_id_and_recommender_id!(user_id, recommender_id)
     mail(
-      to: @recommender.email,
-      subject: "[CCEx] Confirmes-tu que #{user_name(@user)} fait partie des anciens ?")
+      to: @recommendation.recommender.email,
+      subject: "[CCEx] Confirmes-tu que #{user_name(@recommendation.user)} fait partie des anciens ?")
   end
 
   private

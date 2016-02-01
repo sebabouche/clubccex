@@ -59,4 +59,16 @@ class Navigation::Cell < ::Cell::Concept
     end
     categories
   end
+
+  def pending_confirmations
+    "<li class='text-danger'><a href='#{recommendations_path}'><span class='fa fa-exclamation-triangle'></span> Confirmations en attente (#{pending_confirmation_count})</a></li> " if pending_confirmations?
+  end
+
+  def pending_confirmations?
+    options[:current_user].pending_confirmations.present?
+  end
+
+  def pending_confirmation_count
+    options[:current_user].pending_confirmations.size
+  end
 end

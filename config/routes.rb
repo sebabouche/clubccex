@@ -33,6 +33,4 @@ Rails.application.routes.draw do
     end
   end
   resources :categories
-
-  get "create_admin", to: 'sessions#create_admin'
 end

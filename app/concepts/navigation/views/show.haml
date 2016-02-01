@@ -9,6 +9,7 @@
       %li= menu_item("Courseux non-confirmés", unconfirmed_users_path)
 
   %ul.nav.navmenu-nav.navmenu-bottom
+    = pending_confirmations
     %li= menu_item("Mon profil", user_path(current_user), "fa", "user")
     %li= link_to "Email: #{email}", "#"
     %li= menu_item("Me deconnecter", sessions_sign_out_path, "fa", "sign-out")

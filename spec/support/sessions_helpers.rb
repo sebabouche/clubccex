@@ -26,10 +26,17 @@ module SessionsHelpers
     click_button 'Envoyer'
   end
 
-  def sign_in_as_admin!
-    visit "/create_admin"
+  def sign_in!(email = "arnaud@clubccex.com", password = "password")
     visit "/"
-    fill_in 'session[email]', with: "halo1979@hallo20.com"
+    fill_in 'session[email]', with: email
+    fill_in 'session[password]', with: password
+    click_button "Se connecter"
+  end
+
+  def sign_in_as_admin!(email = "halo1979@hallo20.com")
+    User::Create::Confirmed::Admin.(user: {firstname: "Admin", lastname: "Strator", email: email})
+    visit "/"
+    fill_in 'session[email]', with: email
     fill_in 'session[password]', with: "password"
     click_button "Se connecter"
   end

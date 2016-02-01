@@ -1,0 +1,5 @@
+- if @collection.present?
+  - @collection.each do |confirmation|
+    = concept("recommendation/cell/form", confirmation)
+- else
+  %h1.text-center Pas de recommandation en attente
