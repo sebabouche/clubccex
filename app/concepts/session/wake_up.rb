@@ -6,6 +6,7 @@ module Session
     contract do
       property :firstname
       property :lastname
+      property :sleeping
       property :password, virtual: true
       property :confirm_password, virtual: true
       validates :password, :confirm_password, presence: true
@@ -21,6 +22,7 @@ module Session
 
     def process(params)
       validate(params[:user]) do
+        unsleep_user!
         wake_up!
       end
     end
@@ -28,6 +30,11 @@ module Session
     attr_reader :confirmation_token
 
     private
+
+    def unsleep_user!
+      contract.sleeping = 0
+      contract.sync
+    end
 
     def wake_up!
       auth = Tyrant::Authenticatable.new(contract.model)

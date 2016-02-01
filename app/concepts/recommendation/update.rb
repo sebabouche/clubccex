@@ -1,7 +1,7 @@
 class Recommendation < ActiveRecord::Base
   class Update < Trailblazer::Operation
     include Resolver
-    policy Clubccex::Policy, :admin_or_this_is_me?
+    policy Clubccex::Policy, :admin_or_recommender?
     model Recommendation, :find
 
     contract do

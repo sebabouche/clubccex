@@ -26,5 +26,13 @@ module Clubccex
     def admin_or_this_is_me?
       admin? or this_is_me?
     end
+
+    def admin_or_recommender?
+      admin? or recommender?
+    end
+
+    def recommender?
+      model.recommender == user
+    end
   end
 end
