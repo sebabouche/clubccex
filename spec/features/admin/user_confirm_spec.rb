@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe User::Confirm, type: :feature do
   context "Logged as admin" do
     before do
-      sign_up!
-      sign_in_as_admin!
+      sign_up_user!
+      sign_in_admin!
     end
 
     context "Unconfirmed Page" do

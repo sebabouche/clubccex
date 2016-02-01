@@ -4,7 +4,7 @@ RSpec.describe "Users Page", type: :feature do
 
   feature "scrolls infinitely" do
     before do
-      sign_in_as_admin!
+      sign_in_admin!
       60.times { create_user! }
       visit ("/users")
     end
