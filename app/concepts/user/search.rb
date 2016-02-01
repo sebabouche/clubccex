@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
     include Kaminari::ActiveRecordExtension
 
     def model!(params)
-      q = users.confirmed.ransack(params[:q])
+      q = users.ransack(params[:q])
       results = q.result().page(params[:page]).per(params[:per])
     end
 

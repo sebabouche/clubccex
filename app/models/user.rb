@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   serialize :auth_meta_data
   serialize :image_meta_data
 
-  scope :unconfirmed, -> { where('confirmed != 1') }
+  scope :unconfirmed, -> { where(confirmed: 0) }
   scope :unconfirmed_sleeping, -> { where(confirmed: 0, sleeping: 1) }
   scope :confirmed, -> { where(confirmed: 1, sleeping: 0) }
   scope :confirmed_sleeping, -> { where(confirmed: 1, sleeping: 1) }
