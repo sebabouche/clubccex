@@ -18,6 +18,19 @@ class PostsController < LoggedController
     render :new
   end
 
+  def edit
+    form Post::Update
+  end
+
+  def update
+    run Post::Update do |op|
+      flash[:notice] = "Post modifié!"
+      return redirect_to category_path(op.model.category)
+    end
+
+    render :edit
+  end
+
   def create_comment
     run Comment::Create do |op|
       flash[:notice] = "Commentaire envoyé!"

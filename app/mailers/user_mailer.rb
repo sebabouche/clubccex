@@ -44,6 +44,14 @@ class UserMailer < ApplicationMailer
       subject: "[CCEx] Confirmes-tu que #{user_name(@recommendation.user)} fait partie des anciens ?")
   end
 
+  ### COMMENT
+  def notify_comment(comment_id)
+    @comment = Comment.find(comment_id)
+    mail(
+      to: @comment.post.user.email,
+      subject: "[CCEx] #{@comment.user.firstname} #{@comment.user.lastname} a commenté un post que vous avez écrit.")
+  end
+
   private
 
   def find_users!(recommender_id, user_id)

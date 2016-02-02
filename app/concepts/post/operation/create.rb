@@ -14,6 +14,7 @@ class Post < ActiveRecord::Base
       property :user_id
 
       validates :title, :body, :category_id, presence: true
+      validates :title, length: {in: 4..140}
     end
 
     def process(params)

@@ -1,6 +1,8 @@
 .col-sm-6.col-md-4.col-lg-4.card
   .post
-    %h2= link_title
+    %h2
+      %span= link_title
+      = edit_link
     %p
       = concept('user/cell/decorator', user).(:linkname)
       %span= has_posted_at

@@ -3,6 +3,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.references :user, index: true, foreign_key: true
       t.references :category, index: true, foreign_key: true
+      t.boolean :closed
       t.string :title
       t.text :body
 

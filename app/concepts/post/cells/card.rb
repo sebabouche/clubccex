@@ -8,10 +8,5 @@ class Post::Cell::Card < Post::Cell
     render :card
   end
 
-  private
-
-  def link_title
-    link_to title, post_path(model)
-  end
 end
 

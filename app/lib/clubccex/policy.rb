@@ -23,6 +23,10 @@ module Clubccex
       user == model
     end
 
+    def this_is_mine?
+      user == model.user
+    end
+
     def admin_or_this_is_me?
       admin? or this_is_me?
     end

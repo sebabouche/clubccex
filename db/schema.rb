@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20160130125627) do
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "category_id"
+    t.boolean  "closed"
     t.string   "title"
     t.text     "body"
     t.datetime "created_at",  null: false

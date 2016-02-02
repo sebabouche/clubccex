@@ -16,9 +16,10 @@ class Comment < ActiveRecord::Base
     end
 
     def process(params)
-      validate(params[:comment]) do |f|
+      validate(params[:comment]) do
         contract.user_id = params[:current_user].id
-        f.save
+        contract.save
+        notify_author!
       end
     end
 
@@ -27,6 +28,10 @@ class Comment < ActiveRecord::Base
     end
 
     private
+
+    def notify_author!
+      UserMailer.notify_comment(contract.id) if contract.post.user.id != contract.user_id
+    end
 
     def setup_model!(params)
       model.post = Post.find_by_id(params[:id])
