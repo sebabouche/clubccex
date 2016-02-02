@@ -10,6 +10,7 @@
   %body.logged
     = render 'layouts/offcanvas'
     = render 'layouts/shared/messages'
+    = yield :full_width
     .container
       = yield
       .row

@@ -1,6 +1,6 @@
-%h1 #{@comment.user.firstname} #{@comment.user.lastname} a écrit:
+%h1 #{@comment.user.firstname} #{@comment.user.lastname} a commenté ton post :
 
-%p @comment.body
+%p= "\"#{@comment.body}\""
 
 = link_to "Voir le post et ses commentaires", post_url(@comment.post)
 
