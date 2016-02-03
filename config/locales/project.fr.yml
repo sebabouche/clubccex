@@ -1,0 +1,4 @@
+fr:
+  errors:
+    messages:
+      already_persisted: "Email déjà enregistré. <a href='#'>Cliquez ici pour terminer votre inscription</a> (ou <a href='#'> connectez-vous si vous êtes confirmé.</a>)."

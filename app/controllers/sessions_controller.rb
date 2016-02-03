@@ -14,6 +14,7 @@ class SessionsController < AnonymousController
     end
 
     @form.prepopulate!
+    @existing = User.find_by_email(@form.email)
     render 'sign_up_form'
   end
 
@@ -33,6 +34,10 @@ class SessionsController < AnonymousController
     end
 
     render 'sign_up_sleeping_form'
+  end
+  
+  def sign_up_sleeping_email_form
+    form Session::SignUp::Sleeping::Email
   end
 
   ### SIGN IN ###
@@ -70,6 +75,19 @@ class SessionsController < AnonymousController
     end
 
     render 'wake_up_form'
+  end
+
+  def send_sleeping_email
+    recommendation = Recommendation.find_by_recommender_id(params[:id])
+
+    if !recommendation.nil?
+      UserMailer.sign_up_recommender(recommendation.recommender_id, recommendation.user_id).deliver_now
+      flash[:notice] = "Email envoyé ! Vérifie ta boîte de réception pour terminer ton inscription."
+      redirect_to root_path
+    else
+      flash[:danger] = "Un problème est survenu (pas de recommandation enregistrée). Contacte sebastien@clubccex.com."
+      redirect_to root_path
+    end
   end
 
   def operation_model_name # FIXME.

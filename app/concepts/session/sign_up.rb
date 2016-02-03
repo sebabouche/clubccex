@@ -112,6 +112,13 @@ module Session
     class Sleeping < SignUp
       include Model
       model User, :find
+
+      class Email < Sleeping
+        def setup_model!(params)
+          model = User.find_by_email(params[:email])
+        end
+      end
     end
+
   end
 end 

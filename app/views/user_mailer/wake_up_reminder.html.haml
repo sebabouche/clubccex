@@ -3,7 +3,7 @@
 %p #{@user.firstname + " " + @user.lastname} t'as choisi pour le/la recommander comme ancien courseux.
 %p Ton email étant confirmé, il ne te reste plus qu'à cliquer ce lien et suivre les indications pour nous rejoindre !
 
-// TODO ajouter le lien
+%p= link_to "Je termine mon inscription", sessions_wake_up_form_url(@recommender.id, confirmation_token: @confirmation_token)
 
 %p À très bientôt !
 

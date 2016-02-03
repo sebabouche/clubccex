@@ -17,9 +17,10 @@ class UserMailer < ApplicationMailer
 
   def wake_up(id)
     @user = User.find(id)
+    @confirmation_token = Tyrant::Authenticatable.new(@recommender).confirmation_token
     mail(
       to: @user.email,
-      subject: "[CCEx] Génial ! Vous êtes accepté(e) au Club CCEx.")
+      subject: "[CCEx] Génial ! Tu es accepté(e) au Club CCEx.")
   end
 
   ### as recommnder
@@ -32,6 +33,7 @@ class UserMailer < ApplicationMailer
 
   def wake_up_reminder(recommender_id, user_id)
     find_users!(recommender_id, user_id)
+    @confirmation_token = Tyrant::Authenticatable.new(@recommender).confirmation_token
     mail(
       to: @recommender.email,
       subject: "[CCEx] #{user_name(@user)} attend ta confirmation, rejoins-nous !")
@@ -49,7 +51,7 @@ class UserMailer < ApplicationMailer
     @comment = Comment.find(comment_id)
     mail(
       to: @comment.post.user.email,
-      subject: "[CCEx] #{@comment.user.firstname} #{@comment.user.lastname} a commenté un post que vous avez écrit.")
+      subject: "[CCEx] #{@comment.user.firstname} #{@comment.user.lastname} a commenté un post que tu as écrit.")
   end
 
   private

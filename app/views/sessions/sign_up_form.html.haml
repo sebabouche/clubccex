@@ -1,1 +1,13 @@
 = concept("session/cell/sign_up", @operation)
+
+- if @existing.present?
+  %hr
+  .text-center 
+    %h4 Ton email n'est pas disponible ?
+    %p
+      = link_to "Renvoyer l'email d'inscription", sessions_send_sleeping_email_path(@existing.id), class: "btn btn-warning"
+    %p 
+      %span Ton email déjà enregistré parce qu'une courseuse ou un courseux t'as choisi pour le confirmer.
+      %span Pour éviter toute usurpation d'identité, ton inscription doit passer par un lien envoyé à ton adresse
+      %strong #{@existing.email}
+      %span !

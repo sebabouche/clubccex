@@ -3,7 +3,7 @@
 %p #{@user.firstname + " " + @user.lastname} t'as choisi pour le/la recommander comme ancien courseux.
 %p Seulement, tu n'es pas inscrit(e) toi-même ! Alors fonce t'inscrire en cliquant le lien suivant.
 
-// TODO ajouter le lien
+%p= link_to "Je m'inscris", sessions_sign_up_sleeping_form_url(@recommender.id)
 
 %p À très bientôt !
 

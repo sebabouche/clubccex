@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20160130125627) do
     t.string   "nickname"
     t.string   "gender"
     t.string   "company"
+    t.string   "string"
     t.string   "occupation"
     t.string   "phone"
     t.string   "city"
