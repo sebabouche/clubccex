@@ -113,6 +113,11 @@ module Session
       include Model
       model User, :find
 
+      def setup_model!(params)
+        raise "Error" if model.recommendations.any?
+      end
+
+
       class Email < Sleeping
         def setup_model!(params)
           model = User.find_by_email(params[:email])
