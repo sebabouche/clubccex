@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post  "sessions/sign_up"
   get   "sessions/sign_up_sleeping_form/:id", controller: :sessions, action: :sign_up_sleeping_form, as: :sessions_sign_up_sleeping_form
   get   "sessions/send_sleeping_email/:id", controller: :sessions, action: :send_sleeping_email, as: :sessions_send_sleeping_email
-  patch "sessions/sign_up_sleeping/:id", controller: :sessions, action: :sign_up_sleeping #, as: :sessions_sign_up_sleeping
+  patch "sessions/sign_up_sleeping/:id", controller: :sessions, action: :sign_up_sleeping, as: :sessions_sign_up_sleeping
 
   get   "sessions/sign_out"
   
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post  "sessions/sign_in"
 
   get  "sessions/wake_up_form/:id", controller: :sessions, action: :wake_up_form, as: :sessions_wake_up_form
-  post "sessions/wake_up/:id", controller: :sessions, action: :wake_up #, as: :session_wake_up
+  post "sessions/wake_up/:id", controller: :sessions, action: :wake_up, as: :session_wake_up
 
   resources :recommendations
 

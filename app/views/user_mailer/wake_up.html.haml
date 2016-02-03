@@ -3,7 +3,7 @@
 %p Les deux utilistateurs que tu as choisi (ou un administrateur) ont confirmé que faisait bien partie des anciens courseux.
 %p Il ne te reste plus qu'à cliquer ce lien pour choisir ton mot de passe et profiter du réseau des anciens courseux !
 
-%p= link_to "Je termine mon inscription", sessions_wake_up_form_url(@recommender.id, confirmation_token: @confirmation_token)
+%p= link_to "Je termine mon inscription", sessions_wake_up_form_url(@user.id, confirmation_token: @confirmation_token)
 
 
 %p À très bientôt !

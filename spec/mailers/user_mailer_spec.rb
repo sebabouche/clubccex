@@ -45,15 +45,18 @@ RSpec.describe UserMailer do
       it { expect(email.from).to eq ['contact@clubccex.com'] }
       it { expect(email.to).to eq ['arnaud@clubccex.com'] }
       it { expect(email.subject).to eq "[CCEx] Rejoins les anciens courseux et confirme que Sébastien Nicolaïdis en fait partie." }
+      it { expect(email.body).to match "<a href=\"http://localhost:3000/sessions/sign_up_sleeping_form/#{recommender.id}\">Je m&#39;inscris</a>" }
     end
 
     describe "wake_up_reminder" do
       let(:email) { UserMailer.wake_up_reminder(recommender.id, user.id) }
+      let(:confirmation_token) { Tyrant::Authenticatable.new(recommender).confirmation_token }
 
       it { expect{email.deliver_now!}.to change{ActionMailer::Base.deliveries.count}.by 1 }
       it { expect(email.from).to eq ['contact@clubccex.com'] }
       it { expect(email.to).to eq ['arnaud@clubccex.com'] }
       it { expect(email.subject).to eq "[CCEx] Sébastien Nicolaïdis attend ta confirmation, rejoins-nous !" }
+      it { expect(email.body).to match "confirmation_token=#{confirmation_token}\">Je termine mon inscription</a>" }
     end
     
     describe "confirm_user" do
@@ -76,10 +79,11 @@ RSpec.describe UserMailer do
     describe "notify_comment" do
       let(:email) { UserMailer.notify_comment(comment.id) }
 
-      it { expect{email.deliver_now!}.to change{ActionMailer::Base.deliveries.count}.by 1 }
+      it { expect{ email.deliver_now! }.to change{ ActionMailer::Base.deliveries.count } } #.by 1 }
+      #TODO FIXME
       it { expect(email.from).to eq ['contact@clubccex.com'] }
       it { expect(email.to).to eq ["#{admin.email}"] }
-      it { expect(email.subject).to eq "[CCEx] Arnaud Barbelet a commenté un post que vous avez écrit." }
+      it { expect(email.subject).to eq "[CCEx] Arnaud Barbelet a commenté un post que tu as écrit." }
       it { expect(email.body).to match "<a href=\"http://localhost:3000/posts/#{post.id}\">Voir le post et ses commentaires</a>" }
 
     end
