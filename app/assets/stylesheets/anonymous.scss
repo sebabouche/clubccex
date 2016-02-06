@@ -8,14 +8,6 @@
     color: #fff;
   }
 
-  /* Custom default button */
-  .btn-secondary-outline {
-    &:hover {
-      color: $cce-red;
-      background-color: #fff;
-    }
-  }
-
   input {
     background-color: rgba(0,0,0,0);
     color: white;

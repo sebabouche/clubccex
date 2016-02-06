@@ -1,8 +1,8 @@
-- if users.present?
-  = concept('user/cell/card', collection: users, user: options[:user])
-  - unless users.last_page?
+- if model.present?
+  = concept('user/cell/card', collection: model, user: options[:user])
+  - unless model.last_page?
     .col-md-4.col-sm-6.text-center#next= link_to 'Voir plus', 
-      next_users_path(page: users.next_page), 
+      next_path, 
       remote: true, 
       rel: "next"
 - else

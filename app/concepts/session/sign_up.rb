@@ -10,7 +10,8 @@ module Session
       property :email
       property :firstname
       property :lastname
-      property :confirmed, writeable: false
+      property :confirmed
+      property :sleeping
 
       collection :recommenders,
       prepopulator:      :prepopulate_recommenders!,
@@ -63,6 +64,7 @@ module Session
       validate(params[:user]) do
         dispatch!(:before_save)
 
+        set_user_status!
         contract.save
         
         dispatch!(:after_save)
@@ -80,9 +82,9 @@ module Session
     
     private
 
-    def setup_model!(params)
-      model.confirmed = 0
-      model.sleeping = 0
+    def set_user_status!
+      contract.confirmed = 0
+      contract.sleeping = 0
     end
 
     def do_not_update_recommender!(recommender, options)

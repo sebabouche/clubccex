@@ -2,19 +2,28 @@ class UsersController < LoggedController
   def index
     @q  = User.ransack(params[:q])
     collection User::Search
-  end
-
-  def next
-    collection User::Search
-
-    render js: concept("user/cell/grid", @collection, page: params[:page], user: tyrant.current_user).(:append)
+    
+    respond_to do |format|
+      format.html { render }
+      format.js { render js: concept("user/cell/grid", @collection, page: params[:page], user: tyrant.current_user).(:append) }
+    end
   end
 
   def unconfirmed
     @q  = User.ransack(params[:q])
+    collection User::Search
+
+    respond_to do |format|
+      format.html { render }
+      format.js { render js: concept("user/cell/grid", @collection, page: params[:page], user: tyrant.current_user, unconfirmed: true).(:append) }
+    end
+  end
+
+  def next_unconfirmed
+    @q = User.ransack(params[:q])
     collection User::Search::Unconfirmed
 
-    render :index
+    render js: concept("user/cell/grid", @collection, page: params[:page], user: tyrant.current_user).(:append)
   end
 
   def show

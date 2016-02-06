@@ -71,4 +71,12 @@ class Navigation::Cell < ::Cell::Concept
   def pending_confirmation_count
     options[:current_user].pending_confirmations.size
   end
+
+  def toggle_nav_button
+    "<button class='btn btn-nav btn-togglenav' id='togglenav' type='button' data-toggle='offcanvas' data-target='#navMenu' data-canvas='body' role='navigation'></button>"
+  end
+
+  def new_post_button
+    "<button class='btn btn-nav btn-newpost' type='button' role='new post' data-toggle='modal' data-target='#newPostModal'></button>"
+  end
 end

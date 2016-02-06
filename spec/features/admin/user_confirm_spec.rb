@@ -9,7 +9,7 @@ RSpec.describe User::Confirm, type: :feature do
 
     context "Unconfirmed Page" do
       before do
-        click_button "navburger"
+        click_button "togglenav"
         click_link "", href: '/users/unconfirmed'
       end
 
@@ -24,7 +24,7 @@ RSpec.describe User::Confirm, type: :feature do
 
     context "Users Page" do
       before do
-        click_button "navburger"
+        click_button "togglenav"
         click_link "", href: '/users'
       end
 

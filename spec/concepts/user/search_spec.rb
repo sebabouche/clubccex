@@ -15,7 +15,7 @@ RSpec.describe User::Search, type: :operation do
     it "filters by firstname" do
       user
       search = User::Search.present(current_user: user, q: {
-        firstname_or_lastname_or_email_or_nickname_or_occupation_or_company_cont: "Sebabouche", 
+        firstname_or_lastname_or_nickname_or_occupation_or_company_cont: "Sebabouche", 
         events_number_eq: ""}).model
 
       expect(search.first).to eq user
@@ -24,16 +24,7 @@ RSpec.describe User::Search, type: :operation do
     it "filters by lastname" do
       user
       search = User::Search.present(current_user: user, q: {
-        firstname_or_lastname_or_email_or_nickname_or_occupation_or_company_cont: "Nicolaïdis", 
-        events_number_eq: ""}).model
-
-      expect(search.first).to eq user
-    end
-
-    it "filters by email" do
-      user
-      search = User::Search.present(current_user: user, q: {
-        firstname_or_lastname_or_email_or_nickname_or_occupation_or_company_cont: "sebabouche@example.com", 
+        firstname_or_lastname_or_nickname_or_occupation_or_company_cont: "Nicolaïdis", 
         events_number_eq: ""}).model
 
       expect(search.first).to eq user

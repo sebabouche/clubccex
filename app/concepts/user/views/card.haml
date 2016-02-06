@@ -3,3 +3,9 @@
   %h3= concept('user/cell/decorator', model).(:linkname)
   %p= concept('user/cell/decorator', model).(:sum_up)
   %p= concept('user/cell/decorator', model).(:confirm_button)
+
+  - if admin?
+    %p
+      %span= user_status
+      %span= recommendations
+

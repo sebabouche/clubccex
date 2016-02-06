@@ -18,6 +18,53 @@
     bottom: 0;
   }
 
+
+  .btn-nav {
+    display: block;
+    width: 36px;
+    height: 36px;
+    margin: 10px 0 0 10px;
+    background: $cce-red;
+    opacity: .3;
+    border: solid 1px $gray-light;
+    border-radius: 32px;
+    outline: none;
+
+    &:hover {
+      opacity: 1;
+      background: $cce-red;
+      border: solid 1px $cce-red;
+    }
+
+    &:after {
+      position: relative;
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      color: $gray-light;
+    }
+  }
+
+
+  .btn-togglenav {
+    &:after {
+      bottom: 2px;
+      right: 0px;
+      padding-right: 2px;
+      content: "\f054";
+    }
+  }
+
+  .btn-newpost {
+    &:after {
+      bottom: 2px;
+      right: 3px;
+      padding-right: 5px;
+      content: "\f044";
+    }
+  }
+
   @media (min-width: 0) {
     .navbar-toggle {
       display: block; /* force showing the toggle */

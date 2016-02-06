@@ -6,21 +6,33 @@ class User < ActiveRecord::Base
     include Kaminari::ActiveRecordExtension
 
     def model!(params)
+      if params[:action] == "unconfirmed"
+        users = User.unconfirmed
+      else
+        users = User.confirmed
+      end
+
       q = users.ransack(params[:q])
       results = q.result().page(params[:page]).per(params[:per])
     end
 
-    def users
-      User.confirmed
-    end
+    private
+
+    #def users
+    #  User.confirmed
+    #end
 
     class Unconfirmed < self
+      private
+
       def users
         User.unconfirmed
       end
     end
 
     class All < self
+      private
+
       def users
         User.all
       end

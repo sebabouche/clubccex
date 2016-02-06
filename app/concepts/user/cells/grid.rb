@@ -15,14 +15,6 @@ class User::Cell
       options[:user].admin?
     end
 
-    def users
-      if admin?
-        @model
-      else
-        @model.confirmed
-      end
-    end
-
     def append
       %{ $('#next').replaceWith("#{j(show)}") }
     end
@@ -31,10 +23,10 @@ class User::Cell
       options[:page] or 1
     end
 
-    class Unconfirmed < Grid
-      def users
-        User.unconfirmed
-      end
+    def next_path
+      return unconfirmed_users_path(page: model.next_page) if options[:unconfirmed]
+      users_path(page: model.next_page)
     end
   end
+
 end  

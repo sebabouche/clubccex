@@ -1,0 +1,17 @@
+.modal.fade#newPostModal(tabindex="-1" role="dialog" aria-labelledby="newPostModalLabel")
+  .modal-dialog(role="document")
+    .modal-content
+      .modal-header
+        %h2.text-center.modal-title#newPostModalLabel Créer un nouveau post
+
+      = simple_form_for @new_post do |f|
+        .modal-body
+          = f.error_notification
+          = f.input :title
+          = f.input :body
+          = f.association :category
+
+        .modal-footer
+          %button.btn.btn-default.btn-s(type="button" data-dismiss="modal") Annuler
+          = f.button :button, "Créer le nouvel événement", class:"btn-primary", data: {disable_with: "<i class='fa fa-circle-o-notch fa-spin'></i> En cours…" }
+

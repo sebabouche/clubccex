@@ -23,7 +23,6 @@ Rails.application.routes.draw do
 
   resources :users do
     get :unconfirmed, on: :collection
-    get :next, on: :collection
     get :confirm, on: :member
   end
 

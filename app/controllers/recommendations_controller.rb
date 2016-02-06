@@ -1,5 +1,4 @@
 class RecommendationsController < LoggedController
-
   def index
     @collection = tyrant.current_user.pending_confirmations
   end
