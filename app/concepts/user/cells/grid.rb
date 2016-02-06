@@ -16,7 +16,7 @@ class User::Cell
     end
 
     def append
-      %{ $('#next').replaceWith("#{j(show)}") }
+      %{ $('#next-users').replaceWith("#{j(show)}") }
     end
 
     def page

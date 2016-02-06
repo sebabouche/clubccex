@@ -1,9 +1,10 @@
-- if model.present?
-  = concept('user/cell/card', collection: model, user: options[:user])
-  - unless model.last_page?
-    .col-md-4.col-sm-6.text-center#next= link_to 'Voir plus', 
-      next_path, 
-      remote: true, 
-      rel: "next"
-- else
-  %h1.text-center Pas d'utilisateurs
+.row.grid.scrollable
+  - if model.present?
+    = concept('user/cell/card', collection: model, user: options[:user])
+    - unless model.last_page?
+      .col-md-4.col-sm-6.text-center#next-users= link_to 'Voir plus', 
+        next_path, 
+        remote: true, 
+        rel: "next"
+  - else
+    %h1.text-center Pas d'utilisateurs

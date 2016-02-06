@@ -8,7 +8,7 @@ class User::Cell::Card < User::Cell
   private
 
   def css_classes
-    "col-md-4 col-sm-6 profile profile-card"
+    "col-md-4 col-sm-6 card profile profile-card"
   end
 
   def recommendations

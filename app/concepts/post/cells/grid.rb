@@ -19,7 +19,7 @@ class Post::Cell::Grid < Cell::Concept
   end
 
   def append
-    %{ $('#next').replaceWith("#{j(show)}") }
+    %{ $('#next-posts').replaceWith("#{j(show)}") }
   end
 
   def page

@@ -5,5 +5,4 @@
       = f.input :events_number_eq, label: false, placeholder: "Par année de course"
       = f.button :submit, "Rechercher", class: "btn-primary"
 
-.row.scrollable
-  = concept "user/cell/grid", @collection, user: tyrant.current_user
+= concept "user/cell/grid", @collection, user: tyrant.current_user
