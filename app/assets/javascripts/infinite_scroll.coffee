@@ -1,7 +1,7 @@
 ready = ->
 
   # Setup plugin and define optional event callbacks
-  $('#users').infinitePages
+  $('.scrollable').infinitePages
    debug: true
    buffer: 300 # load new page when within 200px of nav link
    # context: '.pane' # define the scrolling container (defaults to window)

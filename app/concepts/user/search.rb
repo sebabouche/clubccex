@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
       end
 
       q = users.ransack(params[:q])
-      results = q.result().page(params[:page]).per(params[:per])
+      results = q.result().page(params[:page]).per(24)
     end
 
     private

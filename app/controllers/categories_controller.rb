@@ -1,9 +1,18 @@
-class CategoriesController < ApplicationController
-  layout 'logged'
+class CategoriesController < LoggedController
 
   def index
     @categories = Category.order(:priority)
     form Category::Create
+  end
+
+  def show
+    # raise params.inspect
+    collection Post::Index
+
+    respond_to do |format|
+      format.html { render }
+      format.js { render js: concept("post/cell/grid", @collection, category_id: params[:id], page: params[:page], user: tyrant.current_user).(:append) }
+    end
   end
 
   def create

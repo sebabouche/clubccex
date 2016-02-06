@@ -1,1 +1,2 @@
-= concept("post/cell/grid", Post.from_category(params[:id]), user: tyrant.current_user)
+.row.scrollable
+  = concept("post/cell/grid", @collection, category_id: params[:id], user: tyrant.current_user)

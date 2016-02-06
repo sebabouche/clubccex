@@ -11,7 +11,7 @@ class Post::Cell::Grid < Cell::Concept
   private
 
   def posts
-    @model
+    model
   end
 
   def user
@@ -24,6 +24,10 @@ class Post::Cell::Grid < Cell::Concept
 
   def page
     options[:page] or 1
+  end
+
+  def next_category_path
+    category_path(id: options[:category_id], page: model.next_page)
   end
 end
 
