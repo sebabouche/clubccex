@@ -1,18 +1,18 @@
 %div.navmenu.navmenu-fixed-left.offcanvas#navMenu(role="navigation" class=css_classes)
-  %a.navmenu-brand{href: root_path}= title
+  .navmenu-brand.text-center= title
   %ul.nav.navmenu-nav
-    %li= menu_item("Accueil", root_path, "fa", "home")
+    %li= menu_item("Accueil", root_path, "fa", "home", true)
     = categories
     %li= menu_item("Trombi", users_path, "fa", "book")
-    -if admin?
-      %hr
-      %li= menu_item("Courseux non-confirmés", unconfirmed_users_path)
 
   %ul.nav.navmenu-nav.navmenu-bottom
     = pending_confirmations
-    %li= menu_item("Mon profil", user_path(current_user), "fa", "user")
-    %li= link_to "Email: #{email}", "#"
-    %li= menu_item("Me deconnecter", sessions_sign_out_path, "fa", "sign-out")
+    -if admin?
+      %li= menu_item("Courseux non-confirmés", unconfirmed_users_path)
+
+  .navmenu-bottom
+    .item= menu_item("Profil", profile_path, "fa", "user")
+    .item= menu_item("Deconnexion", sessions_sign_out_path, "fa", "sign-out")
 .navbar.navbar-default.navbar-fixed-top
   = toggle_nav_button
   = new_post_button

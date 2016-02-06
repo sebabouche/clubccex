@@ -21,13 +21,24 @@ class Navigation::Cell < ::Cell::Concept
     options[:current_user].email
   end
 
-  def menu_item(text, link, lib = nil, icon = nil)
-    active_link_to link do
-      unless lib.nil? or icon.nil?
-        content_tag(:span, "", class: "#{lib} #{lib}-#{icon}") +
-        content_tag(:span, " #{text}")
-      else
-        text
+  def menu_item(text, link, lib = nil, icon = nil, exclusive = false)
+    if exclusive == true
+      active_link_to link, active: :exclusive do
+        unless lib.nil? or icon.nil?
+          content_tag(:span, "", class: "#{lib} #{lib}-#{icon}") +
+          content_tag(:span, " #{text}")
+        else
+          text
+        end
+      end
+    else
+      active_link_to link do
+        unless lib.nil? or icon.nil?
+          content_tag(:span, "", class: "#{lib} #{lib}-#{icon}") +
+          content_tag(:span, " #{text}")
+        else
+          text
+        end
       end
     end
   end
@@ -61,7 +72,7 @@ class Navigation::Cell < ::Cell::Concept
   end
 
   def pending_confirmations
-    "<li class='text-danger'><a href='#{recommendations_path}'><span class='fa fa-exclamation-triangle'></span> Confirmations en attente (#{pending_confirmation_count})</a></li> " if pending_confirmations?
+    "<li><a href='#{recommendations_path}' class='text-warning'><span class='fa fa-exclamation-triangle'></span> #{pluralize(pending_confirmation_count, 'confirmation')} en attente</a></li> " if pending_confirmations?
   end
 
   def pending_confirmations?

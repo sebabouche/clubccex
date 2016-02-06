@@ -30,6 +30,12 @@ class UsersController < LoggedController
     present User::Show
   end
 
+  def profile
+    present User::Show::CurrentUser
+
+    render :show
+  end
+
   def edit
     form User::Update
   end

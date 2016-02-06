@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get :unconfirmed, on: :collection
     get :confirm, on: :member
   end
+  get "profile", to: 'users#profile'
 
   resources :posts do
     member do
