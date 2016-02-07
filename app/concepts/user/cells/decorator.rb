@@ -28,7 +28,7 @@ class User::Cell::Decorator < User::Cell
 
   def linkname
     name_link = link_to fullname, path
-    name_link += link_to " (éditer)", edit_user_path(model), class: "small" if user == @model
+    name_link += link_to " (éditer)", edit_user_path(model), class: "small" if current_user == @model
     name_link
   end
 
@@ -51,7 +51,7 @@ class User::Cell::Decorator < User::Cell
     else
       mfn = fullname
     end
-    mfn += link_to " (éditer)", edit_user_path(model), class: "small" if user == @model
+    mfn += link_to " (éditer)", edit_user_path(model), class: "small" if current_user == @model
     mfn
   end
 

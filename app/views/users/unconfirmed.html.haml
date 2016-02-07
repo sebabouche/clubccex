@@ -6,5 +6,5 @@
       = f.button :submit, "Rechercher", class: "btn-primary"
 
 .row#users
-  = concept "user/cell/grid", @collection, user: tyrant.current_user, unconfirmed: true
+  = concept "user/cell/grid", @collection, current_user: tyrant.current_user, unconfirmed: true
 

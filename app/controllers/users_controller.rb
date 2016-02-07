@@ -5,7 +5,7 @@ class UsersController < LoggedController
     
     respond_to do |format|
       format.html { render }
-      format.js { render js: concept("user/cell/grid", @collection, page: params[:page], user: tyrant.current_user).(:append) }
+      format.js { render js: concept("user/cell/grid", @collection, page: params[:page], current_user: tyrant.current_user).(:append) }
     end
   end
 
@@ -15,7 +15,7 @@ class UsersController < LoggedController
 
     respond_to do |format|
       format.html { render }
-      format.js { render js: concept("user/cell/grid", @collection, page: params[:page], user: tyrant.current_user, unconfirmed: true).(:append) }
+      format.js { render js: concept("user/cell/grid", @collection, page: params[:page], current_user: tyrant.current_user, unconfirmed: true).(:append) }
     end
   end
 
@@ -23,7 +23,7 @@ class UsersController < LoggedController
     @q = User.ransack(params[:q])
     collection User::Search::Unconfirmed
 
-    render js: concept("user/cell/grid", @collection, page: params[:page], user: tyrant.current_user).(:append)
+    render js: concept("user/cell/grid", @collection, page: params[:page], current_user: tyrant.current_user).(:append)
   end
 
   def show

@@ -11,7 +11,7 @@ class CategoriesController < LoggedController
 
     respond_to do |format|
       format.html { render }
-      format.js { render js: concept("post/cell/grid", @collection, category_id: params[:id], page: params[:page], user: tyrant.current_user).(:append) }
+      format.js { render js: concept("post/cell/grid", @collection, category_id: params[:id], page: params[:page], current_user: tyrant.current_user).(:append) }
     end
   end
 

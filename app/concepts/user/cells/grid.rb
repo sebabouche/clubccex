@@ -11,8 +11,12 @@ class User::Cell
 
     private
 
+    def current_user
+      options[:current_user]
+    end
+
     def admin?
-      options[:user].admin?
+      current_user.admin?
     end
 
     def append

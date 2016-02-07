@@ -14,8 +14,8 @@ class Post::Cell::Grid < Cell::Concept
     model
   end
 
-  def user
-    options[:user]
+  def current_user
+    options[:current_user]
   end
 
   def append

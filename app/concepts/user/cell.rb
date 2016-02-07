@@ -24,11 +24,23 @@ class User::Cell < ::Cell::Concept
 
   private
 
-  def admin?
-    options[:user].admin?
+  def current_user
+    options[:current_user]
   end
 
-  def user
-    options[:user]
+  def admin?
+    current_user.admin?
+  end
+
+  def this_is_me?
+    model == current_user
+  end
+
+  def edit_link
+    if this_is_me?
+      content_tag :small do
+        link_to "(modifier)", edit_profile_path
+      end
+    end
   end
 end
