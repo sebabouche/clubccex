@@ -25,9 +25,9 @@ RSpec.describe "Recommendation flow", type: :feature do
   scenario "user can access recommendations from dashboard" do
     sign_in_user!("arnaud@example.com", "password")
     visit "/"
-    expect(page).to have_css "a[href='/recommendations']", text: "Confirmations en attente (1)"
+    expect(page).to have_css "a[href='/recommendations']", text: "1 confirmation en attente"
 
-    click_link "Confirmations en attente (1)"
+    click_link "1 confirmation en attente"
     expect(page).to have_css(".recommendation_confirmed")
     choose('Oui')
     click_button 'Valider'

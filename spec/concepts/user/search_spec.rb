@@ -41,13 +41,13 @@ RSpec.describe User::Search, type: :operation do
 
     context "pagination" do
       before do
-        25.times { User.create( firstname: Faker::Name.first_name, lastname: Faker::Name.last_name,
+        24.times { User.create( firstname: Faker::Name.first_name, lastname: Faker::Name.last_name,
           email: Faker::Internet.email, confirmed: 1, sleeping: 0) }
       end
 
-      it "shows 25 users per page" do
+      it "shows 24 users per page" do
         search = User::Search.present({current_user: user})
-        expect(search.model.count).to eq 25
+        expect(search.model.count).to eq 24
       end
 
       it "paginates" do

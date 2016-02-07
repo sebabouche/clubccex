@@ -55,6 +55,9 @@ RSpec.configure do |config|
   end
 
 
+  # Only failures
+  config.example_status_persistence_file_path = "./spec/support/examples.txt"
+
   # Action Mailer cleaning
   config.before(:each) do
     ActionMailer::Base.deliveries = []

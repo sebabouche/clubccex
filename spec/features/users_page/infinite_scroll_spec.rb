@@ -10,9 +10,9 @@ RSpec.describe "Users Page", type: :feature do
     end
 
     scenario "it scrolls", js: true do
-      expect(page).to have_css ".profile-card", count: 25
+      expect(page).to have_css ".profile-card", count: 24
       page.execute_script "window.scrollBy(0,10000)"
-      expect(page).to have_css ".profile-card", count: 50
+      expect(page).to have_css ".profile-card", count: 48
     end
   end
 end
