@@ -28,6 +28,21 @@
         = f_input f, :phone
       .col-sm-3
         = f_input f, :city
+    %h4 Réseaux sociaux
+    .row
+      .col-sm-4.col-sm-offset-4
+        = f.input :linkedin, wrapper: :vertical_input_group, label: false do
+          %span.input-group-addon
+            %span.fa.fa-linkedin
+          = f.input_field :linkedin, class: "form-control", placeholder: "fr.linkedin.com/in/ton_profil"
+        = f.input :facebook, wrapper: :vertical_input_group, label: false do
+          %span.input-group-addon
+            %span.fa.fa-facebook
+          = f.input_field :linkedin, class: "form-control", placeholder: "facebook.com/ton_profil"
+        = f.input :twitter, wrapper: :vertical_input_group, label: false do
+          %span.input-group-addon
+            %span.fa.fa-twitter
+          = f.input_field :twitter, class: "form-control", placeholder: "@ton_profil"
 
     %h4.text-center Quelles courses as-tu organisées ?
     .row
@@ -40,6 +55,6 @@
             = f_input e, :number
     .row
       .col-sm-4.col-sm-offset-4
-        %p= f.button :button, "Modifier", class: "btn btn-primary btn-block"
+        %p= f.button :button, "Mettre à jour mon profil", class: "btn btn-primary btn-block"
         %p.text-center= link_to "Annuler", users_path, class: "btn btn-danger btn-sm"
 

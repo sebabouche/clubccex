@@ -1,46 +1,27 @@
 - content_for :full_width do
-  = concept('layout/cell/header_image', image_path("illustration/image2.jpg"))
+  = concept('layout/cell/header_image', image_path("illustration/image2.jpg"), headline: "Ancienne, ancien. Sois ici chez toi.")
 
-%h1 Ancienne, ancien. Sois ici chez toi.
-    
-%p
-  Ce Club CCEx ouvre ses portes et on veut vraiment que tu t'y sentes bien. D'ailleurs si tu veux changer cette photo 
-  qui te rappelle trop ton âge, sache qu'elle est temporaire et qu'on est ouvert à toute proposition pour améliorer ce site.
+%p.lead Le but du Club est de renforcer l'entraide professionnelle entre les anciens de la CCE. On a défini quatre grands thèmes pour commencer&nbsp;:
 
-%blockquote
-  Pourquoi ce Club ? La Course ne se termine pas au démontage. On peut encore en profiter de longues années. 
-  Ces deux années à apprendre et partager, le Club CCEx voudrait les prolonger de manière simple et constructive.
-    
-%h1  la règle du jeu
-    
-%h2 Le fonctionnement
-      
-%p 
-  The Firm has had a great deal of experience and is highly regarded for its expertise in the areas of design,
-  construction administration, construction management, tight cost control and scheduling. 
-  We have been involved in a wide range of building projects, including college facilities, banks, schools, 
-  nursing homes, office buildings, churches, industrial buildings and major urban development projects.
-%p
-  The various projects have included new construction, renovation and adaptive re-use as a way of providing new space for 
-  the various clients. Tessier Associates provides in-house programming, master planning, architectural design, construction 
-  documentation, project administration and interior design services. Sustainable design, as appropriate for each client, 
-  is incorporated in cost effective ways to benefit the long term value of the buildings created by the firm.
-%p
-  Together with selected consultants, The Firm provides complete professional services including landscape architecture, 
-  structural engineering, electrical and mechanical engineering and site planning.
-    
-%h2 Le fonctionnement
+%ul
+  %li 
+    %strong Le recrutement :
+    %span privilégiez les CCEx et leur entourage en postant ici vos offres d'emplois, stages, recherche d'associé(e)s…
+  %li
+    %strong Le business-development :
+    %span pour fortifier les relations clients-fournisseurs au sein des CCEx.
+  %li 
+    %strong Partenariats :
+    %span faites du co-développement, du co-branding en famille…
+  %li
+    %strong Recherche d'information :
+    %span interrogez les CCEx qui travaillent dans un secteur dont vous ignorez presque tout !
+
+%h2 Et surtout, le Club CCEx, c'est un annuaire 
+%p pour joindre n'importe quel CCEx en deux clics ! Mais pour celà…
+
+=link_to edit_profile_path, class: "btn btn-primary btn-lg" do
+  %span.fa.fa-user
+  %span Je renseigne mon profil en 2 minutes 
   
-%p 
-  The Firm has had a great deal of experience and is highly regarded for its expertise in the areas of design,
-  construction administration, construction management, tight cost control and scheduling. 
-  We have been involved in a wide range of building projects, including college facilities, banks, schools, 
-  nursing homes, office buildings, churches, industrial buildings and major urban development projects.
-%p
-  The various projects have included new construction, renovation and adaptive re-use as a way of providing new space for 
-  the various clients. Tessier Associates provides in-house programming, master planning, architectural design, construction 
-  documentation, project administration and interior design services. Sustainable design, as appropriate for each client, 
-  is incorporated in cost effective ways to benefit the long term value of the buildings created by the firm.
-%p
-  Together with selected consultants, The Firm provides complete professional services including landscape architecture, 
-  structural engineering, electrical and mechanical engineering and site planning.
+

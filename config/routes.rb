@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get :confirm, on: :member
   end
   get "profile", to: 'users#profile'
+  get "edit_profile", to: 'users#edit_profile'
 
   resources :posts do
     member do

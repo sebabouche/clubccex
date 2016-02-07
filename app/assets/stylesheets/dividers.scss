@@ -1,0 +1,33 @@
+.divider {
+  margin-left: auto;
+  margin-right: auto;
+  
+  &-90 {
+    height: 90px;
+  }
+  
+  &-80 {
+    height: 80px;
+  }
+  
+  &-60 {
+    height: 60px;
+  }
+  
+  &-40 {
+    height: 40px;
+  }
+  
+  &-30 {
+    height: 30px;
+  }
+  
+//  &-logo:after {
+//    background: url('hr/64-logo-hr.png') no-repeat top center;
+//    content: "";
+//    display: block;
+//    height: 64px; /* height of the ornament */
+//    position: relative;
+//    top: -32px; /* half the height of the ornament */
+//  }
+}

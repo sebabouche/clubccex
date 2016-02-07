@@ -10,5 +10,9 @@ class Layout::Cell::HeaderImage < Cell::Concept
   def image_url
     model
   end
+
+  def headline
+    options[:headline]
+  end
 end
 

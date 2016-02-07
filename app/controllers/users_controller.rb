@@ -35,6 +35,12 @@ class UsersController < LoggedController
 
     render :show
   end
+  
+  def edit_profile
+    form User::Update::CurrentUser
+
+    render :edit
+  end
 
   def edit
     form User::Update

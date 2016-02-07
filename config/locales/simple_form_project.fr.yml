@@ -2,88 +2,17 @@ fr:
   simple_form:
     labels:
       user:
-        name: "Nom d'utilisateur"
-        image: 'Photo de profil'
-        current_password: "Mot de passe actuel"
-        edit:
-          password: "Nouveau mot de passe"
-          password_confirmation: "Nouveau mot de passe (confirmation)"
-
-      provider:
-        image: 'Photo de profil'
-        current_password: "Mot de passe actuel"
-        edit:
-          password: "Nouveau mot de passe"
-          password_confirmation: "Nouveau mot de passe (confirmation)"
-
-      offer:
-        description: "Le mot du Happhappeur"
-        admin_title: "Titre public"
-        we_like: "On aime"
-        provider: "Happhappeur"
-        neighborhood: "Quartier"
-        starting_price: "À partir de"
-        starting_price_text: "À partir de (particuliers)"
-        starting_price_pro_text: "À partir de (professionnels)"
-        starting_price_cents: "À partir de (en centimes)"
-        min_sales: "C.A. minimum (particuliers)"
-        min_sales_pro: "C.A. minimum (professionnels)"
-        days: "Jours"
-        twenty_four_seven: "Cette offre est disponible 24/7"
-        start_time: "Heure de début"
-        end_time: "Heure de fin"
-        same_start_time: "Même heure de début tous les jours"
-        same_end_time: "Même heure de fin tous les jours"
-        same_as_provider_address: "Même addresse que le provider"
-        mentions: "Mentions spéciales"
-        min_capacity: "Capacité minimum"
-        max_capacity: "Capacité maximum"
-        show_capacity: "Afficher la capacité"
-        is_place: "Place"
-        is_food: "Food"
-        is_drinks: "Drinks"
-        is_fun: "Fun"
-        is_stuff: "Stuff"
-        
-      price:
-        price: "Prix (particuliers)"
-        price_pro: "Prix (professionnels)"
-        days: "Jours"
-        optional: "Prix en option"
-        quantify: "Prix en quantité"
-        unit: "Unité"
-        discount_prices:
-          discount_price: "Nouveau prix (particuliers)"
-          discount_price_pro: "Nouveau prix (professionnels)"
-          starting: "À partir de…"
-          
-      event:
-        start_date: "Date et heure de début"
-        end_date: "Date et heure de fin"
-        capacity: "Nombre de personnes"
-          
-      survey:
-        event_type: "Quel événement ?"
-        person_type: "Pour qui ?"
-        questionnaire: "Choisissez un questionnaire"
-        
-      answer:
-        comment: "Commentaire"
-
-      q_message:
-        content: "Nouveau message"
-
-      q_item:
-        selected: "Sélectionné"
-        
-      person_type:
-        first_person: "Première personne"
-        
-      invitation:
-        body: "Message"
-        date: "Faire figurer la date de l'événement"
-        address: "Adresse de l'événement"
-        no_guestlist: "Pas de guestlist"
+        email: "Email"
+        firstname: "Prénom"
+        lastname: "Nom de famille"
+        nickname: "Surnom"
+        maidenname: "Nom de jeune fille"
+        company: "Société"
+        occupation: "Poste dans la société"
+        phone: "Téléphone mobile"
+        city: "Ville"
+        events:
+          number: "n° de Course"
 
     hints:
       offer:
@@ -112,6 +41,18 @@ fr:
     include_blanks:
     prompts:
     placeholders:
+      user:
+        email: "Email"
+        firstname: "Prénom"
+        lastname: "Nom de famille"
+        nickname: "Surnom"
+        maidenname: "Nom de jeune fille"
+        company: "Société"
+        occupation: "Poste dans la société"
+        phone: "Téléphone mobile"
+        city: "Ville"
+        events:
+          number: "n° de Course"
       price:
         price: "Inclus dans l'offre"
         price_pro: "Inclus dans l'offre"

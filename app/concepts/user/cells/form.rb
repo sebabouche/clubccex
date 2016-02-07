@@ -20,7 +20,7 @@ class User::Cell
 
     def f_input(f, field, required = false)
       star = "* " if(required == true)
-      f.input(field, label: false, placeholder: "#{field.to_s.capitalize}#{star}")
+      f.input(field, label: false) # , placeholder: "#{self.placeholder}#{star}")
     end
   end
 end  

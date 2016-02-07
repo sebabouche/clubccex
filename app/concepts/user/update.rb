@@ -9,54 +9,16 @@ class User < ActiveRecord::Base
       #return self::Admin if policy.admin?
     end
 
-    contract do
-      feature Disposable::Twin::Persisted
-      require "reform/form/validation/unique_validator.rb"
+    class CurrentUser < Trailblazer::Operation
+      contract Contract::ThisIsMe
+
+      def model!(params)
+        User.find(params[:current_user])
+      end
     end
 
     class ThisIsMe < self
-      contract do
-        property :gender
-        property :firstname
-        property :lastname
-        property :maidenname
-        property :nickname
-        property :email
-        property :company
-        property :occupation
-        property :phone
-        property :city
-
-        property :file, virtual: true
-        validates :file, 
-          file_size: { less_than_or_equal_to: 3.megabytes },
-          file_content_type: { allow: ['image/jpeg', 'image/png'] }
-        extend Paperdragon::Model::Writer
-        processable_writer :image
-        property :image_meta_data, deserializer: { writeable: false }
-
-        collection :events,
-        prepopulator:      :prepopulate_events!,
-        populate_if_empty: :populate_events!,
-        skip_if:           :all_blank do
-          property :number
-
-          validates :number, presence: true
-        end
-          
-        validates :firstname, :lastname, :email, presence: true
-        validates :email, email: true
-
-        private
-
-        def prepopulate_events!(options)
-          (3 - events.size).times { events.append(Event.new) }
-        end
-
-        def populate_events!(fragment:, **)
-          Event.find_by(number: fragment["number"]) or Event.new
-        end
-      end
+      contract Contract::ThisIsMe
 
       include Dispatch
       callback(:upload_image) do
