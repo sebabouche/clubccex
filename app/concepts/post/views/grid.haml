@@ -1,6 +1,6 @@
 .row.grid.scrollable
   - if posts.present?
-    = concept('post/cell/card', collection: posts, user: user)
+    = concept('post/cell/card', collection: posts, current_user: current_user)
     - unless model.last_page?
       .col-md-4.col-sm-6.text-center#next-posts= link_to 'Voir plus', 
         next_category_path, 

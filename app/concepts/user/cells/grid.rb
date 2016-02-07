@@ -5,6 +5,8 @@ class User::Cell
 
     inherit_views User::Cell
 
+    attr_reader :current_user
+
     def show
       render :grid
     end

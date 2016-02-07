@@ -12,7 +12,7 @@ class Post::Cell < Cell::Concept
   private
 
   def current_user
-    options[:curent_user]
+    options[:current_user]
   end
 
   def this_is_mine?
