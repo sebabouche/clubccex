@@ -1,23 +1,28 @@
 @-webkit-keyframes FadeIn { 
  0% { opacity:0; }
+ 50% { opacity: 0; }
  100% {opacity: 1; }
 }
 @-moz-keyframes FadeIn {
  0% { opacity:0; }
+ 50% { opacity: 0; }
  100% {opacity: 1; }
 }
 @-o-keyframes FadeIn {
  0% { opacity:0; }
+ 50% { opacity: 0; }
  100% {opacity: 1; }
 }
 @keyframes FadeIn {
  0% { opacity:0; }
+ 50% { opacity: 0; }
  100% {opacity: 1; }
 }
 
 @-webkit-keyframes SlideDown {
-  0% { height: 100% }
-  100% { }
+ 0% { opacity:0; }
+ 50% { opacity: 0; }
+ 100% {opacity: 1; }
 }
 
 .grid .card { 
@@ -32,5 +37,5 @@
 }
 
 .header-image h1 {
-  @include vendor-prefix(animation, FadeIn 1s ease-in-out);
+  @include vendor-prefix(animation, FadeIn 2s ease-in-out);
 }

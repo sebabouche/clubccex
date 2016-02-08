@@ -8,7 +8,7 @@
         .modal-body
           = f.error_notification
           = f.input :title
-          = f.input :body
+          = f.input :body, input_html: { rows: 8 }
           = f.association :category
 
         .modal-footer

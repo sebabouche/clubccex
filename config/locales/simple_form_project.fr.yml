@@ -13,6 +13,10 @@ fr:
         city: "Ville"
         events:
           number: "n° de Course"
+      post:
+        title: "Titre"
+        body: "Description"
+        category: "Catégorie"
 
     hints:
       offer:

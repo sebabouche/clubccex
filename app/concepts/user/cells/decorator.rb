@@ -58,10 +58,24 @@ class User::Cell::Decorator < User::Cell
   def phone_email
     pe = ""
     if phone.present?
-      pe << "<i class='glyphicon glyphicon-phone'></i> #{phone} | "
+      pe << "<i class='fa fa-phone'></i> #{phone} | "
     end
-    pe << "<i class='glyphicon glyphicon-envelope'></i> #{email}"
+    pe << "<i class='fa fa-envelope'></i> #{email}"
     pe
+  end
+
+  def social_networks
+    sn = ""
+    if facebook.present?
+      sn += "<a href='https://www.#{facebook}'><i class='fa fa-facebook'></i>#{facebook}</a>"
+    end
+    if linkedin.present?
+      sn += "<a href='https://#{linkedin}'><i class='fa fa-linkedin-square'></i>#{linkedin}</a>"
+    end
+    if twitter.present?
+      sn += "<a href='https://#{twitter}'><i class='fa fa-twitter-square'></i>#{twitter}</a>"
+    end
+    sn
   end
 
   def work
