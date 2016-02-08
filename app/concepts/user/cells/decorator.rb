@@ -107,4 +107,14 @@ class User::Cell::Decorator < User::Cell
       confirm_user_path(@model), 
       class: "btn btn-success btn-xs" if unconfirmed?
   end
+
+  def profile_completion_bar
+    %Q[
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="#{profile_completion}" aria-valuemin="0" aria-valuemax="100" style="min-width: 120px; width: #{profile_completion}%">
+          Complété à #{profile_completion}%
+        </div>
+      </div>
+    ]
+  end
 end

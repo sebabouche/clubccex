@@ -1,0 +1,36 @@
+@-webkit-keyframes FadeIn { 
+ 0% { opacity:0; }
+ 100% {opacity: 1; }
+}
+@-moz-keyframes FadeIn {
+ 0% { opacity:0; }
+ 100% {opacity: 1; }
+}
+@-o-keyframes FadeIn {
+ 0% { opacity:0; }
+ 100% {opacity: 1; }
+}
+@keyframes FadeIn {
+ 0% { opacity:0; }
+ 100% {opacity: 1; }
+}
+
+@-webkit-keyframes SlideDown {
+  0% { height: 100% }
+  100% { }
+}
+
+.grid .card { 
+  -webkit-animation: FadeIn 0.5s linear; 
+  -webkit-animation-fill-mode:both;
+}
+
+@for $i from 1 to 50 {
+  .grid .card:nth-child(#{$i}) { 
+    -webkit-animation-delay: $i * .1s 
+  }
+}
+
+.header-image h1 {
+  @include vendor-prefix(animation, FadeIn 1s ease-in-out);
+}

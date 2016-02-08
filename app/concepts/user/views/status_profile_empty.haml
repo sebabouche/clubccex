@@ -1,0 +1,12 @@
+.jumbotron
+  .row
+    .col-sm-8
+      %h1 
+        %span.fa.fa-binoculars
+        %span Et que vois-je ? 
+      %h2 Tu n'as pas mis à jour ton profil !
+    .col-sm-4
+      %h2 Step 1, prends 2 minutes pour mettre ton profil à jour :
+      =link_to edit_profile_path, class: "btn btn-primary btn-lg" do
+        %span.fa.fa-user
+        %span Mets ton profil à jour

@@ -1,0 +1,14 @@
+.jumbotron
+  .row
+    .col-sm-8
+      %h2
+        %span.fa.fa-user
+        %span Ton profil est presque complet !
+      %p C'est chouette, tu as bien avancé mais avec quelques informations en plus il serait au complet !
+      = concept('user/cell/decorator', model).(:profile_completion_bar)
+    .col-sm-4
+      %h2 Prends quelques minutes pour le terminer :
+      =link_to edit_profile_path, class: "btn btn-primary btn-lg" do
+        %span.fa.fa-user
+        %span Terminer mon profil
+

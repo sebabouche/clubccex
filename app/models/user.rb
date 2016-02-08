@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :pending_confirmations, -> { where confirmed: nil or false }, class_name: 'Recommendation',
     foreign_key: 'recommender_id'
 
+  has_many :posts
+
   serialize :auth_meta_data
   serialize :image_meta_data
 

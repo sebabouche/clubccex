@@ -1,0 +1,15 @@
+.jumbotron
+  .row
+    .col-sm-8
+      %h2
+        %span.fa.fa-heart
+        %span Merci d'avoir complété ton profil
+      %p Maintenant, il est temps de poster ton premier message !
+      %small Idée d'amélioration du site, nouvelle rubrique, déclaration d'amour, bigup à ton année, à ton départ… Tu poster tout ce qui te passe par la tête dans la catégorie Random.
+    .col-sm-4
+      %br
+      =link_to "#", class: "btn btn-primary btn-lg", data: {toggle: "modal", target: "#newPostModal"} do
+        %span.fa.fa-edit
+        %span Envoyer ton premier post
+
+

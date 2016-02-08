@@ -1,9 +1,11 @@
 .profile
   = simple_form_for contract do |f|
     .thumb-picture= concept("user/cell/decorator", user).(:thumb)
+
     .row
       .col-sm-4.col-sm-offset-4
         %p= f.input :file, as: :file, label: false
+        = f.collection_radio_buttons :gender, [["female", "Femme"],["male", "Homme"]], :first, :last, item_wrapper_class: "radio-inline", item_wrapper_tag: "div"
         = f_input f, :email, true
     .row
       .col-sm-4.col-sm-offset-2
