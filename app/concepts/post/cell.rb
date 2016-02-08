@@ -20,7 +20,35 @@ class Post::Cell < Cell::Concept
   end
 
   def link_title
-    link_to title, post_path(model)
+    link_to post_path(model), class: title_class do
+      content_tag(:i, "", 
+                  class: title_icon_class, 
+                  data: {toggle: "tooltip", placement: "auto"}, 
+                  title: title_tooltip) +
+      content_tag(:span, title)
+    end
+  end
+
+  def title_class
+    if model.closed?
+      "text-muted"
+    end
+  end
+
+  def title_icon_class
+    if model.closed?
+      "fa fa-check-circle"
+    else
+      "fa fa-exclamation-circle"
+    end
+  end
+
+  def title_tooltip
+    if model.closed?
+      "Ce post été résolu"
+    else
+      "Ce post attend encore une réponse"
+    end
   end
 
   def edit_link

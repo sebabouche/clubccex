@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  host = ENV['HOST']
+  host = "localhost:3000" # ENV['HOST']
   config.action_mailer.default_url_options = { host: host }
   config.action_mailer.default :charset => "utf-8"
   

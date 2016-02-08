@@ -4,8 +4,8 @@
       %span= link_title
       = edit_link
     %p
-      = concept('user/cell/decorator', user).(:linkname)
+      %span Par
+      %span= concept('user/cell/decorator', user).(:linkname)
       %span= has_posted_at
     %p= truncate(body, length: 140, separator: ' ', omission: '…')
     %p= concept('comment/cell/summary', model)
-

@@ -17,6 +17,7 @@ fr:
         title: "Titre"
         body: "Description"
         category: "Catégorie"
+        closed: "J'ai trouvé réponse à ma question"
 
     hints:
       offer:

@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
 
   has_many :comments
 
-  default_scope { order("created_at DESC")}
+  default_scope { order("closed DESC, created_at DESC")}
 
   scope :from_category, -> (category) { where('category_id = ?', category) }
 end
