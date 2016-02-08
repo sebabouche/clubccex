@@ -1,0 +1,18 @@
+.modal.fade#helpModal(tabindex="-1" role="dialog" aria-labelledby="helpModalLabel")
+  .modal-dialog(role="document")
+    .modal-content
+      .modal-header
+        %h1.text-center.modal-title#helpModalLabel Besoin d'aide ?
+      .modal-body
+        %p 
+          %span Ce site sort tout juste du four et il y aura des bugs.
+          %span Et qui d'autre que toi, 
+          %span.text-primary= tyrant.current_user.firstname
+          %span pour les déceler ?
+        %h3 Si tu vois un bug ou éprouves une frustration sur le site, partage-la vite avec…
+        = concept('user/cell', User.find(1))
+
+      .modal-footer
+        %button.btn.btn-default.btn-s(type="button" data-dismiss="modal") Fermer la fenêtre d'aide
+
+

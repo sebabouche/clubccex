@@ -90,4 +90,13 @@ class Navigation::Cell < ::Cell::Concept
   def new_post_button
     "<button class='btn btn-nav btn-newpost' type='button' role='new post' data-toggle='modal' data-target='#newPostModal'></button>"
   end
+
+  def help_button
+    content_tag(:button, "", 
+                class: "btn btn-nav btn-help", 
+                type: "button", 
+                role: "help", 
+                data: {toggle: "modal", target: "#helpModal"}
+               )
+  end
 end
