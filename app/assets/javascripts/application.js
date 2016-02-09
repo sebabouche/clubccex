@@ -14,9 +14,9 @@
 //= require jquery_ujs
 
 //= require bootstrap
+//= require jquery.infinite-pages
 
 //= require jasny-bootstrap/dist/js/jasny-bootstrap
-//= require jquery.infinite-pages
 
 //= require turbolinks
 //= require_tree .

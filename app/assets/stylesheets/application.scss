@@ -20,6 +20,7 @@
 @import "anonymous";
 
 @import "jasny-bootstrap/dist/css/jasny-bootstrap";
+
 @import "logged";
 @import "blocks";
 @import "animation";
@@ -42,14 +43,6 @@ body {
 
   a {
     text-decoration: none !important;
-  }
-}
-
-/* Custom default button */
-.btn-outline {
-  &:hover {
-    color: $cce-red;
-    background-color: #fff;
   }
 }
 

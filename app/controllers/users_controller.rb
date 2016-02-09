@@ -55,6 +55,10 @@ class UsersController < LoggedController
     render :edit
   end
 
+  def destroy
+    run User::Delete
+  end
+
   def confirm
     run User::Confirm do |op|
       flash[:notice] = "#{op.model.firstname} est confirmé!"

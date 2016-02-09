@@ -1,14 +1,16 @@
 class User < ActiveRecord::Base
-  has_many :event_users
+  has_many :event_users, dependent: :destroy
   has_many :events, through: :event_users
 
-  has_many :recommendations
+  has_many :recommendations, dependent: :destroy
   has_many :recommenders, through: :recommendations
 
   has_many :pending_confirmations, -> { where confirmed: nil or false }, class_name: 'Recommendation',
     foreign_key: 'recommender_id'
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
+
+  has_many :comments, dependent: :destroy
 
   serialize :auth_meta_data
   serialize :image_meta_data

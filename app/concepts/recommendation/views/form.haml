@@ -1,10 +1,12 @@
-%h1 
-  %span= @model.user.firstname
-  %span= @model.user.lastname
-  %small est-il un ancien de la CCE ?
+.row
+  .col-md-6.col-md-offset-3
+    %h1 
+      %span= @model.user.firstname
+      %span= @model.user.lastname
+      %small est-il un ancien de la CCE ?
 
-= simple_form_for model do |f|
-  = f.error_notification
-  = f.input :confirmed, as: :radio_buttons, label: false, item_wrapper_class: "inline"
-  = f.button :submit, "Valider", class: "btn-primary btn-block"
+    = simple_form_for model do |f|
+      = f.error_notification
+      = f.input :confirmed, as: :radio_buttons, label: false, item_wrapper_class: "inline"
 
+      = f.button :submit, "Valider", class: "btn-primary btn-block"

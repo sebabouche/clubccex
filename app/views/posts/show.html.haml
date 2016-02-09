@@ -1,6 +1,9 @@
 .row
-  .col-sm-6.col-sm-offset-3
+  .col-sm-8.col-sm-offset-2
     = concept('post/cell/show', @post, current_user: tyrant.current_user)
+
+    .divider-30
+    %hr
 
     = concept('comment/cell/form', @form, post: @post, current_user: tyrant.current_user)
     = concept('comment/cell/grid', @post)

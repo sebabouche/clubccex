@@ -1,5 +1,7 @@
 %h1
   = title
   = edit_link
-%p= concept('user/cell/decorator', user).(:linkname)
-%p= body
+%p
+  %span Par
+  = concept('user/cell/decorator', user).(:linkname)
+%p.lead= body

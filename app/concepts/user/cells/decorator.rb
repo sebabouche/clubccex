@@ -29,6 +29,7 @@ class User::Cell::Decorator < User::Cell
   def linkname
     name_link = link_to fullname, path
     name_link += link_to " (éditer)", edit_user_path(model), class: "small" if this_is_me?
+    #name_link += link_to " (supprimer)", user_path(model), method: 'DELETE', data: {confirm: "Êtes-vous sûr(e) ?"}, class: "small" if admin?
     name_link
   end
 

@@ -53,6 +53,15 @@
     color: rgba(255,255,255,.5);
   }
 
+  /* Custom default button */
+  .btn-white{
+    &:hover {
+      color: $cce-red;
+      background-color: #fff;
+    }
+  }
+
+
   @media (min-width: 480px) {
     .masthead {
       position: fixed;

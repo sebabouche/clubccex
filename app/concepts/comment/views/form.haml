@@ -1,7 +1,7 @@
 = simple_form_for model, url: create_comment_post_path(post) do |f|
   = f.error_notification
 
-  = f.input :body, label: false, placeholder: "Nouvelle réponse…", input_html: { rows: 4 }
+  = f.input :body, label: false, placeholder: "Nouvelle réponse…", input_html: { rows: 6 }
 
   = f.button :submit, "Envoyer", class: "btn-primary btn-block"
 
