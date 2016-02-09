@@ -27,12 +27,17 @@ module User::Contract
     property :image_meta_data, deserializer: { writeable: false }
 
     collection :events,
-    prepopulator:      :prepopulate_events!,
-    populate_if_empty: :populate_events!,
-    skip_if:           :all_blank do
+    prepopulator: :prepopulate_events!,
+    populator:    :event!,
+    skip_if:      :all_blank do
       property :number
+      property :remove, virtual: true
 
       validates :number, presence: true
+
+      def removeable?
+        model.persisted?
+      end
     end
       
     validates :firstname, :lastname, :email, presence: true
@@ -44,8 +49,18 @@ module User::Contract
       (3 - events.size).times { events.append(Event.new) }
     end
 
-    def populate_events!(fragment:, **)
-      Event.find_by(number: fragment["number"]) or Event.new
+    def event!(fragment:, index:, **)
+      return Representable::Pipeline::Stop if fragment["number"] == ""
+
+      if fragment["remove"] == "1"
+        deserialized_event = events.find { |e| e.id.to_s == fragment[:id] }
+        events.delete(deserialized_event)
+        return Representable::Pipeline::Stop
+      end
+
+      return Representable::Pipeline::Stop if events[index]
+
+      events.insert(index, (Event.find_by_number(fragment["number"]) or Event.new))
     end
   end
 end

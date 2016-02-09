@@ -18,9 +18,9 @@ class User::Cell
 
     private
 
-    def f_input(f, field, required = false)
+    def f_input(f, field, required = false, readonly: false)
       star = "* " if(required == true)
-      f.input(field, label: false) # , placeholder: "#{self.placeholder}#{star}")
+      f.input field, label: false, readonly: readonly # , placeholder: "#{self.placeholder}#{star}")
     end
   end
 end  

@@ -74,7 +74,7 @@ class User::Cell::Decorator < User::Cell
       sn += "<a href='https://#{linkedin}'><i class='fa fa-linkedin-square'></i>#{linkedin}</a>"
     end
     if twitter.present?
-      sn += "<a href='https://#{twitter}'><i class='fa fa-twitter-square'></i>#{twitter}</a>"
+      sn += "<a href='https://www.twitter.com/#{twitter}'><i class='fa fa-twitter-square'></i>#{twitter}</a>"
     end
     sn
   end
