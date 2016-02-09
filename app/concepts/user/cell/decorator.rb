@@ -61,20 +61,25 @@ class User::Cell::Decorator < User::Cell
     if phone.present?
       pe << "<i class='fa fa-phone'></i> #{phone} | "
     end
-    pe << "<i class='fa fa-envelope'></i> #{email}"
+    pe << "<a href='mailto:#{email}'><i class='fa fa-envelope'></i> #{email}</a>"
     pe
   end
 
   def social_networks
     sn = ""
+    sn_array = []
     if facebook.present?
-      sn += "<a href='https://www.#{facebook}'><i class='fa fa-facebook'></i>#{facebook}</a>"
+      sn_array << "<a href='https://www.#{facebook}'><i class='fa fa-facebook-square'></i>&nbsp; #{facebook}</a>"
     end
     if linkedin.present?
-      sn += "<a href='https://#{linkedin}'><i class='fa fa-linkedin-square'></i>#{linkedin}</a>"
+      sn_array << "<a href='https://#{linkedin}'><i class='fa fa-linkedin-square'></i> #{linkedin}</a>"
     end
     if twitter.present?
-      sn += "<a href='https://www.twitter.com/#{twitter}'><i class='fa fa-twitter-square'></i>#{twitter}</a>"
+      sn_array << "<a href='https://www.twitter.com/#{twitter}'><i class='fa fa-twitter-square'></i> #{twitter}</a>"
+    end
+    sn_array.each_with_index do |n, i|
+      sn << n
+      sn << " | " if i+1 < sn_array.size
     end
     sn
   end
