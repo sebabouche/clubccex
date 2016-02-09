@@ -19,7 +19,7 @@ RSpec.describe Comment::Create, type: :operation do
     post: {
       title: "Titre",
       body: "Lorem Ipsum",
-      category_id: category.id}).model }
+      category: { "id" => category.id}}).model }
 
   context "valid" do
     it "renders form" do

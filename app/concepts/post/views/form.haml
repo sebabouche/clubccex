@@ -3,6 +3,15 @@
 
   = f.input :title
   = f.input :body, input_html: { rows: 10 }
+  - if !model.persisted?
+    = f.simple_fields_for :category do |c|
+      = c.input :id, 
+        collection: Category.pluck(:id, :name), 
+        value_method: :first, 
+        label_method: :last, 
+        as: :radio_buttons,
+        label: false
+  = f.error :category, class: "alert alert-danger"
   = f.input :closed if f.object.persisted?
 
   = f.button :button, "Poster", class: "btn-block btn-primary"

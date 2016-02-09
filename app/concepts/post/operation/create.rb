@@ -10,11 +10,26 @@ class Post < ActiveRecord::Base
 
       property :title
       property :body
-      property :category_id
+      property :closed, default: "false"
+      property :category, 
+      prepopulator: -> (*) { self.category = Category.new }, 
+      populator: :populate_category! do
+        property :id
+
+        validates :id, presence: true
+      end
+
       property :user_id
 
-      validates :title, :body, :category_id, presence: true
+      validates :title, :body, :category, presence: true
       validates :title, length: {in: 4..140}
+      
+      private
+
+      def populate_category!(fragment:, **)
+        self.category = Category.find(fragment["id"])
+      end
+        
     end
 
     def process(params)

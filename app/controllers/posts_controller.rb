@@ -15,6 +15,7 @@ class PostsController < LoggedController
       return redirect_to category_path(op.model.category)
     end
 
+    @form.prepopulate!
     render :new
   end
 

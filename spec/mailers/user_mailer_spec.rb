@@ -73,7 +73,7 @@ RSpec.describe UserMailer do
   context "Comment" do
     let(:admin) { User::Create::Confirmed::Admin.(user: {firstname: "Admin", lastname: "Strator", email: "admin@example.com"}).model }
     let(:category) { Category::Create.(category: {name: "Jobs", priority: 1}, current_user: admin).model }
-    let(:post) { Post::Create.(post: {title: "Titre", body: "Lorem Ipsum", category_id: category.id}, current_user: admin).model }
+    let(:post) { Post::Create.(post: {title: "Titre", body: "Lorem Ipsum", category: { "id" => category.id }}, current_user: admin).model }
     let(:comment) { Comment::Create.(comment: {body: "Awesome!", post: post}, current_user: recommender).model }
 
     describe "notify_comment" do

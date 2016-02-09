@@ -27,7 +27,7 @@ RSpec.describe Post::Create, type: :operation do
       res, op = Post::Create.run(post: {
         title: "Un titre",
         body: "Lorem Ipsum",
-        category_id: category.id
+        category: { "id" => category.id }
       },
       current_user: user)
 
@@ -42,28 +42,38 @@ RSpec.describe Post::Create, type: :operation do
     end
 
     it "with no title" do
-      res, op = Post::Create.run(post: {title: "", body: "Lorem Ipsum", category_id: category.id}, current_user: user)
+      res, op = Post::Create.run(post: {title: "", body: "Lorem Ipsum", category: { "id" => category.id}}, current_user: user)
 
       expect(res).to be_falsey
       expect(op.errors.to_s).to eq "{:title=>[\"doit être rempli(e)\", \"est trop court (au moins 4 caractères)\"]}"
     end
 
     it "with title too short" do
-      res, op = Post::Create.run(post: {title: "123", body: "Lorem Ipsum", category_id: category.id}, current_user: user)
+      res, op = Post::Create.run(post: {title: "123", body: "Lorem Ipsum", category: { "id" => category.id}}, current_user: user)
 
       expect(res).to be_falsey
       expect(op.errors.to_s).to eq "{:title=>[\"est trop court (au moins 4 caractères)\"]}"
     end
 
-    it "with no category_id" do
-      res, op = Post::Create.run(post: {title: "titre", body: "Lorem Ipsum", category_id: ""}, current_user: user)
+    it "with no category" do
+      res, op = Post::Create.run(post: {title: "titre", body: "Lorem Ipsum"}, current_user: user)
 
       expect(res).to be_falsey
-      expect(op.errors.to_s).to eq "{:category_id=>[\"doit être rempli(e)\"]}"
+      expect(op.errors.to_s).to eq "{:category=>[\"doit être rempli(e)\"]}"
+    end
+
+    it "with wrong category id" do
+      expect { Post::Create.run(
+        post: {
+          title: "titre", 
+          body: "Lorem Ipsum", 
+          category: { "id" => "wrong" } }, 
+        current_user: user) 
+      }.to raise_error ActiveRecord::RecordNotFound
     end
 
     it "with no description" do
-      res, op = Post::Create.run(post: {title: "titre", body: "", category_id: category.id}, current_user: user)
+      res, op = Post::Create.run(post: {title: "titre", body: "", category: { "id" => category.id}}, current_user: user)
 
       expect(res).to be_falsey
       expect(op.errors.to_s).to eq "{:body=>[\"doit être rempli(e)\"]}"

@@ -72,12 +72,12 @@ end
 
 300.times do
   user = User.all.shuffle.first
-  Post::Create.(
+  Post::Create.run(
     current_user: user,
     post: {
       title: Faker::Lorem.sentence,
       body: Faker::Lorem.paragraph,
-      category_id: rand(Category.count - 1)+1,
+      category: { "id" => (rand(Category.count - 1)+1).to_s },
       user_id: user.id
     })
 end

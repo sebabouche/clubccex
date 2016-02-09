@@ -8,7 +8,7 @@ RSpec.describe Post::Update, type: :operation do
   let (:post) { Post::Create.(post: {
       title: "Un titre",
       body: "Lorem Ipsum",
-      category_id: category.id },
+      category: { "id" => category.id } },
     current_user: user).model }
   let (:admin) { User::Create::Confirmed::Admin.(user: {
     firstname: "Admin",
@@ -28,13 +28,13 @@ RSpec.describe Post::Update, type: :operation do
       expect(form.body).to eq post.body
     end
 
-    it "persists valid" do
+    it "persists valid & doesn't change category or user" do
       res, op = Post::Update.run(
         id: post.id,
         post: {
           title: "Another title",
           body: "Another body",
-          category_id: "sdfsdfsdf",
+          category: { "id" => "hack" },
           user_id: "sdfsdfsdf",
           closed: true },
         current_user: user)

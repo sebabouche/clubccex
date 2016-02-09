@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
 
     contract do
       property :closed
-      property :category_id, writeable: false
+      property :category, writeable: false
       property :user_id, writeable: false
     end
   end

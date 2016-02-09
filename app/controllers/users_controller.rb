@@ -52,6 +52,7 @@ class UsersController < LoggedController
       return redirect_to user_path(op.model)
     end
 
+    @form.prepopulate!
     render :edit
   end
 
