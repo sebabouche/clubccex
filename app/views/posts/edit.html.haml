@@ -1,8 +1,5 @@
-= simple_form_for @form do |f|
-  = f.error_notification
+%h1.page-header Modifier un post
 
-  = f.input :title
-  = f.input :body
-  = f.input :closed
-
-  = f.button :submit
+.row
+  .col-md-6.col-md-offset-3
+    = concept("post/cell/form", @form)

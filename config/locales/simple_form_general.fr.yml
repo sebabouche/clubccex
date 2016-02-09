@@ -48,6 +48,8 @@ fr:
         quantity: "Quantité"
         price: "Prix"
         total: "Total"
+
+        remove: "Supprimer"
         
       user:
         new:

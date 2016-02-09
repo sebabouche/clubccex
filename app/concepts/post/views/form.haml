@@ -1,0 +1,9 @@
+= simple_form_for model do |f|
+  = f.error_notification
+
+  = f.input :title
+  = f.input :body, input_html: { rows: 10 }
+  = f.input :closed if f.object.persisted?
+
+  = f.button :button, "Poster", class: "btn-block btn-primary"
+
