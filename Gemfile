@@ -14,6 +14,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem "dotenv", groups: [:development, :test]
 
 ### ADDITIONNAL GEMS
 gem "bootstrap-sass"
@@ -29,12 +30,10 @@ gem "jquery-infinite-pages"
 
 gem "ransack"
 
-gem "dotenv"
 gem "gibbon"
 gem "mandrill"
 
 group :development do
-  gem "dotenv"
   gem "binding_of_caller", platforms: [:mri_21]
   gem "quiet_assets"
   gem "rails_layout"
@@ -66,7 +65,9 @@ group :test do
 end
 
 group :production do
+  gem "puma"
   gem "rails_12factor"
+  gem 'rack-cache', :require => 'rack/cache'
 end
 
 gem "trailblazer",       "1.1.0"
@@ -87,6 +88,8 @@ gem "kaminari-cells"
 
 gem "paperdragon", ">= 0.0.10"
 gem "file_validators", "~> 1.2"
+gem "dragonfly-s3_data_store"
+
 gem "roar", github: "apotonick/roar"
 
 gem "pundit"
