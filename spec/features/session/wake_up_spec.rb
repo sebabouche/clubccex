@@ -10,7 +10,7 @@ RSpec.describe Session::WakeUp, type: :operation do
     end
 
     scenario "renders form" do
-      expect(page).to have_content "Propre, Paul"
+      expect(page).to have_content "Hey, Paul"
       expect(page).to have_css "#user_password"
       expect(page).to have_css "#user_confirm_password"
     end

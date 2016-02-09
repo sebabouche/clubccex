@@ -10,7 +10,8 @@
           %span.text-primary= tyrant.current_user.firstname
           %span pour les déceler ?
         %h3 Si tu vois un bug ou éprouves une frustration sur le site, partage-la vite avec…
-        = concept('user/cell', User.find(1))
+        - if user = User.find_by_id(1)
+          = concept('user/cell', user)
 
       .modal-footer
         %button.btn.btn-default.btn-s(type="button" data-dismiss="modal") Fermer la fenêtre d'aide
