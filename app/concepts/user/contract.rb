@@ -23,7 +23,7 @@ module User::Contract
       file_size: { less_than_or_equal_to: 3.megabytes },
       file_content_type: { allow: ['image/jpeg', 'image/png'] }
     extend Paperdragon::Model::Writer
-    processable_writer :image
+    processable_writer :image, Clubccex::Paperdragon::Attachment
     property :image_meta_data, deserializer: { writeable: false }
 
     collection :events,
