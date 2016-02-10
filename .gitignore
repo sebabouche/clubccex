@@ -8,3 +8,7 @@
 # Ignore vim swap files
 *.swp
 *.swo
+
+.env
+db_*.dump
+heroku.md
