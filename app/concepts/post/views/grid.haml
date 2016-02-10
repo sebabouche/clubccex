@@ -1,11 +1,16 @@
-.row.grid.scrollable
-  - if posts.present?
+- if posts.present?
+  .row.grid.scrollable
     = concept('post/cell/card', collection: posts, current_user: current_user)
     - unless model.last_page?
       .col-md-4.col-sm-6.text-center#next-posts= link_to 'Voir plus', 
         next_category_path, 
         remote: true, 
         rel: "next"
-      
-  - else
-    %h1.text-center Mince, pas d'annonce :/
+- else
+  .text-center
+    .divider-60
+    %h2 Pas encore de post dans cette catégorie.
+    .divider-60
+    = link_to "#", data: {toggle:'modal', target: '#newPostModal'}, class: "btn btn-primary" do
+      %span.fa.fa-edit
+      %span Envoyez la 1ère demande de cette catégorie
