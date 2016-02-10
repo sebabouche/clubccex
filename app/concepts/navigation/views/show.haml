@@ -1,5 +1,5 @@
 %div.navmenu.navmenu-fixed-left.offcanvas#navMenu(role="navigation" class=css_classes)
-  .navmenu-brand.text-center= title
+  %h1.navmenu-brand.text-center= title
   %ul.nav.navmenu-nav
     %li= menu_item("Accueil", root_path, "fa", "home", true)
     = categories
@@ -10,7 +10,7 @@
     -if admin?
       %li= menu_item("Courseux non-confirmés", unconfirmed_users_path)
 
-  .navmenu-bottom
+  .navmenu-bottom-bar
     .item= menu_item("Profil", profile_path, "fa", "user")
     .item= menu_item("Déconnexion", sessions_sign_out_path, "fa", "sign-out")
 .navbar.navbar-default.navbar-fixed-top
