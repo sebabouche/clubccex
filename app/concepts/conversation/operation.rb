@@ -1,5 +1,5 @@
 class Conversation < ActiveRecord::Base
-  class Create
+  class Create < Trailblazer::Operation
     include Model
     model Conversation
 
@@ -9,6 +9,7 @@ class Conversation < ActiveRecord::Base
       private
 
       def populate_user!
+      end
 
     end
 
