@@ -21,4 +21,6 @@ class User < ActiveRecord::Base
   scope :confirmed_sleeping, -> { where(confirmed: 1, sleeping: 1) }
 
   default_scope { order('lastname, firstname') }
+
+  has_many :message_users
 end
